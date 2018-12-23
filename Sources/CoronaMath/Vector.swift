@@ -13,6 +13,19 @@ public protocol Vector {
     
     // MARK: - Required Methods
     
+    ///The number of components in a vector. Must be greater than 0.
+    static var numberOfComponents:Int { get }
+    
+    ///The components of this vector.
+    var components:[Double] { get }
+    
+    ///Provides access to the individual components.
+    /// - parameter index: The index of the component to get or set.
+    /// - returns: The value of the component at the given index.
+    subscript(index:Int) -> Double { get set }
+    
+    // MARK: - Methods with Default Implementations
+    
     ///Initializes this instance with all zeroes.
     init()
     
@@ -22,14 +35,6 @@ public protocol Vector {
     /// - parameter: an array of doubles representing the component of the vector.
     /// - returns: a vector initialized with the values of *components*.
     init(components:[Double])
-    
-    ///The number of components in a vector. Must be greater than 0.
-    static var numberOfComponents:Int { get }
-    
-    // MARK: - Methods with Default Implementations
-    
-    ///The components of this vector.
-    var components:[Double] { get }
     
     ///The length of this vector.
     /// - returns: The length of this vector.
@@ -95,6 +100,15 @@ public protocol Vector {
 // MARK: - Default Implementations
 
 extension Vector {
+    
+    public static var Zero:Self { return Self(components: [Double](repeating: 0.0, count: Point.numberOfComponents)) }
+    
+    public init(components:[Double]) {
+        self.init()
+        for i in 0..<min(Point.numberOfComponents, components.count) {
+            self[i] = components[i]
+        }
+    }
     
     public func length() -> Double {
         return sqrt(self.components.map() { $0 * $0 } .sum())

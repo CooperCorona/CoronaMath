@@ -11,15 +11,15 @@ import Foundation
 public struct Vector4: Vector {
     
     ///The vector with 0 for all components.
-    public static let Zero = Vector4(components: [0.0, 0.0, 0.0, 0.0])
+    public static let zero = Vector4(components: [0.0, 0.0, 0.0, 0.0])
     ///The unit vector in the x direction.
-    public static let X = Vector4(components: [1.0, 0.0, 0.0, 0.0])
+    public static let x = Vector4(components: [1.0, 0.0, 0.0, 0.0])
     ///The unit vector in the y direction.
-    public static let Y = Vector4(components: [0.0, 1.0, 0.0, 0.0])
+    public static let y = Vector4(components: [0.0, 1.0, 0.0, 0.0])
     ///The unit vector in the z direction.
-    public static let Z = Vector4(components: [0.0, 0.0, 1.0, 0.0])
+    public static let z = Vector4(components: [0.0, 0.0, 1.0, 0.0])
     ///The unit vector in the w direction.
-    public static let W = Vector4(components: [0.0, 0.0, 0.0, 1.0])
+    public static let w = Vector4(components: [0.0, 0.0, 0.0, 1.0])
     
     public static let numberOfComponents = 4
     

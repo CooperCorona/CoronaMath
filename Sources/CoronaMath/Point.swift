@@ -11,11 +11,11 @@ import Foundation
 public struct Point: Vector {
     
     ///The point with 0 for all components.
-    public static let Zero = Point(components: [0.0, 0.0])
+    public static let zero = Point(components: [0.0, 0.0])
     ///The unit vector in the x direction.
-    public static let X = Point(components: [1.0, 0.0])
+    public static let x = Point(components: [1.0, 0.0])
     ///The unit vector in the y direction.
-    public static let Y = Point(components: [0.0, 1.0])
+    public static let y = Point(components: [0.0, 1.0])
     
     public static let numberOfComponents = 2
     

@@ -126,11 +126,11 @@ final class Vector3Tests: XCTestCase {
     }
     
     func testCross() {
-        XCTAssertEqual(Vector3.X.cross(vector: Vector3.Y), Vector3.Z)
+        XCTAssertEqual(Vector3.x.cross(vector: Vector3.y), Vector3.z)
     }
     
     func testCrossReversed() {
-        XCTAssertEqual(Vector3.Y.cross(vector: Vector3.X), -Vector3.Z)
+        XCTAssertEqual(Vector3.y.cross(vector: Vector3.x), -Vector3.z)
     }
     
     func testCrossRandomComponents() {

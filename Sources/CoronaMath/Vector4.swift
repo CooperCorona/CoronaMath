@@ -11,7 +11,7 @@ import Foundation
 public struct Vector4: Vector {
     
     ///The vector with 0 for all components.
-    public static let Zero = Vector3(components: [0.0, 0.0, 0.0, 0.0])
+    public static let Zero = Vector4(components: [0.0, 0.0, 0.0, 0.0])
     ///The unit vector in the x direction.
     public static let X = Vector4(components: [1.0, 0.0, 0.0, 0.0])
     ///The unit vector in the y direction.

@@ -107,11 +107,11 @@ public protocol Vector: Equatable {
 
 extension Vector {
     
-    public static var Zero:Self { return Self(components: [Double](repeating: 0.0, count: Point.numberOfComponents)) }
+    public static var Zero:Self { return Self(components: [Double](repeating: 0.0, count: Self.numberOfComponents)) }
     
     public init(components:[Double]) {
         self.init()
-        for i in 0..<min(Point.numberOfComponents, components.count) {
+        for i in 0..<min(Self.numberOfComponents, components.count) {
             self[i] = components[i]
         }
     }

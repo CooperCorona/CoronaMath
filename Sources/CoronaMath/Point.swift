@@ -10,7 +10,12 @@ import Foundation
 ///A 2-dimensional vector.
 public struct Point: Vector {
     
-    public static var numberOfComponents: Int { return 2 }
+    ///The unit vector in the x direction.
+    public static let X = Point(components: [1.0, 0.0])
+    ///The unit vector in the y direction.
+    public static let Y = Point(components: [0.0, 1.0])
+    
+    public static let numberOfComponents = 2
     
     public private(set) var components: [Double] = [Double](repeating: 0.0, count: Point.numberOfComponents)
     

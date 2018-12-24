@@ -14,6 +14,9 @@ extension PointTests {
 
 extension Vector3Tests {
     static let __allTests = [
+        ("testCross", testCross),
+        ("testCrossRandomComponents", testCrossRandomComponents),
+        ("testCrossReversed", testCrossReversed),
         ("testGetB", testGetB),
         ("testGetBlue", testGetBlue),
         ("testGetG", testGetG),

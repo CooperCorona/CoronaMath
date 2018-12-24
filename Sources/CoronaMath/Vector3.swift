@@ -10,6 +10,13 @@ import Foundation
 ///A 3-dimensional vector.
 public struct Vector3: Vector {
     
+    ///The unit vector in the x direction.
+    public static let X = Vector3(components: [1.0, 0.0, 0.0])
+    ///The unit vector in the y direction.
+    public static let Y = Vector3(components: [0.0, 1.0, 0.0])
+    ///The unit vector in the z direction.
+    public static let Z = Vector3(components: [0.0, 0.0, 1.0])
+    
     public static let numberOfComponents = 3
     
     public private(set) var components: [Double] = [Double](repeating: 0.0, count: Vector3.numberOfComponents)
@@ -35,6 +42,17 @@ public struct Vector3: Vector {
     public subscript(index:Int) -> Double {
         get { return self.components[index] }
         set { self.components[index] = newValue }
+    }
+    
+    ///Calculates the cross product of this vector and another vector.
+    /// - parameter vector: The vector with which to perform the cross product.
+    /// - returns: The cross product. This is a vector perpendicular to *self* and
+    /// *vector* with length ||self| * |vector| * sin(angle between self and vector)|.
+    public func cross(vector:Vector3) -> Vector3 {
+        let x = self.y * vector.z - self.z * vector.y
+        let y = self.z * vector.x - self.x * vector.z
+        let z = self.x * vector.y - self.y * vector.x
+        return Vector3(components: [x, y, z])
     }
     
 }

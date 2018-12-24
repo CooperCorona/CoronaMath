@@ -124,4 +124,19 @@ final class Vector3Tests: XCTestCase {
         XCTAssertEqual(vector[0], 4.0)
     }
     
+    func testCross() {
+        XCTAssertEqual(Vector3.X.cross(vector: Vector3.Y), Vector3.Z)
+    }
+    
+    func testCrossReversed() {
+        XCTAssertEqual(Vector3.Y.cross(vector: Vector3.X), -Vector3.Z)
+    }
+    
+    func testCrossRandomComponents() {
+        let v1 = Vector3(components: [1.0, 2.0, 3.0])
+        let v2 = Vector3(components: [4.0, 5.0, 6.0])
+        let result = Vector3(components: [-3.0, 6.0, -3.0])
+        XCTAssertEqual(v1.cross(vector: v2), result)
+    }
+    
 }

@@ -9,7 +9,7 @@ import Foundation
 
 ///Interface for a mathematical n-component vector, which is a
 ///a structure that contains n independent real numbers.
-public protocol Vector {
+public protocol Vector: Equatable {
     
     // MARK: - Required Methods
     
@@ -94,6 +94,12 @@ public protocol Vector {
     static func *=(lhs:inout Self, rhs:Double)
     ///Assigns and divides a vector and a scalar.
     static func /=(lhs:inout Self, rhs:Double)
+    
+    ///Negates the vector, returning a vector with the negative of all components.
+    static prefix func -(lhs:Self) -> Self
+    
+    ///Compares two vectors component wise. Returns true if the vectors' components are the same, false otherwise.
+    static func ==(lhs:Self, rhs:Self) -> Bool
     
 }
 
@@ -211,4 +217,10 @@ public func /=<V: Vector>(lhs:inout V, rhs:Double) {
     lhs = lhs / rhs
 }
 
+public prefix func -<V: Vector>(lhs:V) -> V {
+    return V(components: lhs.components.map() { -$0 })
+}
 
+public func ==<V: Vector>(lhs:V, rhs:V) -> Bool {
+    return lhs.components == rhs.components
+}

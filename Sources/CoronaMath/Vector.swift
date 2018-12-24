@@ -9,7 +9,7 @@ import Foundation
 
 ///Interface for a mathematical n-component vector, which is a
 ///a structure that contains n independent real numbers.
-public protocol Vector: Equatable {
+public protocol Vector: Equatable, Addable {
     
     // MARK: - Required Methods
     

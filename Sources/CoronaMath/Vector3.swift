@@ -10,6 +10,8 @@ import Foundation
 ///A 3-dimensional vector.
 public struct Vector3: Vector {
     
+    ///The vector with 0 for all components.
+    public static let Zero = Vector3(components: [0.0, 0.0, 0.0])
     ///The unit vector in the x direction.
     public static let X = Vector3(components: [1.0, 0.0, 0.0])
     ///The unit vector in the y direction.
@@ -38,6 +40,10 @@ public struct Vector3: Vector {
     }
     
     public init() {}
+    
+    public init(x:Double, y:Double, z:Double) {
+        self.components = [x, y, z]
+    }
     
     public subscript(index:Int) -> Double {
         get { return self.components[index] }

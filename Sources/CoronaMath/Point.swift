@@ -10,6 +10,8 @@ import Foundation
 ///A 2-dimensional vector.
 public struct Point: Vector {
     
+    ///The point with 0 for all components.
+    public static let Zero = Vector3(components: [0.0, 0.0])
     ///The unit vector in the x direction.
     public static let X = Point(components: [1.0, 0.0])
     ///The unit vector in the y direction.
@@ -31,6 +33,10 @@ public struct Point: Vector {
     }
     
     public init() {}
+    
+    public init(x:Double, y:Double) {
+        self.components = [x, y]
+    }
     
     public subscript(index: Int) -> Double {
         get { return self.components[index] }

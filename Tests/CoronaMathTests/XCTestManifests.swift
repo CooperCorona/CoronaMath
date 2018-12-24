@@ -41,6 +41,38 @@ extension Vector3Tests {
     ]
 }
 
+extension Vector4Tests {
+    static let __allTests = [
+        ("testGetA", testGetA),
+        ("testGetAlpha", testGetAlpha),
+        ("testGetB", testGetB),
+        ("testGetBlue", testGetBlue),
+        ("testGetG", testGetG),
+        ("testGetGreen", testGetGreen),
+        ("testGetR", testGetR),
+        ("testGetRed", testGetRed),
+        ("testGetW", testGetW),
+        ("testGetX", testGetX),
+        ("testGetY", testGetY),
+        ("testGetZ", testGetZ),
+        ("testInit", testInit),
+        ("testSetA", testSetA),
+        ("testSetAlpha", testSetAlpha),
+        ("testSetB", testSetB),
+        ("testSetBlue", testSetBlue),
+        ("testSetG", testSetG),
+        ("testSetGreen", testSetGreen),
+        ("testSetR", testSetR),
+        ("testSetRed", testSetRed),
+        ("testSetW", testSetW),
+        ("testSetX", testSetX),
+        ("testSetY", testSetY),
+        ("testSetZ", testSetZ),
+        ("testSubscriptGet", testSubscriptGet),
+        ("testSubscriptSet", testSubscriptSet),
+    ]
+}
+
 extension VectorTests {
     static let __allTests = [
         ("testAdd", testAdd),
@@ -82,6 +114,7 @@ public func __allTests() -> [XCTestCaseEntry] {
     return [
         testCase(PointTests.__allTests),
         testCase(Vector3Tests.__allTests),
+        testCase(Vector4Tests.__allTests),
         testCase(VectorTests.__allTests),
     ]
 }

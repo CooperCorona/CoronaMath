@@ -48,13 +48,4 @@ final class PointTests: XCTestCase {
         XCTAssertEqual(point[0], 3.0)
     }
     
-    static var allTests = [
-        ("testInit", testInit),
-        ("testGetX", testGetX),
-        ("testSetX", testSetX),
-        ("testGetY", testGetY),
-        ("testSetY", testSetY),
-        ("testSubscriptGet", testSubscriptGet),
-        ("testSubscriptSet", testSubscriptSet),
-    ]
 }

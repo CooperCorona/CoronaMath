@@ -2,6 +2,6 @@ language: swift
 osx_image: xcode10.1
 xcode_project: CoronaMath.xcodeproj
 xcode_scheme: CoronaMath-Package
-xcode_destination: platform=iOS Simulator,OS=12.1,name=iPad Pro (9.7-inch)
+xcode_destination: platform=macosx10.14
 before_script:
  - swift package generate-xcodeproj

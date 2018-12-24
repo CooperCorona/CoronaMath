@@ -3,5 +3,6 @@ import XCTest
 import CoronaMathTests
 
 var tests = [XCTestCaseEntry]()
-tests += CoronaMathTests.allTests()
+tests += CoronaMathTests.__allTests()
+
 XCTMain(tests)

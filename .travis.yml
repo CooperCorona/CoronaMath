@@ -2,3 +2,5 @@ language: swift
 xcode_project: CoronaMathTests.xcodeproj
 xcode_scheme: CoronaMathTests
 xcode_destination: platform=iOS Simulator,OS=10.1,name=iPad Pro (9.7-inch)
+before_script:
+ - swift package generate-xcodeproj

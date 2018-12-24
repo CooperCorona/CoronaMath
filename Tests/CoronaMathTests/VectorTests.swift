@@ -222,37 +222,4 @@ public final class VectorTests: XCTestCase {
         XCTAssertNotEqual(p1, p2)
     }
     
-    static var allTests = [
-        ("testInitWithComponents", testInitWithComponents),
-        ("testLength", testLength),
-        ("testUnit", testUnit),
-        ("testDot", testDot),
-        ("testDotAllNegativeComponents", testDotAllNegativeComponents),
-        ("testDotSomeNegativeComponents", testDotSomeNegativeComponents),
-        ("testLengthNegativeComponents", testLengthNegativeComponents),
-        ("testAdd", testAdd),
-        ("testSubtract", testSubtract),
-        ("testMultiply", testMultiply),
-        ("testDivide", testDivide),
-        ("testAddAssign", testAddAssign),
-        ("testSubtractAssign", testSubtractAssign),
-        ("testMultiplyAssign", testMultiplyAssign),
-        ("testDivideAssign", testDivideAssign),
-        ("testAddScalarRight", testAddScalarRight),
-        ("testAddScalarLeft", testAddScalarLeft),
-        ("testSubtractScalarRight", testSubtractScalarRight),
-        ("testSubtractScalarLeft", testSubtractScalarLeft),
-        ("testMultiplyScalarRight", testMultiplyScalarRight),
-        ("testMultiplyScalarLeft", testMultiplyScalarLeft),
-        ("testDivideScalarRight", testDivideScalarRight),
-        ("testDivideScalarLeft", testDivideScalarLeft),
-        ("testAddScalarAssign", testAddScalarAssign),
-        ("testSubtractScalarAssign", testSubtractScalarAssign),
-        ("testMultiplyScalarAssign", testMultiplyScalarAssign),
-        ("testDivideScalarAssign", testDivideScalarAssign),
-        ("testNegation", testNegation),
-        ("testNegationNegativeComponents", testNegationNegativeComponents),
-        ("testEquals", testEquals),
-        ("testEqualsFalse", testEqualsFalse),
-    ]
 }

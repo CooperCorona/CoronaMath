@@ -11,13 +11,13 @@ import Foundation
 public struct Vector3: Vector {
     
     ///The vector with 0 for all components.
-    public static let Zero = Vector3(components: [0.0, 0.0, 0.0])
+    public static let zero = Vector3(components: [0.0, 0.0, 0.0])
     ///The unit vector in the x direction.
-    public static let X = Vector3(components: [1.0, 0.0, 0.0])
+    public static let x = Vector3(components: [1.0, 0.0, 0.0])
     ///The unit vector in the y direction.
-    public static let Y = Vector3(components: [0.0, 1.0, 0.0])
+    public static let y = Vector3(components: [0.0, 1.0, 0.0])
     ///The unit vector in the z direction.
-    public static let Z = Vector3(components: [0.0, 0.0, 1.0])
+    public static let z = Vector3(components: [0.0, 0.0, 1.0])
     
     public static let numberOfComponents = 3
     

@@ -9,7 +9,7 @@ import Foundation
 
 ///A 2-dimensional vector.
 public struct PointBase<VectorType> where VectorType: Addable {
-    
+
     ///The unit vector in the x direction.
     public static var x:PointBase<Double> { return PointBase<Double>(components: [1.0, 0.0]) }
     ///The unit vector in the y direction.
@@ -46,5 +46,7 @@ public struct PointBase<VectorType> where VectorType: Addable {
 extension PointBase: Addable where VectorType: Numeric & Addable {}
 extension PointBase: Equatable where VectorType: Equatable {}
 extension PointBase: VectorBase where VectorType: Numeric {}
+extension PointBase: ConstantSizeVector where VectorType: Numeric {}
 extension PointBase: SignedVectorBase where VectorType: SignedNumeric {}
 extension PointBase: FloatingPointVector where VectorType: FloatingPoint {}
+extension PointBase: ConstantSizeFloatingPointVector where VectorType: FloatingPoint {}

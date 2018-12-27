@@ -64,5 +64,7 @@ extension Vector3Base: VectorBase where VectorType: Numeric {
         return Vector3Base(components: [x, y, z])
     }
 }
+extension Vector3Base: ConstantSizeVector where VectorType: Numeric {}
 extension Vector3Base: SignedVectorBase where VectorType: SignedNumeric {}
 extension Vector3Base: FloatingPointVector where VectorType: FloatingPoint {}
+extension Vector3Base: ConstantSizeFloatingPointVector where VectorType: FloatingPoint {}

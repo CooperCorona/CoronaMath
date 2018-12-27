@@ -18,11 +18,6 @@ public protocol FloatingPointVector: SignedVectorBase where Self.ComponentType: 
     /// - returns: a vector parallel to this one but with length 1.0.
     func unit() -> Self
     
-    ///Computes the distance between 2 vcctors.
-    /// - parameter vector: the vector to compute the distance from.
-    /// - returns: The distance between this vector and *vector*.
-    func distanceFrom(vector:Self) -> ComponentType
-    
     ///Divides two vectors component-wise.
     static func /(lhs:Self, rhs:Self) -> Self
     ///Assigns and divides two vectors component-wise.
@@ -44,10 +39,6 @@ extension FloatingPointVector {
     public func unit() -> Self {
         let length = self.length()
         return Self(components: self.components.map() { $0 / length })
-    }
-    
-    public func distanceFrom(vector:Self) -> Self.ComponentType {
-        return (self - vector).length()
     }
     
 }

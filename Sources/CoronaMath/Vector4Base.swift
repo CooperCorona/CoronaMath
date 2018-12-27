@@ -60,5 +60,7 @@ public struct Vector4Base<VectorType> where VectorType: Addable {
 extension Vector4Base: Addable where VectorType: Numeric & Addable {}
 extension Vector4Base: Equatable where VectorType: Equatable {}
 extension Vector4Base: VectorBase where VectorType: Numeric {}
+extension Vector4Base: ConstantSizeVector where VectorType: Numeric {}
 extension Vector4Base: SignedVectorBase where VectorType: SignedNumeric {}
 extension Vector4Base: FloatingPointVector where VectorType: FloatingPoint {}
+extension Vector4Base: ConstantSizeFloatingPointVector where VectorType: FloatingPoint {}

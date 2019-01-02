@@ -8,7 +8,7 @@
 import Foundation
 
 ///Interface for a mathematical n-component vector, which is a
-///a structure that contains n independent numeric components..
+///a structure that contains n independent numeric components.
 public protocol VectorBase: Equatable {
     
     // MARK: - Required Methods

@@ -33,7 +33,7 @@ public protocol ConstantSizeMatrix: MatrixBase {
 // MARK: - Default Implementations
 
 extension ConstantSizeMatrix {
-    public static var numberOfElements:Int { return Self.dimensions.row * Self.dimensions.column }
+    public static var numberOfElements:Int { return Self.dimensions.rows * Self.dimensions.columns }
     public var dimensions: IntPoint { return Self.dimensions }
 }
 

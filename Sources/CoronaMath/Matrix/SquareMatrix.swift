@@ -45,15 +45,15 @@ extension SquareMatrix {
     public static var dimensions:IntPoint { return IntPoint(rows: Self.size, columns: Self.size) }
     public static var identity:Self {
         return Self(elements: (0..<self.numberOfElements).map() {
-            return ($0 % self.dimensions.row == 0) ? ElementType.one : ElementType.zero
+            return ($0 % self.dimensions.rows == 0) ? ElementType.one : ElementType.zero
         })
     }
 
     public func transpose() -> Self {
         var elements:[ElementType] = []
         for i in 0..<self.numberOfElements {
-            let row = i % self.dimensions.row
-            let column = i / self.dimensions.row
+            let row = i % self.dimensions.rows
+            let column = i / self.dimensions.rows
             elements.append(self[row, column])
         }
         return Self(elements: elements)

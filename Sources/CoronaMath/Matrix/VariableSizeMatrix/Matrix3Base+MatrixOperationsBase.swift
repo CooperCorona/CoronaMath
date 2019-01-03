@@ -12,15 +12,15 @@ extension Matrix3Base: MatrixOperationsBase {
     public func multiply<M>(by matrix: M) throws -> VariableSizeMatrix<MatrixType> where
         M: MatrixBase,
         ElementType == M.ElementType {
-            guard self.dimensions.column == matrix.dimensions.row else {
+            guard self.dimensions.columns == matrix.dimensions.rows else {
                 throw MatrixError.incorrectDimensions
             }
-            let dimensions = IntPoint(rows: self.dimensions.row, columns: matrix.dimensions.column)
+            let dimensions = IntPoint(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
             var elements:[M.ElementType] = []
-            for row in 0..<dimensions.row {
-                for column in 0..<dimensions.column {
+            for row in 0..<dimensions.rows {
+                for column in 0..<dimensions.columns {
                     var value = M.ElementType.zero
-                    for i in 0..<self.dimensions.column {
+                    for i in 0..<self.dimensions.columns {
                         value = value + self[row, i] * matrix[i, column]
                     }
                     elements.append(value)

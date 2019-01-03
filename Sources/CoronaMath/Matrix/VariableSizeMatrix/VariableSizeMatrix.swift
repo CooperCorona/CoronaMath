@@ -24,7 +24,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     ///Initializes the matrix with the given dimensions and all elements equal
     ///to `MatrixType.zero`.
     public init(dimensions:IntPoint) {
-        let n = dimensions.row * dimensions.column
+        let n = dimensions.rows * dimensions.columns
         self.dimensions = dimensions
         self.elements = [MatrixType](repeating: MatrixType.zero, count: n)
     }
@@ -34,7 +34,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     ///values are filled with `MatrixType.zero`. If `elements` contains
     ///too many elements, the extra elements are ignored.
     public init(dimensions:IntPoint, elements:[MatrixType]) {
-        let n = dimensions.row * dimensions.column
+        let n = dimensions.rows * dimensions.columns
         self.dimensions = dimensions
         self.elements = elements[0..<min(n, elements.count)] + [MatrixType](repeating: MatrixType.zero, count: min(n, n - elements.count))
     }
@@ -87,15 +87,15 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     public func multiply<M>(by matrix: M) throws -> VariableSizeMatrix<MatrixType> where
         M: MatrixBase,
         ElementType == M.ElementType {
-            guard self.dimensions.column == matrix.dimensions.row else {
+            guard self.dimensions.columns == matrix.dimensions.rows else {
                 throw MatrixError.incorrectDimensions
             }
-            let dimensions = IntPoint(rows: self.dimensions.row, columns: matrix.dimensions.column)
+            let dimensions = IntPoint(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
             var elements:[M.ElementType] = []
-            for row in 0..<dimensions.row {
-                for column in 0..<dimensions.column {
+            for row in 0..<dimensions.rows {
+                for column in 0..<dimensions.columns {
                     var value = M.ElementType.zero
-                    for i in 0..<self.dimensions.column {
+                    for i in 0..<self.dimensions.columns {
                         value = value + self[row, i] * matrix[i, column]
                     }
                     elements.append(value)
@@ -108,11 +108,11 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     ///rows to columns and vice versa.
     /// - returns: A matrix whose rows are the columns of *self* and vice versa.
     public func transpose() -> VariableSizeMatrix<MatrixType> {
-        let dimensions = IntPoint(rows: self.dimensions.column, columns: self.dimensions.row)
+        let dimensions = IntPoint(rows: self.dimensions.columns, columns: self.dimensions.rows)
         var elements:[MatrixType] = []
         for i in 0..<self.numberOfElements {
-            let row = i % dimensions.row
-            let column = i / dimensions.row
+            let row = i % dimensions.rows
+            let column = i / dimensions.rows
             elements.append(self[row, column])
         }
         return VariableSizeMatrix(dimensions: dimensions, elements: elements)

@@ -7,20 +7,6 @@
 
 import Foundation
 
-extension PointBase where VectorType == Int {
-    public init(rows:Int, columns:Int) {
-        self.init(x: rows, y: columns)
-    }
-    public var row:Int {
-        get { return self.x }
-        set { self.x = newValue }
-    }
-    public var column:Int {
-        get { return self.y }
-        set { self.y = newValue }
-    }
-}
-
 ///A 3x3 matrix. Conforms to Equatable, MatrixBase, ConstantSizeMatrix, and SquareMatrix.
 ///Conforms to MatrixOperationsBase by the extensions in VariableSizeMatrix/.
 public struct Matrix3Base<MatrixType> where MatrixType: MatrixElementType {

@@ -22,5 +22,13 @@ public protocol FloatingPointMatrix: MatrixOperationsBase where ElementType: Flo
     /// - returns: A matrix with dimensions equal to *rhs.dimensions* with
     ///all elements dividing *lhs*.
     static func /(lhs:ElementType, rhs:Self) -> Self
+    ///Divides and assigns a scalar and a matrix.
+    /// - parameter lhs: The matrix to divide and assign.
+    /// - parameter rhs; THe scalar to divide by.
+    static func /=(lhs:inout Self, rhs:ElementType)
 
+}
+
+public func /=<M>(lhs:inout M, rhs:M.ElementType) where M: FloatingPointMatrix {
+    lhs = lhs / rhs
 }

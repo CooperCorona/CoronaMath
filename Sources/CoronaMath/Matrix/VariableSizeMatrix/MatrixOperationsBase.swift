@@ -60,6 +60,10 @@ public protocol MatrixOperationsBase: MatrixBase {
     /// - returns: A matrix with dimensions equal to *rhs.dimensions* with
     ///*lhs* added to all elements.
     static func +(lhs:ElementType, rhs:Self) -> Self
+    ///Adds and assigns a scalar and a matrix.
+    /// - parameter lhs: The matrix to add and assign.
+    /// - parameter rhs; THe scalar to add by.
+    static func +=(lhs:inout Self, rhs:ElementType)
 
     ///Subtracts a scalar from a matrix.
     /// - parameter lhs: The current matrix.
@@ -73,6 +77,10 @@ public protocol MatrixOperationsBase: MatrixBase {
     /// - returns: A matrix with dimensions equal to *rhs.dimensions* with
     ///all elements subtracted from *lhs*.
     static func -(lhs:ElementType, rhs:Self) -> Self
+    ///Subtracts and assigns a scalar and a matrix.
+    /// - parameter lhs: The matrix to subtract and assign.
+    /// - parameter rhs; THe scalar to subtract by.
+    static func -=(lhs:inout Self, rhs:ElementType)
 
     ///Multiplies a matrix by a scalar.
     /// - parameter lhs: The current matrix.
@@ -86,5 +94,21 @@ public protocol MatrixOperationsBase: MatrixBase {
     /// - returns: A matrix with dimensions equal to *rhs.dimensions* with
     ///all elements multiplied by *lhs*.
     static func *(lhs:ElementType, rhs:Self) -> Self
+    ///Multiplies and assigns a scalar and a matrix.
+    /// - parameter lhs: The matrix to multiply and assign.
+    /// - parameter rhs; THe scalar to multiply by.
+    static func *=(lhs:inout Self, rhs:ElementType)
 
+}
+
+public func +=<M>(lhs:inout M, rhs:M.ElementType) where M: MatrixOperationsBase {
+    lhs = lhs + rhs
+}
+
+public func -=<M>(lhs:inout M, rhs:M.ElementType) where M: MatrixOperationsBase {
+    lhs = lhs - rhs
+}
+
+public func *=<M>(lhs:inout M, rhs:M.ElementType) where M: MatrixOperationsBase {
+    lhs = lhs * rhs
 }

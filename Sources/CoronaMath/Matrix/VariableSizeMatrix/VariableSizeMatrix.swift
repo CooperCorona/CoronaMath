@@ -36,7 +36,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     public init(dimensions:IntPoint, elements:[MatrixType]) {
         let n = dimensions.rows * dimensions.columns
         self.dimensions = dimensions
-        self.elements = elements[0..<min(n, elements.count)] + [MatrixType](repeating: MatrixType.zero, count: min(n, n - elements.count))
+        self.elements = elements[0..<min(n, elements.count)] + [MatrixType](repeating: MatrixType.zero, count: max(0, n - elements.count))
     }
 
     ///Provides access to the underlying elements.
@@ -110,10 +110,10 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     public func transpose() -> VariableSizeMatrix<MatrixType> {
         let dimensions = IntPoint(rows: self.dimensions.columns, columns: self.dimensions.rows)
         var elements:[MatrixType] = []
-        for i in 0..<self.numberOfElements {
-            let row = i % dimensions.rows
-            let column = i / dimensions.rows
-            elements.append(self[row, column])
+        for row in 0..<self.dimensions.columns {
+            for column in 0..<self.dimensions.rows {
+                elements.append(self[column, row])
+            }
         }
         return VariableSizeMatrix(dimensions: dimensions, elements: elements)
     }

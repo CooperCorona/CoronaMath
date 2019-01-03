@@ -40,7 +40,7 @@ public struct Matrix4Base<MatrixType> where MatrixType: MatrixElementType {
     /// - returns: a matrix initialized with the values of *elements*.
     public init(elements:[MatrixType]) {
         let n = Matrix4Base<MatrixType>.numberOfElements
-        self.elements = elements[0..<min(n, elements.count)] + [MatrixType](repeating: MatrixType.zero, count: min(n, n - elements.count))
+        self.elements = elements[0..<min(n, elements.count)] + [MatrixType](repeating: MatrixType.zero, count: max(0, n - elements.count))
     }
 
     ///Provides access to the individual elements.

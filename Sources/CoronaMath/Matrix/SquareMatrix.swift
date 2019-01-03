@@ -51,10 +51,10 @@ extension SquareMatrix {
 
     public func transpose() -> Self {
         var elements:[ElementType] = []
-        for i in 0..<self.numberOfElements {
-            let row = i % self.dimensions.rows
-            let column = i / self.dimensions.rows
-            elements.append(self[row, column])
+        for row in 0..<self.dimensions.columns {
+            for column in 0..<self.dimensions.rows {
+                elements.append(self[column, row])
+            }
         }
         return Self(elements: elements)
     }

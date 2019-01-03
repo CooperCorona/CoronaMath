@@ -62,8 +62,8 @@ extension MatrixBase {
     public var numberOfElements:Int { return self.dimensions.rows * self.dimensions.columns }
 
     public subscript(row:Int, column:Int) -> ElementType {
-        get { return self[row * self.dimensions.rows + column] }
-        set { self[row * self.dimensions.rows + column] = newValue }
+        get { return self[row * self.dimensions.columns + column] }
+        set { self[row * self.dimensions.columns + column] = newValue }
     }
 
 }

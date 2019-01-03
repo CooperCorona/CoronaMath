@@ -1,5 +1,46 @@
 import XCTest
 
+extension Matrix3Tests {
+    static let __allTests = [
+        ("testAddScalarAssign", testAddScalarAssign),
+        ("testAddScalarLeft", testAddScalarLeft),
+        ("testAddScalarRight", testAddScalarRight),
+        ("testDivideScalarAssign", testDivideScalarAssign),
+        ("testDivideScalarLeft", testDivideScalarLeft),
+        ("testDivideScalarRight", testDivideScalarRight),
+        ("testEquals", testEquals),
+        ("testInitExactNumberOfElements", testInitExactNumberOfElements),
+        ("testInitTooFewElements", testInitTooFewElements),
+        ("testInitTooManyElements", testInitTooManyElements),
+        ("testMultiply", testMultiply),
+        ("testMultiplyAssign", testMultiplyAssign),
+        ("testMultiplyScalarAssign", testMultiplyScalarAssign),
+        ("testMultiplyScalarLeft", testMultiplyScalarLeft),
+        ("testMultiplyScalarRight", testMultiplyScalarRight),
+        ("testNumberOfElements", testNumberOfElements),
+        ("testSubscriptIndex", testSubscriptIndex),
+        ("testSubscriptRowColumn", testSubscriptRowColumn),
+        ("testSubtractScalarAssign", testSubtractScalarAssign),
+        ("testSubtractScalarLeft", testSubtractScalarLeft),
+        ("testSubtractScalarRight", testSubtractScalarRight),
+        ("testTranspose", testTranspose),
+    ]
+}
+
+extension Matrix4Tests {
+    static let __allTests = [
+        ("testEquals", testEquals),
+        ("testInitExactlyEnoughElements", testInitExactlyEnoughElements),
+        ("testInitTooFewElements", testInitTooFewElements),
+        ("testInitTooManyElements", testInitTooManyElements),
+        ("testMultiply", testMultiply),
+        ("testMultiplyAssign", testMultiplyAssign),
+        ("testNumberOfElements", testNumberOfElements),
+        ("testSubscriptIndex", testSubscriptIndex),
+        ("testSubscriptRowColumn", testSubscriptRowColumn),
+    ]
+}
+
 extension PointTests {
     static let __allTests = [
         ("testGetX", testGetX),
@@ -9,6 +50,39 @@ extension PointTests {
         ("testSetY", testSetY),
         ("testSubscriptGet", testSubscriptGet),
         ("testSubscriptSet", testSubscriptSet),
+    ]
+}
+
+extension VariableSizeMatrixTests {
+    static let __allTests = [
+        ("testAdd", testAdd),
+        ("testAddDifferentDimensions", testAddDifferentDimensions),
+        ("testAddScalarAssign", testAddScalarAssign),
+        ("testAddScalarLeft", testAddScalarLeft),
+        ("testAddScalarRight", testAddScalarRight),
+        ("testDivideScalarAssign", testDivideScalarAssign),
+        ("testDivideScalarLeft", testDivideScalarLeft),
+        ("testDivideScalarRight", testDivideScalarRight),
+        ("testEquals", testEquals),
+        ("testEqualsDifferentDimensions", testEqualsDifferentDimensions),
+        ("testInitEmpty", testInitEmpty),
+        ("testInitExactlyEnoughElements", testInitExactlyEnoughElements),
+        ("testInitToManyElements", testInitToManyElements),
+        ("testInitTooFewElements", testInitTooFewElements),
+        ("testMultiply", testMultiply),
+        ("testMultiplyIncorrectDimensions", testMultiplyIncorrectDimensions),
+        ("testMultiplyScalarAssign", testMultiplyScalarAssign),
+        ("testMultiplyScalarLeft", testMultiplyScalarLeft),
+        ("testMultiplyScalarRight", testMultiplyScalarRight),
+        ("testSubscriptIndex", testSubscriptIndex),
+        ("testSubscriptRowColumn", testSubscriptRowColumn),
+        ("testSubtract", testSubtract),
+        ("testSubtractDifferentDimensions", testSubtractDifferentDimensions),
+        ("testSubtractScalarAssign", testSubtractScalarAssign),
+        ("testSubtractScalarLeft", testSubtractScalarLeft),
+        ("testSubtractScalarRight", testSubtractScalarRight),
+        ("testTransposeColumnsGreaterThanRows", testTransposeColumnsGreaterThanRows),
+        ("testTransposeRowsGreaterThanColumns", testTransposeRowsGreaterThanColumns),
     ]
 }
 
@@ -112,7 +186,10 @@ extension VectorTests {
 #if !os(macOS)
 public func __allTests() -> [XCTestCaseEntry] {
     return [
+        testCase(Matrix3Tests.__allTests),
+        testCase(Matrix4Tests.__allTests),
         testCase(PointTests.__allTests),
+        testCase(VariableSizeMatrixTests.__allTests),
         testCase(Vector3Tests.__allTests),
         testCase(Vector4Tests.__allTests),
         testCase(VectorTests.__allTests),

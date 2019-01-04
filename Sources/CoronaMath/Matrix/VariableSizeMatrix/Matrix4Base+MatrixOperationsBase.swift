@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoronaErrors
 
 extension Matrix4Base: MatrixOperationsBase {
 
@@ -13,7 +14,7 @@ extension Matrix4Base: MatrixOperationsBase {
         M: MatrixBase,
         ElementType == M.ElementType {
             guard self.dimensions.columns == matrix.dimensions.rows else {
-                throw MatrixError.incorrectDimensions
+                throw ValueException<Int>.expected(value: self.dimensions.columns, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions.rows)
             }
             let dimensions = IntPoint(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
             var elements:[M.ElementType] = []

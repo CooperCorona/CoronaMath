@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoronaErrors
 
 ///A matrix whose dimensions are determined at runtime.
 public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixType: MatrixElementType {
@@ -60,7 +61,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
         M : MatrixBase,
         ElementType == M.ElementType {
             guard self.dimensions == matrix.dimensions else {
-                throw MatrixError.incorrectDimensions
+                throw ValueException<IntPoint>.expected(value: self.dimensions, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions)
             }
             return VariableSizeMatrix(dimensions: self.dimensions, elements: zip(self.elements, matrix.elements).map(+))
     }
@@ -74,7 +75,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
         M: MatrixBase,
         ElementType == M.ElementType {
             guard self.dimensions == matrix.dimensions else {
-                throw MatrixError.incorrectDimensions
+                throw ValueException<IntPoint>.expected(value: self.dimensions, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions)
             }
             return VariableSizeMatrix(dimensions: self.dimensions, elements: zip(self.elements, matrix.elements).map(-))
     }
@@ -88,7 +89,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
         M: MatrixBase,
         ElementType == M.ElementType {
             guard self.dimensions.columns == matrix.dimensions.rows else {
-                throw MatrixError.incorrectDimensions
+                throw ValueException<Int>.expected(value: self.dimensions.columns, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions.rows)
             }
             let dimensions = IntPoint(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
             var elements:[M.ElementType] = []

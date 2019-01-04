@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import CoronaErrors
 @testable import CoronaMath
 
 final class VariableSizeMatrixTests: XCTestCase {
@@ -119,12 +120,9 @@ final class VariableSizeMatrixTests: XCTestCase {
         let matrix2 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 4, columns: 1), elements: [
             1.0, 2.0, 3.0, 4.0
         ])
-        do {
-            let result = try matrix1.add(by: matrix2)
-            XCTFail("Failed to throw exception. Result: \(result)")
-        } catch {
-            //add should throw an exception, so reaching this point
-            //means the test should pass.
+
+        XCTAssertThrowsException(type: ValueException<IntPoint>.self) {
+            let _ = try matrix1.add(by: matrix2)
         }
     }
 
@@ -157,12 +155,8 @@ final class VariableSizeMatrixTests: XCTestCase {
         let matrix2 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 4, columns: 1), elements: [
             1.0, 2.0, 3.0, 4.0
             ])
-        do {
-            let result = try matrix1.subtract(by: matrix2)
-            XCTFail("Failed to throw exception. Result: \(result)")
-        } catch {
-            //subtract should throw an exception, so reaching this point
-            //means the test should pass.
+        XCTAssertThrowsException(type: ValueException<IntPoint>.self) {
+            let _ = try matrix1.subtract(by: matrix2)
         }
     }
 
@@ -199,12 +193,9 @@ final class VariableSizeMatrixTests: XCTestCase {
             3.0, 4.0,
             5.0, 6.0
         ])
-        do {
-            let result = try matrix1.multiply(by: matrix2)
-            XCTFail("Failed to throw exception. Result: \(result)")
-        } catch {
-            //multiply should throw an exception, so reaching this point
-            //means the test should pass.
+
+        XCTAssertThrowsException(type: ValueException<Int>.self) {
+            let _ = try matrix1.multiply(by: matrix2)
         }
     }
 

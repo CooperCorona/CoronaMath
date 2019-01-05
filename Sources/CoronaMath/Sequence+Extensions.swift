@@ -7,12 +7,58 @@
 
 import Foundation
 
-public protocol Addable {
-    ///The value for this type that represents the additive identity zero.
-    ///The result of x + Self.Zero should be x.
-    static var zero:Self { get }
-    ///Adds two instaces of this type.
-    static func +(lhs:Self, rhs:Self) -> Self
+public struct PairIterator<T, U>: Sequence, IteratorProtocol where T: Sequence, U: Sequence {
+
+    private let firstSequence:T
+    private let secondSequence:U
+    private var firstIterator:T.Iterator
+    private var secondIterator:U.Iterator
+    private var firstElement:T.Element? = nil
+
+    public init(firstSequence:T, secondSequence:U) {
+        self.firstSequence = firstSequence
+        self.secondSequence = secondSequence
+        self.firstIterator = firstSequence.makeIterator()
+        self.secondIterator = secondSequence.makeIterator()
+        self.firstElement = self.firstIterator.next()
+    }
+
+    public mutating func next() -> (T.Element, U.Element)? {
+        guard let firstElement = self.firstElement else {
+            return nil
+        }
+        if let secondElement = self.secondIterator.next() {
+            return (firstElement, secondElement)
+        } else {
+            self.advanceFirstIterator()
+            return self.next()
+        }
+    }
+
+    private mutating func advanceFirstIterator() {
+        self.firstElement = self.firstIterator.next()
+        self.secondIterator = self.secondSequence.makeIterator()
+    }
+
+    public func makeIterator() -> PairIterator<T, U> {
+        return self
+    }
+}
+
+public struct MonoPairIterator<T>: Sequence, IteratorProtocol where T: Sequence {
+    private var iterator:PairIterator<T, T>
+
+    public init(sequence:T) {
+        self.iterator = PairIterator(firstSequence: sequence, secondSequence: sequence)
+    }
+
+    public mutating func next() -> (T.Element, T.Element)? {
+        return self.iterator.next()
+    }
+
+    public func makeIterator() -> MonoPairIterator<T> {
+        return self
+    }
 }
 
 extension Sequence where Element: Addable {
@@ -21,17 +67,12 @@ extension Sequence where Element: Addable {
     public func sum() -> Element {
         return self.reduce(Element.zero, +)
     }
-    
+
+    public func makePairs() -> MonoPairIterator<Self>.Iterator {
+        return MonoPairIterator(sequence: self)
+    }
 }
 
-extension Int: Addable {
-    public static var zero:Int { return 0 }
-}
-
-extension Float: Addable {
-    public static var zero:Float { return 0.0 }
-}
-
-extension Double: Addable {
-    public static var zero:Double { return 0.0 }
+public func pairs<T, U>(_ firstSequence:T, _ secondSequence:U) -> PairIterator<T, U>.Iterator where T: Sequence, U: Sequence {
+    return PairIterator(firstSequence: firstSequence, secondSequence: secondSequence)
 }

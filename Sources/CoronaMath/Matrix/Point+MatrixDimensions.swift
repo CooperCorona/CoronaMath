@@ -7,6 +7,8 @@
 
 import Foundation
 
+///Extends PointBase to semantically represent a matrix's dimensions,
+///exposing row and column properties.
 extension PointBase {
 
     ///Initializes the point with the given value for `row` and `column`.

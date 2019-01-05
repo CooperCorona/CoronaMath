@@ -93,14 +93,12 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
             }
             let dimensions = IntPoint(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
             var elements:[M.ElementType] = []
-            for row in 0..<dimensions.rows {
-                for column in 0..<dimensions.columns {
-                    var value = M.ElementType.zero
-                    for i in 0..<self.dimensions.columns {
-                        value = value + self[row, i] * matrix[i, column]
-                    }
-                    elements.append(value)
+            for (row, column) in pairs(0..<dimensions.rows, 0..<dimensions.columns) {
+                var value = M.ElementType.zero
+                for i in 0..<self.dimensions.columns {
+                    value = value + self[row, i] * matrix[i, column]
                 }
+                elements.append(value)
             }
             return VariableSizeMatrix(dimensions: dimensions, elements: elements)
     }
@@ -110,12 +108,8 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     /// - returns: A matrix whose rows are the columns of *self* and vice versa.
     public func transpose() -> VariableSizeMatrix<MatrixType> {
         let dimensions = IntPoint(rows: self.dimensions.columns, columns: self.dimensions.rows)
-        var elements:[MatrixType] = []
-        for row in 0..<self.dimensions.columns {
-            for column in 0..<self.dimensions.rows {
-                elements.append(self[column, row])
-            }
-        }
+        let elements = pairs(0..<self.dimensions.columns, 0..<self.dimensions.rows)
+            .map() { row, column in self[column, row] }
         return VariableSizeMatrix(dimensions: dimensions, elements: elements)
     }
 }

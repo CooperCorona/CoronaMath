@@ -18,14 +18,12 @@ extension Matrix3Base: MatrixOperationsBase {
             }
             let dimensions = IntPoint(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
             var elements:[M.ElementType] = []
-            for row in 0..<dimensions.rows {
-                for column in 0..<dimensions.columns {
-                    var value = M.ElementType.zero
-                    for i in 0..<self.dimensions.columns {
-                        value = value + self[row, i] * matrix[i, column]
-                    }
-                    elements.append(value)
+            for (row, column) in pairs(0..<dimensions.rows, 0..<dimensions.columns) {
+                var value = M.ElementType.zero
+                for i in 0..<self.dimensions.columns {
+                    value = value + self[row, i] * matrix[i, column]
                 }
+                elements.append(value)
             }
             return VariableSizeMatrix(dimensions: dimensions, elements: elements)
     }

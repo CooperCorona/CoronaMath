@@ -50,12 +50,8 @@ extension SquareMatrix {
     }
 
     public func transpose() -> Self {
-        var elements:[ElementType] = []
-        for row in 0..<self.dimensions.columns {
-            for column in 0..<self.dimensions.rows {
-                elements.append(self[column, row])
-            }
-        }
+        let elements = pairs(0..<self.dimensions.columns, 0..<self.dimensions.rows)
+            .map() { row, column in self[column, row] }
         return Self(elements: elements)
     }
 

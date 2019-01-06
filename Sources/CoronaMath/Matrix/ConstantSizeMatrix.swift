@@ -17,7 +17,7 @@ public protocol ConstantSizeMatrix: MatrixBase {
     static var dimensions:IntPoint { get }
 
     ///Initializes this instance with the specified elements. If *elements* does not
-    ///contain enough values, the remaining elements should be initialized to 0.
+    ///contain enough values, the remaining elements should be initialized to `Self.zero`.
     ///If *elements* contains too many elements, the extra values should be ignored.
     /// - parameter: an array of *ElementType* elements representing the elements of the matrix.
     /// - returns: a matrix initialized with the values of *elements*.

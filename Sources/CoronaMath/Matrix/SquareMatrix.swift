@@ -10,6 +10,8 @@ import Foundation
 import Accelerate
 #endif
 
+///A matrix whose dimensions are determined at compile time and whose
+///rows equal its columns.
 public protocol SquareMatrix: ConstantSizeMatrix {
 
     // MARK: - Required Implementations
@@ -30,6 +32,7 @@ public protocol SquareMatrix: ConstantSizeMatrix {
     /// - parameter rhs: The matrix on the right of the multiplication.
     /// - returns: The product of *lhs* and *rhs*.
     static func *(lhs:Self, rhs:Self) -> Self
+
     ///Calculates the matrix product of two matrices.
     /// - parameter lhs: The matrix on the left of the multiplication.
     /// - parameter rhs: The matrix on the right of the multiplication.

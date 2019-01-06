@@ -8,8 +8,10 @@
 import Foundation
 
 ///A 4x4 matrix. Conforms to Equatable, MatrixBase, ConstantSizeMatrix, and SquareMatrix.
-///Conforms to MatrixOperationsBase by the extensions in VariableSizeMatrix/.
-public struct Matrix4Base<MatrixType> where MatrixType: MatrixElementType {
+///Conforms to MatrixOperationsBase by the extensions in VariableSizeMatrix.
+public struct Matrix4Base<MatrixType>:
+    Equatable, MatrixBase, ConstantSizeMatrix, SquareMatrix
+    where MatrixType: MatrixElementType {
 
     ///The type of the matrix's elements.
     public typealias ElementType = MatrixType
@@ -40,7 +42,7 @@ public struct Matrix4Base<MatrixType> where MatrixType: MatrixElementType {
     /// - returns: a matrix initialized with the values of *elements*.
     public init(elements:[MatrixType]) {
         let n = Matrix4Base<MatrixType>.numberOfElements
-        self.elements = elements[0..<min(n, elements.count)] + [MatrixType](repeating: MatrixType.zero, count: max(0, n - elements.count))
+        self.elements = elements.of(length: n, padding: MatrixType.zero)
     }
 
     ///Provides access to the individual elements.
@@ -52,8 +54,3 @@ public struct Matrix4Base<MatrixType> where MatrixType: MatrixElementType {
     }
 
 }
-
-extension Matrix4Base: Equatable {}
-extension Matrix4Base: MatrixBase {}
-extension Matrix4Base: ConstantSizeMatrix {}
-extension Matrix4Base: SquareMatrix {}

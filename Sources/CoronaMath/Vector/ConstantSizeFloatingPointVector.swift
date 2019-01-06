@@ -11,11 +11,15 @@ import Foundation
 ///components are of type FloatingPoint.
 public protocol ConstantSizeFloatingPointVector: FloatingPointVector, ConstantSizeVector {
 
+    // MARK: - Optional Implementations
+
     ///Computes the distance between 2 vcctors.
     /// - parameter vector: the vector to compute the distance from.
     /// - returns: The distance between this vector and *vector*.
     func distanceFrom(vector:Self) -> ComponentType
 }
+
+// MARK: - Default Implementations
 
 extension ConstantSizeFloatingPointVector {
 

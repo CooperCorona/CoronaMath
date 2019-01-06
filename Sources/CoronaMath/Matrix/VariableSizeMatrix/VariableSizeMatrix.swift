@@ -37,7 +37,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     public init(dimensions:IntPoint, elements:[MatrixType]) {
         let n = dimensions.rows * dimensions.columns
         self.dimensions = dimensions
-        self.elements = elements[0..<min(n, elements.count)] + [MatrixType](repeating: MatrixType.zero, count: max(0, n - elements.count))
+        self.elements = elements.of(length: n, padding: MatrixType.zero)
     }
 
     ///Provides access to the underlying elements.

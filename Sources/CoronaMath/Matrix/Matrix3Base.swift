@@ -9,7 +9,9 @@ import Foundation
 
 ///A 3x3 matrix. Conforms to Equatable, MatrixBase, ConstantSizeMatrix, and SquareMatrix.
 ///Conforms to MatrixOperationsBase by the extensions in VariableSizeMatrix/.
-public struct Matrix3Base<MatrixType> where MatrixType: MatrixElementType {
+public struct Matrix3Base<MatrixType>:
+    Equatable, MatrixBase, ConstantSizeMatrix, SquareMatrix
+    where MatrixType: MatrixElementType {
 
     ///The type of the matrix's elements.
     public typealias ElementType = MatrixType
@@ -39,7 +41,7 @@ public struct Matrix3Base<MatrixType> where MatrixType: MatrixElementType {
     /// - returns: a matrix initialized with the values of *elements*.
     public init(elements:[MatrixType]) {
         let n = Matrix3Base<MatrixType>.numberOfElements
-        self.elements = elements[0..<min(n, elements.count)] + [MatrixType](repeating: MatrixType.zero, count: max(0, n - elements.count))
+        self.elements = elements.of(length: n, padding: MatrixType.zero)
     }
 
     ///Provides access to the individual elements.
@@ -51,8 +53,3 @@ public struct Matrix3Base<MatrixType> where MatrixType: MatrixElementType {
     }
 
 }
-
-extension Matrix3Base: Equatable {}
-extension Matrix3Base: MatrixBase {}
-extension Matrix3Base: ConstantSizeMatrix {}
-extension Matrix3Base: SquareMatrix {}

@@ -45,22 +45,6 @@ public struct PairIterator<T, U>: Sequence, IteratorProtocol where T: Sequence, 
     }
 }
 
-public struct MonoPairIterator<T>: Sequence, IteratorProtocol where T: Sequence {
-    private var iterator:PairIterator<T, T>
-
-    public init(sequence:T) {
-        self.iterator = PairIterator(firstSequence: sequence, secondSequence: sequence)
-    }
-
-    public mutating func next() -> (T.Element, T.Element)? {
-        return self.iterator.next()
-    }
-
-    public func makeIterator() -> MonoPairIterator<T> {
-        return self
-    }
-}
-
 extension Sequence where Element: Addable {
     
     ///Computs the sum of this sequence.
@@ -68,8 +52,8 @@ extension Sequence where Element: Addable {
         return self.reduce(Element.zero, +)
     }
 
-    public func makePairs() -> MonoPairIterator<Self>.Iterator {
-        return MonoPairIterator(sequence: self)
+    public func makePairs() -> PairIterator<Self, Self>.Iterator {
+        return PairIterator(firstSequence: self, secondSequence: self)
     }
 }
 

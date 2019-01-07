@@ -9,7 +9,9 @@ import Foundation
 
 ///A 3-dimensional vector.
 public struct Vector3Base<VectorType> where VectorType: Addable {
-    
+
+    // MARK: - Static Properties
+
     ///The unit vector in the x direction.
     public static var x:Vector3Base<Double> { return Vector3Base<Double>(components: [1.0, 0.0, 0.0]) }
     ///The unit vector in the y direction.
@@ -17,8 +19,12 @@ public struct Vector3Base<VectorType> where VectorType: Addable {
     ///The unit vector in the z direction.
     public static var z:Vector3Base<Double> { return Vector3Base<Double>(components: [0.0, 0.0, 1.0]) }
     
+    ///The number of components in a `Vector3Base` instance.
     public static var numberOfComponents:Int { return 3 }
-    
+
+    // MARK: - Instance Properties
+
+    ///The values of this vector.
     public private(set) var components = [VectorType](repeating: VectorType.zero, count: Vector3Base<VectorType>.numberOfComponents)
 
     ///The x coordinate of the vector (the first component).
@@ -36,13 +42,21 @@ public struct Vector3Base<VectorType> where VectorType: Addable {
         get { return self.components[2] }
         set { self.components[2] = newValue }
     }
-    
+
+    ///Initializes the zero vector.
     public init() {}
-    
+
+    ///Initializes a `PointBase` with the given values.
+    /// - parameter x: The first component of the vector.
+    /// - parameter y: The second component of the vector.
+    /// - parameter z: The third component of the vector.
     public init(x:VectorType, y:VectorType, z:VectorType) {
         self.components = [x, y, z]
     }
-    
+
+    ///Provides access to the underlying components of this instance.
+    /// - parameter index: The index of the component to access.
+    /// - returns: The component at the given index.
     public subscript(index:Int) -> VectorType {
         get { return self.components[index] }
         set { self.components[index] = newValue }

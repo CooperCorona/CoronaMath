@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MatrixBase Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/MatrixBase" class="dashAnchor"></a>
+    <a title="MatrixBase Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (79% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MatrixBase Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/MatrixError.html">MatrixError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Float.html">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:10CoronaMath5pairsyAA12PairIteratorVyxq_Gx_q_tSTRzSTR_r0_lF">pairs(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Addable.html">Addable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ConstantSizeFloatingPointVector.html">ConstantSizeFloatingPointVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ConstantSizeMatrix.html">ConstantSizeMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ConstantSizeVector.html">ConstantSizeVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FloatingPointMatrix.html">FloatingPointMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FloatingPointVector.html">FloatingPointVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MatrixBase.html">MatrixBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MatrixOperationsBase.html">MatrixOperationsBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Multiplicable.html">Multiplicable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SignedVectorBase.html">SignedVectorBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SquareMatrix.html">SquareMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/VectorBase.html">VectorBase</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Matrix3Base.html">Matrix3Base</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Matrix4Base.html">Matrix4Base</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PairIterator.html">PairIterator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PointBase.html">PointBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/VariableSizeMatrix.html">VariableSizeMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Vector3Base.html">Vector3Base</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Vector4Base.html">Vector4Base</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:10CoronaMath17MatrixElementTypea">MatrixElementType</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MatrixBase</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MatrixBase</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                </div>
+              </div>
+            <p>An 2-dimensional NxM list of elements of some type.</p>
+
+<p>Most mathematical operations are in the <code><a href="../Protocols/MatrixOperationsBase.html">MatrixOperationsBase</a></code> protocol.
+Although logically, <code>MatrixBase</code> represents a matrix and so should require
+the operations, in practice the majority of implementations don&rsquo;t need the
+full flexibility, so it&rsquo;s a lot of wasted boilerplate. Classes may conform
+to <code><a href="../Protocols/MatrixOperationsBase.html">MatrixOperationsBase</a></code> to implement the full spectrum of matrix operations.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Required%20Implementations"></a>
+                <a name="//apple_ref/swift/Section/Required Implementations" class="dashAnchor"></a>
+                <a href="#/Required%20Implementations">
+                  <h3 class="section-name">Required Implementations</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath10MatrixBaseP11ElementTypeQa"></a>
+                    <a name="//apple_ref/swift/Alias/ElementType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath10MatrixBaseP11ElementTypeQa">ElementType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The type of the elements of the matrix.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">ElementType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Addable.html">Addable</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/Multiplicable.html">Multiplicable</a></span><span class="p">,</span> <span class="kt">Numeric</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath10MatrixBaseP10dimensionsAA05PointD0VySiGvp"></a>
+                    <a name="//apple_ref/swift/Property/dimensions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath10MatrixBaseP10dimensionsAA05PointD0VySiGvp">dimensions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The dimensions of the matrix. The first component is the number of rows
+and the second component is the number of columns. Both components must
+be greater than 0.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">dimensions</span><span class="p">:</span> <span class="kt">IntPoint</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath10MatrixBaseP8elementsSay11ElementTypeQzGvp"></a>
+                    <a name="//apple_ref/swift/Property/elements" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath10MatrixBaseP8elementsSay11ElementTypeQzGvp">elements</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The values of the matrix. The number of elements must equal
+the number of rows times the number of columns.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">elements</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/MatrixBase.html#/s:10CoronaMath10MatrixBaseP11ElementTypeQa">ElementType</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath10MatrixBasePy11ElementTypeQzSicip"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath10MatrixBasePy11ElementTypeQzSicip">subscript(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides access to the individual elements.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">subscript</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/MatrixBase.html#/s:10CoronaMath10MatrixBaseP11ElementTypeQa">ElementType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index of the element to get or set.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The value of the element at the given index.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Optional%20Implementations"></a>
+                <a name="//apple_ref/swift/Section/Optional Implementations" class="dashAnchor"></a>
+                <a href="#/Optional%20Implementations">
+                  <h3 class="section-name">Optional Implementations</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath10MatrixBasePy11ElementTypeQzSi_Sitcip"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath10MatrixBasePy11ElementTypeQzSi_Sitcip">subscript(_:_:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides access to the individual elements.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">subscript</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">column</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/MatrixBase.html#/s:10CoronaMath10MatrixBaseP11ElementTypeQa">ElementType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>row</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index of the row.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>column</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index of the column.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The value of the element at the given index.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath10MatrixBaseP2eeoiySbx_qd__tAaBRd__11ElementTypeQyd__AERtzlFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath10MatrixBaseP2eeoiySbx_qd__tAaBRd__11ElementTypeQyd__AERtzlFZ">==(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Determines if two matrices are equal.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="o">&lt;</span><span class="kt">M</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="k">Self</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">M</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="k">where</span> <span class="kt">M</span> <span class="p">:</span> <span class="kt">MatrixBase</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt"><a href="../Protocols/MatrixBase.html#/s:10CoronaMath10MatrixBaseP11ElementTypeQa">ElementType</a></span> <span class="o">==</span> <span class="kt">M</span><span class="o">.</span><span class="kt"><a href="../Protocols/MatrixBase.html#/s:10CoronaMath10MatrixBaseP11ElementTypeQa">ElementType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>This matrix.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The matrix to compare to.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><em>true</em> if the two matrices are equal, false otherwise.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-01-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

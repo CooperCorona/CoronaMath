@@ -9,13 +9,15 @@ import Foundation
 
 ///A vector whose components are floating point numbers.
 public protocol FloatingPointVector: SignedVectorBase where Self.ComponentType: FloatingPoint  {
-    
+
+    // MARK: - Optional Implementations
+
     ///The length of this vector.
     /// - returns: The length of this vector.
     func length() -> ComponentType
     
-    ///Calculates a vector parallel to this one but with length 1.0.
-    /// - returns: a vector parallel to this one but with length 1.0.
+    ///Calculates a vector parallel to `self` with length 1.0.
+    /// - returns: a vector parallel to `self` with length 1.0.
     func unit() -> Self
     
     ///Divides two vectors component-wise.
@@ -29,6 +31,8 @@ public protocol FloatingPointVector: SignedVectorBase where Self.ComponentType: 
     ///Assigns and divides a vector and a scalar.
     static func /=(lhs:inout Self, rhs:ComponentType)
 }
+
+// MARK: - Default Implementations
 
 extension FloatingPointVector {
     

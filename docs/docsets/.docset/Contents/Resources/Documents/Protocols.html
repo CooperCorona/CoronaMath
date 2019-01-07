@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Protocols  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Section/Protocols" class="dashAnchor"></a>
+    <a title="Protocols  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (79% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Protocols  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/MatrixError.html">MatrixError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Float.html">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Sequence.html">Sequence</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:10CoronaMath5pairsyAA12PairIteratorVyxq_Gx_q_tSTRzSTR_r0_lF">pairs(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/Addable.html">Addable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ConstantSizeFloatingPointVector.html">ConstantSizeFloatingPointVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ConstantSizeMatrix.html">ConstantSizeMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ConstantSizeVector.html">ConstantSizeVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FloatingPointMatrix.html">FloatingPointMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FloatingPointVector.html">FloatingPointVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MatrixBase.html">MatrixBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MatrixOperationsBase.html">MatrixOperationsBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Multiplicable.html">Multiplicable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SignedVectorBase.html">SignedVectorBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SquareMatrix.html">SquareMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/VectorBase.html">VectorBase</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Matrix3Base.html">Matrix3Base</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Matrix4Base.html">Matrix4Base</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/PairIterator.html">PairIterator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/PointBase.html">PointBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/VariableSizeMatrix.html">VariableSizeMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Vector3Base.html">Vector3Base</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Vector4Base.html">Vector4Base</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:10CoronaMath17MatrixElementTypea">MatrixElementType</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Protocols</h1>
+            <p>The following protocols are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath7AddableP"></a>
+                    <a name="//apple_ref/swift/Protocol/Addable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath7AddableP">Addable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A type that defines an addition operator and an additive identity.</p>
+
+                        <a href="Protocols/Addable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Addable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath18ConstantSizeMatrixP"></a>
+                    <a name="//apple_ref/swift/Protocol/ConstantSizeMatrix" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath18ConstantSizeMatrixP">ConstantSizeMatrix</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A matrix whose dimensions are determined at compile time.</p>
+
+                        <a href="Protocols/ConstantSizeMatrix.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ConstantSizeMatrix</span> <span class="p">:</span> <span class="kt"><a href="Protocols/MatrixBase.html">MatrixBase</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath10MatrixBaseP"></a>
+                    <a name="//apple_ref/swift/Protocol/MatrixBase" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath10MatrixBaseP">MatrixBase</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An 2-dimensional NxM list of elements of some type.</p>
+
+<p>Most mathematical operations are in the <code><a href="Protocols/MatrixOperationsBase.html">MatrixOperationsBase</a></code> protocol.
+Although logically, <code>MatrixBase</code> represents a matrix and so should require
+the operations, in practice the majority of implementations don&rsquo;t need the
+full flexibility, so it&rsquo;s a lot of wasted boilerplate. Classes may conform
+to <code><a href="Protocols/MatrixOperationsBase.html">MatrixOperationsBase</a></code> to implement the full spectrum of matrix operations.</p>
+
+                        <a href="Protocols/MatrixBase.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MatrixBase</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath12SquareMatrixP"></a>
+                    <a name="//apple_ref/swift/Protocol/SquareMatrix" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath12SquareMatrixP">SquareMatrix</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A matrix whose dimensions are determined at compile time and whose
+rows equal its columns.</p>
+
+                        <a href="Protocols/SquareMatrix.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SquareMatrix</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ConstantSizeMatrix.html">ConstantSizeMatrix</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath19FloatingPointMatrixP"></a>
+                    <a name="//apple_ref/swift/Protocol/FloatingPointMatrix" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath19FloatingPointMatrixP">FloatingPointMatrix</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A matrix whose elements are FloatingPoint.</p>
+
+                        <a href="Protocols/FloatingPointMatrix.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">FloatingPointMatrix</span> <span class="p">:</span> <span class="kt"><a href="Protocols/MatrixOperationsBase.html">MatrixOperationsBase</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ElementType</span> <span class="p">:</span> <span class="kt">FloatingPoint</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP"></a>
+                    <a name="//apple_ref/swift/Protocol/MatrixOperationsBase" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP">MatrixOperationsBase</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A matrix declaring the full suite of mathematical operations
+(addition, scalar addition, multiplication, scalar multiplication, etc).</p>
+
+                        <a href="Protocols/MatrixOperationsBase.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MatrixOperationsBase</span> <span class="p">:</span> <span class="kt"><a href="Protocols/MatrixBase.html">MatrixBase</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath13MultiplicableP"></a>
+                    <a name="//apple_ref/swift/Protocol/Multiplicable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath13MultiplicableP">Multiplicable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A type that defines a multiplication operator and multiplicative identity.</p>
+
+                        <a href="Protocols/Multiplicable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Multiplicable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath31ConstantSizeFloatingPointVectorP"></a>
+                    <a name="//apple_ref/swift/Protocol/ConstantSizeFloatingPointVector" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath31ConstantSizeFloatingPointVectorP">ConstantSizeFloatingPointVector</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A vector whose number of components is defined at compile time and whose
+components are of type FloatingPoint.</p>
+
+                        <a href="Protocols/ConstantSizeFloatingPointVector.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ConstantSizeFloatingPointVector</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ConstantSizeVector.html">ConstantSizeVector</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/FloatingPointVector.html">FloatingPointVector</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath18ConstantSizeVectorP"></a>
+                    <a name="//apple_ref/swift/Protocol/ConstantSizeVector" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath18ConstantSizeVectorP">ConstantSizeVector</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A Vector whose number of components is determined at compile time.</p>
+
+                        <a href="Protocols/ConstantSizeVector.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ConstantSizeVector</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Addable.html">Addable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/VectorBase.html">VectorBase</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath19FloatingPointVectorP"></a>
+                    <a name="//apple_ref/swift/Protocol/FloatingPointVector" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath19FloatingPointVectorP">FloatingPointVector</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A vector whose components are floating point numbers.</p>
+
+                        <a href="Protocols/FloatingPointVector.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">FloatingPointVector</span> <span class="p">:</span> <span class="kt"><a href="Protocols/SignedVectorBase.html">SignedVectorBase</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ComponentType</span> <span class="p">:</span> <span class="kt">FloatingPoint</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath16SignedVectorBaseP"></a>
+                    <a name="//apple_ref/swift/Protocol/SignedVectorBase" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath16SignedVectorBaseP">SignedVectorBase</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A vector whose components are signed numerics.</p>
+
+                        <a href="Protocols/SignedVectorBase.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SignedVectorBase</span> <span class="p">:</span> <span class="kt"><a href="Protocols/VectorBase.html">VectorBase</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ComponentType</span> <span class="p">:</span> <span class="kt">SignedNumeric</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath10VectorBaseP"></a>
+                    <a name="//apple_ref/swift/Protocol/VectorBase" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath10VectorBaseP">VectorBase</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Interface for a mathematical n-component vector, which is a
+a structure that contains n independent numeric components.</p>
+
+                        <a href="Protocols/VectorBase.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">VectorBase</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-01-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

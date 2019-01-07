@@ -7,11 +7,16 @@
 
 import Foundation
 
+///A Vector whose number of components is determined at compile time.
 public protocol ConstantSizeVector: VectorBase, Addable {
+
+    // MARK: - Required Implementations
 
     ///The number of components in a vector. Must be greater than 0.
     ///The instance property numberOfComponents must return this value.
     static var numberOfComponents:Int { get }
+
+    // MARK: - Optional Implementations
 
     ///Computes the dot product of this vector with *vector*.
     /// - parameter vector: The vector with which to calculate the dot product.
@@ -19,34 +24,73 @@ public protocol ConstantSizeVector: VectorBase, Addable {
     func dot(vector:Self) -> ComponentType
 
     ///Adds two vectors.
+    /// - parameter lhs: The vector to add on the left.
+    /// - parameter rhs: The vector to add on the right.
+    /// - returns: The sum of `lhs` and `rhs`.
     static func +(lhs:Self, rhs:Self) -> Self
-    ///Subtracts two vectors
+    ///Subtracts two vectors.
+    /// - parameter lhs: The vector to subtract from.
+    /// - parameter rhs: The vector to subtrat by.
+    /// - returns: The difference of `lhs` and `rhs`.
     static func -(lhs:Self, rhs:Self) -> Self
     ///Multiplies two vectors component-wise.
+    /// - parameter lhs: The vector to multiply by on the left.
+    /// - parameter rhs: The vector to multiply by on the right.
+    /// - returns: The product of `lhs` and `rhs`.
     static func *(lhs:Self, rhs:Self) -> Self
     ///Assigns and adds two vectors.
+    /// - parameter lhs: The vector to add and assign to on the left.
+    /// - parameter rhs: The vector to add on the right.
     static func +=(lhs:inout Self, rhs:Self)
-    ///Assigns and subtracts two vectors
+    ///Assigns and subtracts two vectors.
+    /// - parameter lhs: The vector to subtract from and assign to.
+    /// - parameter rhs: The vector to subtract by.
     static func -=(lhs:inout Self, rhs:Self)
     ///Assigns and multiplies two vectors component-wise.
+    /// - parameter lhs: The vector to multiply by and assign to on the left.
+    /// - parameter rhs: The vector to multiply by on the right.
     static func *=(lhs:inout Self, rhs:Self)
     ///Adds a vector and a scalar.
+    /// - parameter lhs: The vector to add by on the left.
+    /// - parameter rhs: The scalar to add by on the right.
+    /// - returns: The sum of `lhs` and `rhs`.
     static func +(lhs:Self, rhs:ComponentType) -> Self
     ///Adds a scalar and a vector.
+    /// - parameter lhs: The scalar to add by on the left.
+    /// - parameter rhs: The vector to add by on the right.
+    /// - returns: The sum of `lhs` and `rhs`.
     static func +(lhs:ComponentType, rhs:Self) -> Self
     ///Subtracts a vector and a scalar.
+    /// - parameter lhs: The vector to subtract from.
+    /// - parameter rhs: The scalar to subtract by.
+    /// - returns: The difference of `lhs` and `rhs`.
     static func -(lhs:Self, rhs:ComponentType) -> Self
     ///Subtracts a scalar and a vector.
+    /// - parameter lhs: The scalar to subtract from.
+    /// - parameter rhs: The vector to subtract by.
+    /// - returns: The difference of `lhs` and `rhs`.
     static func -(lhs:ComponentType, rhs:Self) -> Self
     ///Multiplies a vector and a scalar.
+    /// - parameter lhs: The vector to multiply by on the left.
+    /// - parameter rhs: The scalar to multiply by on the right.
+    /// - returns: The product of `lhs` and `rhs`.
     static func *(lhs:Self, rhs:ComponentType) -> Self
     ///Mutiplies a scalar and a vector.
+    /// - parameter lhs: The scalar to multiply by on the left.
+    /// - parameter rhs: The vector to multiply by on the right.
+    /// - returns: The product of `lhs` and `rhs`.
     static func *(lhs:ComponentType, rhs:Self) -> Self
     ///Assigns and adds a vector and a scalar.
+    /// - parameter lhs: The vector to add and assign to on the left.
+    /// - parameter rhs: The scalar to add to on the right.
     static func +=(lhs:inout Self, rhs:ComponentType)
     ///Assigns and subtracts a vector and a scalar.
+    /// - parameter lhs: The vector to subtract from and assign to.
+    /// - parameter rhs: The scalar to subtract by.
     static func -=(lhs:inout Self, rhs:ComponentType)
     ///Assigns and multiplies a vector and a scalar.
+    /// - parameter lhs: The vector to multiply by and assign to on the left.
+    /// - parameter rhs: The vector to multiply by on the right.
     static func *=(lhs:inout Self, rhs:ComponentType)
 }
 

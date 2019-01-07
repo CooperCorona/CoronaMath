@@ -10,6 +10,8 @@ import Foundation
 ///A matrix whose elements are FloatingPoint.
 public protocol FloatingPointMatrix: MatrixOperationsBase where ElementType: FloatingPoint {
 
+    // MARK: - Required Implementations
+
     ///Divides a matrix by a scalar.
     /// - parameter lhs: The current matrix.
     /// - parameter rhs: The scalar to divide the elements.
@@ -22,12 +24,17 @@ public protocol FloatingPointMatrix: MatrixOperationsBase where ElementType: Flo
     /// - returns: A matrix with dimensions equal to *rhs.dimensions* with
     ///all elements dividing *lhs*.
     static func /(lhs:ElementType, rhs:Self) -> Self
+
+    // MARK: - Optional Implementations
+
     ///Divides and assigns a scalar and a matrix.
     /// - parameter lhs: The matrix to divide and assign.
     /// - parameter rhs; THe scalar to divide by.
     static func /=(lhs:inout Self, rhs:ElementType)
 
 }
+
+// MARK: - Default Implementations
 
 public func /=<M>(lhs:inout M, rhs:M.ElementType) where M: FloatingPointMatrix {
     lhs = lhs / rhs

@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MatrixOperationsBase Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/MatrixOperationsBase" class="dashAnchor"></a>
+    <a title="MatrixOperationsBase Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (79% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MatrixOperationsBase Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/MatrixError.html">MatrixError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Float.html">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:10CoronaMath5pairsyAA12PairIteratorVyxq_Gx_q_tSTRzSTR_r0_lF">pairs(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Addable.html">Addable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ConstantSizeFloatingPointVector.html">ConstantSizeFloatingPointVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ConstantSizeMatrix.html">ConstantSizeMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ConstantSizeVector.html">ConstantSizeVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FloatingPointMatrix.html">FloatingPointMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FloatingPointVector.html">FloatingPointVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MatrixBase.html">MatrixBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MatrixOperationsBase.html">MatrixOperationsBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Multiplicable.html">Multiplicable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SignedVectorBase.html">SignedVectorBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SquareMatrix.html">SquareMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/VectorBase.html">VectorBase</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Matrix3Base.html">Matrix3Base</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Matrix4Base.html">Matrix4Base</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PairIterator.html">PairIterator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PointBase.html">PointBase</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/VariableSizeMatrix.html">VariableSizeMatrix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Vector3Base.html">Vector3Base</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Vector4Base.html">Vector4Base</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:10CoronaMath17MatrixElementTypea">MatrixElementType</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MatrixOperationsBase</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MatrixOperationsBase</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/MatrixBase.html">MatrixBase</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>A matrix declaring the full suite of mathematical operations
+(addition, scalar addition, multiplication, scalar multiplication, etc).</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Required%20Implementations"></a>
+                <a name="//apple_ref/swift/Section/Required Implementations" class="dashAnchor"></a>
+                <a href="#/Required%20Implementations">
+                  <h3 class="section-name">Required Implementations</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP0C12AdditionTypeQa"></a>
+                    <a name="//apple_ref/swift/Alias/MatrixAdditionType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP0C12AdditionTypeQa">MatrixAdditionType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The type returned by adding or subtracting two matrices.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">MatrixAdditionType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/MatrixBase.html">MatrixBase</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ElementType</span> <span class="o">==</span> <span class="k">Self</span><span class="o">.</span><span class="kt">MatrixAdditionType</span><span class="o">.</span><span class="kt">ElementType</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">MatrixAdditionType</span><span class="o">.</span><span class="kt">ElementType</span> <span class="o">==</span> <span class="k">Self</span><span class="o">.</span><span class="kt"><a href="../Protocols/MatrixOperationsBase.html#/s:10CoronaMath20MatrixOperationsBaseP0C18MultiplicationTypeQa">MatrixMultiplicationType</a></span><span class="o">.</span><span class="kt">ElementType</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP0C18MultiplicationTypeQa"></a>
+                    <a name="//apple_ref/swift/Alias/MatrixMultiplicationType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP0C18MultiplicationTypeQa">MatrixMultiplicationType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The type returned by multiplying two matrices.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">MatrixMultiplicationType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/MatrixBase.html">MatrixBase</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP0C13TransposeTypeQa"></a>
+                    <a name="//apple_ref/swift/Alias/MatrixTransposeType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP0C13TransposeTypeQa">MatrixTransposeType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The type returned by transposing this matrix.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">MatrixTransposeType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/MatrixBase.html">MatrixBase</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP3add2by0C12AdditionTypeQzqd___tKAA0cE0Rd__07ElementI0Qyd__AIRtzlF"></a>
+                    <a name="//apple_ref/swift/Method/add(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP3add2by0C12AdditionTypeQzqd___tKAA0cE0Rd__07ElementI0Qyd__AIRtzlF">add(by:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds <code>self</code> and <code>matrix</code> component-wise.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <code><a href="../Enums/MatrixError.html#/s:10CoronaMath11MatrixErrorO19incorrectDimensionsyA2CmF">MatrixError.incorrectDimensions</a></code> if <code>self.dimensions</code> does not equal
+<code>matrix.dimensions</code>.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">add</span><span class="o">&lt;</span><span class="kt">M</span><span class="o">&gt;</span><span class="p">(</span><span class="n">by</span> <span class="nv">matrix</span><span class="p">:</span> <span class="kt">M</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/MatrixOperationsBase.html#/s:10CoronaMath20MatrixOperationsBaseP0C12AdditionTypeQa">MatrixAdditionType</a></span> <span class="k">where</span> <span class="kt">M</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/MatrixBase.html">MatrixBase</a></span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ElementType</span> <span class="o">==</span> <span class="kt">M</span><span class="o">.</span><span class="kt">ElementType</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>matrix</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The matrix to add to this matrix.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The result of adding <code>self</code> and <code>matrix</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP8subtract2by0C12AdditionTypeQzqd___tKAA0cE0Rd__07ElementI0Qyd__AIRtzlF"></a>
+                    <a name="//apple_ref/swift/Method/subtract(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP8subtract2by0C12AdditionTypeQzqd___tKAA0cE0Rd__07ElementI0Qyd__AIRtzlF">subtract(by:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subtracts <code>self</code> and <code>matrix</code> component-wise.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <code><a href="../Enums/MatrixError.html#/s:10CoronaMath11MatrixErrorO19incorrectDimensionsyA2CmF">MatrixError.incorrectDimensions</a></code> if <code>self.dimensions</code> does not equal
+<code>matrix.dimensions</code>.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">subtract</span><span class="o">&lt;</span><span class="kt">M</span><span class="o">&gt;</span><span class="p">(</span><span class="n">by</span> <span class="nv">matrix</span><span class="p">:</span> <span class="kt">M</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/MatrixOperationsBase.html#/s:10CoronaMath20MatrixOperationsBaseP0C12AdditionTypeQa">MatrixAdditionType</a></span> <span class="k">where</span> <span class="kt">M</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/MatrixBase.html">MatrixBase</a></span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ElementType</span> <span class="o">==</span> <span class="kt">M</span><span class="o">.</span><span class="kt">ElementType</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>matrix</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The matrix to subtract from this matrix.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The result of subracting <code>matrix</code> and <code>self</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP8multiply2by0C18MultiplicationTypeQzqd___tKAA0cE0Rd__07ElementI0Qyd__AIRtzlF"></a>
+                    <a name="//apple_ref/swift/Method/multiply(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP8multiply2by0C18MultiplicationTypeQzqd___tKAA0cE0Rd__07ElementI0Qyd__AIRtzlF">multiply(by:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Performs matrix multiplication on <code>self</code> and <code>matrix</code> (not component-wise).</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <code><a href="../Enums/MatrixError.html#/s:10CoronaMath11MatrixErrorO19incorrectDimensionsyA2CmF">MatrixError.incorrectDimensions</a></code> if <code>self.dimensions.column</code> does
+not equal <code>matrix.dimensions.row</code>.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">multiply</span><span class="o">&lt;</span><span class="kt">M</span><span class="o">&gt;</span><span class="p">(</span><span class="n">by</span> <span class="nv">matrix</span><span class="p">:</span> <span class="kt">M</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/MatrixOperationsBase.html#/s:10CoronaMath20MatrixOperationsBaseP0C18MultiplicationTypeQa">MatrixMultiplicationType</a></span> <span class="k">where</span> <span class="kt">M</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/MatrixBase.html">MatrixBase</a></span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ElementType</span> <span class="o">==</span> <span class="kt">M</span><span class="o">.</span><span class="kt">ElementType</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>matrix</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The matrix to multiply with this matrix.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The result of multiplying <code>self</code> and <code>matrix</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP9transpose0C13TransposeTypeQzyF"></a>
+                    <a name="//apple_ref/swift/Method/transpose()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP9transpose0C13TransposeTypeQzyF">transpose()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the transpose of this matrix. Transposing a matrix turns
+rows to columns and vice versa.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">transpose</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/MatrixOperationsBase.html#/s:10CoronaMath20MatrixOperationsBaseP0C13TransposeTypeQa">MatrixTransposeType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A matrix whose rows are the columns of <em>self</em> and vice versa.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP1poiyxx_11ElementTypeQztFZ"></a>
+                    <a name="//apple_ref/swift/Method/+(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP1poiyxx_11ElementTypeQztFZ">+(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds a matrix and a scalar.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="o">+</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="k">Self</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">ElementType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current matrix.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The scalar to add to the elements.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A matrix with dimensions equal to <em>lhs.dimensions</em> with
+<em>rhs</em> added to all elements.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP1poiyx11ElementTypeQz_xtFZ"></a>
+                    <a name="//apple_ref/swift/Method/+(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP1poiyx11ElementTypeQz_xtFZ">+(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds a scalar and a matrix.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="o">+</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">ElementType</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="k">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The scalar to add to the elements.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current matrix.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A matrix with dimensions equal to <em>rhs.dimensions</em> with
+<em>lhs</em> added to all elements.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP1soiyxx_11ElementTypeQztFZ"></a>
+                    <a name="//apple_ref/swift/Method/-(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP1soiyxx_11ElementTypeQztFZ">-(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subtracts a scalar from a matrix.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="o">-</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="k">Self</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">ElementType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current matrix.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The scalar to subtract from the elements.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A matrix with dimensions equal to <em>lhs.dimensions</em> with
+<em>rhs</em> subtracted from all elements.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP1soiyx11ElementTypeQz_xtFZ"></a>
+                    <a name="//apple_ref/swift/Method/-(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP1soiyx11ElementTypeQz_xtFZ">-(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subtracts a matrix from a scalar.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="o">-</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">ElementType</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="k">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The scalar from which to subtract the matrix&rsquo;s elements.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current matrix.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A matrix with dimensions equal to <em>rhs.dimensions</em> with
+all elements subtracted from <em>lhs</em>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP1moiyxx_11ElementTypeQztFZ"></a>
+                    <a name="//apple_ref/swift/Method/*(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP1moiyxx_11ElementTypeQztFZ">*(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Multiplies a matrix by a scalar.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="o">*</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="k">Self</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">ElementType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current matrix.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The scalar to multiply the elements of the matrix by.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A matrix with dimensions equal to <em>lhs.dimensions</em> with
+all elements multiplied by <em>rhs</em>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP1moiyx11ElementTypeQz_xtFZ"></a>
+                    <a name="//apple_ref/swift/Method/*(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP1moiyx11ElementTypeQz_xtFZ">*(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Multiplies a scalar by a matrix.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="o">*</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">ElementType</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="k">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The scalar to multiply the elements of the matrix by.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current matrix.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A matrix with dimensions equal to <em>rhs.dimensions</em> with
+all elements multiplied by <em>lhs</em>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Optional%20Implementations"></a>
+                <a name="//apple_ref/swift/Section/Optional Implementations" class="dashAnchor"></a>
+                <a href="#/Optional%20Implementations">
+                  <h3 class="section-name">Optional Implementations</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP2peoiyyxz_11ElementTypeQztFZ"></a>
+                    <a name="//apple_ref/swift/Method/+=(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP2peoiyyxz_11ElementTypeQztFZ">+=(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds and assigns a scalar and a matrix.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="o">+=</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="k">inout</span> <span class="k">Self</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">ElementType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The matrix to add and assign.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP2seoiyyxz_11ElementTypeQztFZ"></a>
+                    <a name="//apple_ref/swift/Method/-=(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP2seoiyyxz_11ElementTypeQztFZ">-=(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subtracts and assigns a scalar and a matrix.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="o">-=</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="k">inout</span> <span class="k">Self</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">ElementType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The matrix to subtract and assign.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath20MatrixOperationsBaseP2meoiyyxz_11ElementTypeQztFZ"></a>
+                    <a name="//apple_ref/swift/Method/*=(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath20MatrixOperationsBaseP2meoiyyxz_11ElementTypeQztFZ">*=(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Multiplies and assigns a scalar and a matrix.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="o">*=</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="k">inout</span> <span class="k">Self</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">ElementType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The matrix to multiply and assign.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-01-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

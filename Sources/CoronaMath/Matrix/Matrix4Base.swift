@@ -13,6 +13,8 @@ public struct Matrix4Base<MatrixType>:
     Equatable, MatrixBase, ConstantSizeMatrix, SquareMatrix
     where MatrixType: MatrixElementType {
 
+    // MARK: - Static Properties
+
     ///The type of the matrix's elements.
     public typealias ElementType = MatrixType
 
@@ -30,6 +32,8 @@ public struct Matrix4Base<MatrixType>:
             MatrixType.zero, MatrixType.zero, MatrixType.zero, MatrixType.one
         ])
     }
+
+    // MARK: - Instance Properties
 
     ///The values of the matrix. The number of elements must equal
     ///the number of rows times the number of columns.

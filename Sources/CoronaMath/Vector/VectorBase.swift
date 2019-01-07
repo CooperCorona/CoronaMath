@@ -27,7 +27,7 @@ public protocol VectorBase: Equatable {
     /// - returns: The value of the component at the given index.
     subscript(index:Int) -> ComponentType { get set }
     
-    // MARK: - Methods with Default Implementations
+    // MARK: - Optional Implementations
     
     ///Initializes this instance with all zeroes.
     init()
@@ -43,6 +43,8 @@ public protocol VectorBase: Equatable {
     static func ==(lhs:Self, rhs:Self) -> Bool
     
 }
+
+// MARK: - Default Implementations
 
 public func ==<V: VectorBase>(lhs:V, rhs:V) -> Bool {
     return lhs.components == rhs.components

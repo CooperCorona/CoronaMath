@@ -2,3 +2,6 @@
 /.build
 /Packages
 /*.xcodeproj
+build/
+# Runs jazzy to generate documentation.
+runJazzy.sh

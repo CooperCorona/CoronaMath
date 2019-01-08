@@ -57,7 +57,7 @@ public struct RectBase<VectorType> where VectorType: Addable {
         }
     }
 
-    ///Initializse the zero rect.
+    ///Initialiaze the zero rect.
     public init() {}
 
     ///Initializes a `RectBase` with the given values.

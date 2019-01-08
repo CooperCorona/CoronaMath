@@ -11,13 +11,6 @@ import Foundation
 public struct Vector3Base<VectorType> where VectorType: Addable {
 
     // MARK: - Static Properties
-
-    ///The unit vector in the x direction.
-    public static var x:Vector3Base<Double> { return Vector3Base<Double>(components: [1.0, 0.0, 0.0]) }
-    ///The unit vector in the y direction.
-    public static var y:Vector3Base<Double> { return Vector3Base<Double>(components: [0.0, 1.0, 0.0]) }
-    ///The unit vector in the z direction.
-    public static var z:Vector3Base<Double> { return Vector3Base<Double>(components: [0.0, 0.0, 1.0]) }
     
     ///The number of components in a `Vector3Base` instance.
     public static var numberOfComponents:Int { return 3 }
@@ -62,6 +55,16 @@ public struct Vector3Base<VectorType> where VectorType: Addable {
         set { self.components[index] = newValue }
     }
     
+}
+
+extension Vector3Base where VectorType: Numeric & Multiplicable {
+
+    ///The unit vector in the x direction.
+    public static var unitX:Vector3Base<VectorType> { return Vector3Base<VectorType>(components: [VectorType.one, VectorType.zero, VectorType.zero]) }
+    ///The unit vector in the y direction.
+    public static var unitY:Vector3Base<VectorType> { return Vector3Base<VectorType>(components: [VectorType.zero, VectorType.one, VectorType.zero]) }
+    ///The unit vector in the z direction.
+    public static var unitZ:Vector3Base<VectorType> { return Vector3Base<VectorType>(components: [VectorType.zero, VectorType.zero, VectorType.one]) }
 }
 
 extension Vector3Base: Addable where VectorType: Numeric {}

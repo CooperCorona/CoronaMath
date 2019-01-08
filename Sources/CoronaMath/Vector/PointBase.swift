@@ -10,11 +10,6 @@ import Foundation
 ///A 2-dimensional vector.
 public struct PointBase<VectorType> where VectorType: Addable {
 
-    ///The unit vector in the x direction.
-    public static var x:PointBase<Double> { return PointBase<Double>(components: [1.0, 0.0]) }
-    ///The unit vector in the y direction.
-    public static var y:PointBase<Double> { return PointBase<Double>(components: [0.0, 1.0]) }
-
     ///The number of components in a `PointBase` instance.
     public static var numberOfComponents: Int { return 2 }
 
@@ -50,6 +45,14 @@ public struct PointBase<VectorType> where VectorType: Addable {
         set { self.components[index] = newValue }
     }
     
+}
+
+extension PointBase where VectorType: Numeric & Multiplicable {
+
+    ///The unit vector in the x direction.
+    public static var unitX:PointBase<VectorType> { return PointBase<VectorType>(components: [VectorType.one, VectorType.zero]) }
+    ///The unit vector in the y direction.
+    public static var unitY:PointBase<VectorType> { return PointBase<VectorType>(components: [VectorType.zero, VectorType.one]) }
 }
 
 extension PointBase: Addable where VectorType: Numeric & Addable {}

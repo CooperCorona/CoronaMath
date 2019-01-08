@@ -86,6 +86,11 @@ public struct RectBase<VectorType> where VectorType: Addable {
 
 }
 
+extension RectBase where VectorType: Numeric & Multiplicable {
+    ///The unit rectangle in the `VectorType` space. Has origin zero and size one.
+    public static var unitRect:RectBase<VectorType> { return RectBase(x: VectorType.zero, y: VectorType.zero, width: VectorType.one, height: VectorType.one) }
+}
+
 extension RectBase: Addable where VectorType: Numeric & Addable {}
 extension RectBase: Equatable where VectorType: Equatable {}
 extension RectBase: VectorBase where VectorType: Numeric {}

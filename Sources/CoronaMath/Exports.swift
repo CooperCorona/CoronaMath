@@ -16,3 +16,6 @@ public typealias IntSize = SizeBase<Int>
 
 public typealias Matrix3 = Matrix3Base<Double>
 public typealias Matrix4 = Matrix4Base<Double>
+
+public typealias Rect = RectBase<Double>
+public typealias IntRect = RectBase<Int>

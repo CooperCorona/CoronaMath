@@ -53,7 +53,7 @@ public struct Vector4Base<VectorType> where VectorType: Addable {
     ///Initializse the zero vector.
     public init() {}
 
-    ///Initializes a `PointBase` with the given values.
+    ///Initializes a `VectorBase` with the given values.
     /// - parameter x: The first component of the vector.
     /// - parameter y: The second component of the vector.
     /// - parameter z: The third component of the vector.

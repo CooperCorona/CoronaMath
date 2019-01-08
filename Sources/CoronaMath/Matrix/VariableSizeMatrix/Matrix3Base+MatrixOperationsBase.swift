@@ -16,7 +16,7 @@ extension Matrix3Base: MatrixOperationsBase {
             guard self.dimensions.columns == matrix.dimensions.rows else {
                 throw ValueException<Int>.expected(value: self.dimensions.columns, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions.rows)
             }
-            let dimensions = IntPoint(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
+            let dimensions = IntSize(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
             var elements:[M.ElementType] = []
             for (row, column) in pairs(0..<dimensions.rows, 0..<dimensions.columns) {
                 var value = M.ElementType.zero

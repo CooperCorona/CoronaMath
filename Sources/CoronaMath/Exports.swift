@@ -11,5 +11,8 @@ public typealias Vector3 = Vector3Base<Double>
 public typealias Vector4 = Vector4Base<Double>
 public typealias Vector = ConstantSizeFloatingPointVector
 
+public typealias Size = SizeBase<Double>
+public typealias IntSize = SizeBase<Int>
+
 public typealias Matrix3 = Matrix3Base<Double>
 public typealias Matrix4 = Matrix4Base<Double>

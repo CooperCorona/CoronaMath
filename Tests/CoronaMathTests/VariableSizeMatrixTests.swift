@@ -12,12 +12,12 @@ import CoronaErrors
 final class VariableSizeMatrixTests: XCTestCase {
 
     func testInitEmpty() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2))
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2))
         XCTAssertEqual(matrix.elements, [0.0, 0.0, 0.0, 0.0])
     }
 
     func testInitExactlyEnoughElements() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
@@ -25,14 +25,14 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testInitTooFewElements() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0
         ])
         XCTAssertEqual(matrix.elements, [1.0, 2.0, 0.0, 0.0])
     }
 
     func testInitToManyElements() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0,
             5.0, 6.0
@@ -41,7 +41,7 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testSubscriptIndex() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
@@ -52,7 +52,7 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testSubscriptRowColumn() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 4, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 4, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0,
             5.0, 6.0,
@@ -69,11 +69,11 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testEquals() {
-        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
-        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
@@ -81,28 +81,28 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testEqualsDifferentDimensions() {
-        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
-        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 4, columns: 1), elements: [
+        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 4, columns: 1), elements: [
             1.0, 2.0, 3.0, 4.0
         ])
         XCTAssertNotEqual(matrix1, matrix2)
     }
 
     func testAdd() {
-        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
-        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             5.0, 6.0,
             7.0, 8.0
         ])
         do {
             let result = try matrix1.add(by: matrix2)
-            let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+            let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
                 6.0, 8.0,
                 10.0, 12.0
             ])
@@ -113,31 +113,31 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testAddDifferentDimensions() {
-        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
-        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 4, columns: 1), elements: [
+        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 4, columns: 1), elements: [
             1.0, 2.0, 3.0, 4.0
         ])
 
-        XCTAssertThrowsException(type: ValueException<IntPoint>.self) {
+        XCTAssertThrowsException(type: ValueException<IntSize>.self) {
             let _ = try matrix1.add(by: matrix2)
         }
     }
 
     func testSubtract() {
-        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
-        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             5.0, 4.0,
             3.0, 1.0
         ])
         do {
             let result = try matrix1.subtract(by: matrix2)
-            let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+            let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
                 -4.0, -2.0,
                 0.0, 3.0
                 ])
@@ -148,31 +148,31 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testSubtractDifferentDimensions() {
-        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
             ])
-        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 4, columns: 1), elements: [
+        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 4, columns: 1), elements: [
             1.0, 2.0, 3.0, 4.0
             ])
-        XCTAssertThrowsException(type: ValueException<IntPoint>.self) {
+        XCTAssertThrowsException(type: ValueException<IntSize>.self) {
             let _ = try matrix1.subtract(by: matrix2)
         }
     }
 
     func testMultiply() {
-        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 3), elements: [
+        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 3), elements: [
             5.0, 4.0, 2.0,
             3.0, 1.0, 6.0
         ])
-        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 3, columns: 2), elements: [
+        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 3, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0,
             5.0, 6.0
         ])
         do {
             let result = try matrix1.multiply(by: matrix2)
-            let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+            let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
                 27.0, 38.0,
                 36.0, 46.0
             ])
@@ -183,12 +183,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testMultiplyIncorrectDimensions() {
-        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 3, columns: 2), elements: [
+        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 3, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0,
             5.0, 6.0
         ])
-        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 3, columns: 2), elements: [
+        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 3, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0,
             5.0, 6.0
@@ -200,13 +200,13 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testTransposeRowsGreaterThanColumns() {
-        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 3, columns: 2), elements: [
+        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 3, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0,
             5.0, 6.0
         ])
         let result = matrix1.transpose()
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 3), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 3), elements: [
             1.0, 3.0, 5.0,
             2.0, 4.0, 6.0
         ])
@@ -214,12 +214,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testTransposeColumnsGreaterThanRows() {
-        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 3), elements: [
+        let matrix1 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 3), elements: [
             1.0, 2.0, 4.0,
             8.0, 16.0, 32.0
         ])
         let result = matrix1.transpose()
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 3, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 3, columns: 2), elements: [
             1.0, 8.0,
             2.0, 16.0,
             4.0, 32.0
@@ -228,12 +228,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testAddScalarRight() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
         let result = matrix + 2.0
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             3.0, 4.0,
             5.0, 6.0
         ])
@@ -241,12 +241,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testAddScalarLeft() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
         let result = 2.0 + matrix
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             3.0, 4.0,
             5.0, 6.0
         ])
@@ -254,12 +254,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testAddScalarAssign() {
-        var matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        var matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
             ])
         matrix += 2.0
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             3.0, 4.0,
             5.0, 6.0
         ])
@@ -267,12 +267,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testSubtractScalarRight() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
         let result = matrix - 2.0
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             -1.0, 0.0,
             1.0, 2.0
         ])
@@ -280,12 +280,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testSubtractScalarLeft() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
         let result = 2.0 - matrix
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 0.0,
             -1.0, -2.0
         ])
@@ -293,12 +293,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testSubtractScalarAssign() {
-        var matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        var matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
         matrix -= 2.0
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             -1.0, 0.0,
             1.0, 2.0
         ])
@@ -306,12 +306,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testMultiplyScalarRight() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
         let result = matrix * 2.0
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             2.0, 4.0,
             6.0, 8.0
         ])
@@ -319,12 +319,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testMultiplyScalarLeft() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
         let result = 2.0 * matrix
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             2.0, 4.0,
             6.0, 8.0
         ])
@@ -332,12 +332,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testMultiplyScalarAssign() {
-        var matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        var matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
         matrix *= 2.0
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             2.0, 4.0,
             6.0, 8.0
         ])
@@ -345,12 +345,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testDivideScalarRight() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
         let result = matrix / 2.0
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             0.5, 1.0,
             1.5, 2.0
         ])
@@ -358,12 +358,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testDivideScalarLeft() {
-        let matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             4.0, 8.0
             ])
         let result = 2.0 / matrix
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             2.0, 1.0,
             0.5, 0.25
         ])
@@ -371,12 +371,12 @@ final class VariableSizeMatrixTests: XCTestCase {
     }
 
     func testDivideScalarAssign() {
-        var matrix = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        var matrix = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             1.0, 2.0,
             3.0, 4.0
         ])
         matrix /= 2.0
-        let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 2, columns: 2), elements: [
+        let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 2, columns: 2), elements: [
             0.5, 1.0,
             1.5, 2.0
         ])

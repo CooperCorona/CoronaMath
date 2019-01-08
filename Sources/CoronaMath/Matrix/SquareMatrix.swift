@@ -45,7 +45,7 @@ public protocol SquareMatrix: ConstantSizeMatrix {
 
 extension SquareMatrix {
 
-    public static var dimensions:IntPoint { return IntPoint(rows: Self.size, columns: Self.size) }
+    public static var dimensions:IntSize { return IntSize(rows: Self.size, columns: Self.size) }
     public static var identity:Self {
         return Self(elements: (0..<self.numberOfElements).map() {
             return ($0 % self.dimensions.rows == 0) ? ElementType.one : ElementType.zero

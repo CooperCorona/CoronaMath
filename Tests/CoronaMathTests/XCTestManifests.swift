@@ -58,6 +58,18 @@ extension PointTests {
     ]
 }
 
+extension SizeTests {
+    static let __allTests = [
+        ("testGetHeight", testGetHeight),
+        ("testGetWidth", testGetWidth),
+        ("testInit", testInit),
+        ("testSetHeight", testSetHeight),
+        ("testSetWidth", testSetWidth),
+        ("testSubscriptGet", testSubscriptGet),
+        ("testSubscriptSet", testSubscriptSet),
+    ]
+}
+
 extension VariableSizeMatrixTests {
     static let __allTests = [
         ("testAdd", testAdd),
@@ -194,6 +206,7 @@ public func __allTests() -> [XCTestCaseEntry] {
         testCase(Matrix3Tests.__allTests),
         testCase(Matrix4Tests.__allTests),
         testCase(PointTests.__allTests),
+        testCase(SizeTests.__allTests),
         testCase(VariableSizeMatrixTests.__allTests),
         testCase(Vector3Tests.__allTests),
         testCase(Vector4Tests.__allTests),

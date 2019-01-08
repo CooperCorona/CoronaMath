@@ -12,15 +12,6 @@ public struct Vector4Base<VectorType> where VectorType: Addable {
 
     // MARK: - Static Properties
 
-    ///The unit vector in the x direction.
-    public static var x:Vector4Base<Double> { return Vector4Base<Double>(components: [1.0, 0.0, 0.0, 0.0]) }
-    ///The unit vector in the y direction.
-    public static var y:Vector4Base<Double> { return Vector4Base<Double>(components: [0.0, 1.0, 0.0, 0.0]) }
-    ///The unit vector in the z direction.
-    public static var z:Vector4Base<Double> { return Vector4Base<Double>(components: [0.0, 0.0, 1.0, 0.0]) }
-    ///The unit vector in the w direction.
-    public static var w:Vector4Base<Double> { return Vector4Base<Double>(components: [0.0, 0.0, 0.0, 1.0]) }
-
     ///The number of components in a `Vector4Base` instance.
     public static var numberOfComponents:Int { return 4 }
 
@@ -70,6 +61,18 @@ public struct Vector4Base<VectorType> where VectorType: Addable {
         set { self.components[index] = newValue }
     }
     
+}
+
+extension Vector4Base where VectorType: Numeric & Multiplicable {
+
+    ///The unit vector in the x direction.
+    public static var unitX:Vector4Base<VectorType> { return Vector4Base<VectorType>(components: [VectorType.one, VectorType.zero, VectorType.zero, VectorType.zero]) }
+    ///The unit vector in the y direction.
+    public static var unitY:Vector4Base<VectorType> { return Vector4Base<VectorType>(components: [VectorType.zero, VectorType.one, VectorType.zero, VectorType.zero]) }
+    ///The unit vector in the z direction.
+    public static var unitZ:Vector4Base<VectorType> { return Vector4Base<VectorType>(components: [VectorType.zero, VectorType.zero, VectorType.one, VectorType.zero]) }
+    ///The unit vector in the w direction.
+    public static var unitW:Vector4Base<VectorType> { return Vector4Base<VectorType>(components: [VectorType.zero, VectorType.zero, VectorType.zero, VectorType.one]) }
 }
 
 extension Vector4Base: Addable where VectorType: Numeric & Addable {}

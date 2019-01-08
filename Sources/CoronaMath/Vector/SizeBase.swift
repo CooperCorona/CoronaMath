@@ -10,11 +10,6 @@ import Foundation
 ///A 2-dimensional vector representing a size.
 public struct SizeBase<VectorType> where VectorType: Addable {
 
-    ///The unit vector in the width direction.
-    public static var width:SizeBase<Double> { return SizeBase<Double>(components: [1.0, 0.0]) }
-    ///The unit vector in the height direction.
-    public static var height:SizeBase<Double> { return SizeBase<Double>(components: [0.0, 1.0]) }
-
     ///The number of components in a `SizeBase` instance.
     public static var numberOfComponents: Int { return 2 }
 
@@ -50,6 +45,14 @@ public struct SizeBase<VectorType> where VectorType: Addable {
         set { self.components[index] = newValue }
     }
 
+}
+
+extension SizeBase where VectorType: Numeric & Multiplicable {
+
+    ///The unit vector in the width direction.
+    public static var unitWidth:SizeBase<VectorType> { return SizeBase<VectorType>(components: [VectorType.one, VectorType.zero]) }
+    ///The unit vector in the height direction.
+    public static var unitHeight:SizeBase<VectorType> { return SizeBase<VectorType>(components: [VectorType.zero, VectorType.one]) }
 }
 
 extension SizeBase: Addable where VectorType: Numeric & Addable {}

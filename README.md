@@ -23,13 +23,16 @@ Represents a vector whose components are floating point. Includes `length`, `dot
 ## Structs
 
 ### PointBase
-A 2-dimensional vector. Exposes `x` and `y` properties for convenience, along with `rows` and `columns` for matrix dimensions semantics. `Point` is equivalent to `PointBase<Double>`. `IntPoint` is equivalent to `PointBase<Int>`.
+A 2-dimensional vector. Exposes `x` and `y` properties for convenience.  `Point` is equivalent to `PointBase<Double>`. `IntPoint` is equivalent to `PointBase<Int>`.
 
 ### Vector3Base
 A 3-dimensional vector. Exposes `x`, `y`, and `z` properties for convenience. Exposes `r`, `g`, `b`, and `red`, `green`, `blue` properties to semantically represent RGB colors. `Vector3Base+Color` declares some common color names as static properties.
 
 ### Vector4Base
 A 4-dimensional vector. Exposes `x`, `y`, `z`, and `w` properties for convenience. Exposes `r`, `g`, `b`, `a` and `red`, `green`, `blue`, `alpha` properties to semantically represent RGBA colors (including an alpha component). `Vector4Base+Color` declares some common color names as static properties.
+
+### SizeBase
+A 2-dimensional vector representing a size or dimensions. Exposes `width` and `height` properties for convenience, along with `rows` and `columns` properties for matrix dimensions.
 
 ---
 

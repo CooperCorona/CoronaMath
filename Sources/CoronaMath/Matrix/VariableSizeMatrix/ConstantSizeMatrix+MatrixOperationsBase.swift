@@ -14,7 +14,7 @@ extension ConstantSizeMatrix where Self: MatrixOperationsBase {
         M: MatrixBase,
         ElementType == M.ElementType {
         guard self.dimensions == matrix.dimensions else {
-            throw ValueException<IntPoint>.expected(value: self.dimensions, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions)
+            throw ValueException<IntSize>.expected(value: self.dimensions, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions)
         }
         return Self(elements: zip(self.elements, matrix.elements).map(+))
     }
@@ -23,7 +23,7 @@ extension ConstantSizeMatrix where Self: MatrixOperationsBase {
         M: MatrixBase,
         ElementType == M.ElementType {
         guard self.dimensions == matrix.dimensions else {
-            throw ValueException<IntPoint>.expected(value: self.dimensions, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions)
+            throw ValueException<IntSize>.expected(value: self.dimensions, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions)
         }
         return Self(elements: zip(self.elements, matrix.elements).map(-))
     }

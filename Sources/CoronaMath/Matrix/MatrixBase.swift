@@ -27,7 +27,7 @@ public protocol MatrixBase: Equatable {
     ///The dimensions of the matrix. The first component is the number of rows
     ///and the second component is the number of columns. Both components must
     ///be greater than 0.
-    var dimensions:IntPoint { get }
+    var dimensions:IntSize { get }
     
     ///The values of the matrix. The number of elements must equal
     ///the number of rows times the number of columns.

@@ -170,7 +170,7 @@ final class Matrix4Tests: XCTestCase {
             3.0, 4.0, 1.0, 2.0,
             4.0, 1.0, 2.0, 3.0
         ])
-        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 4, columns: 5), elements: [
+        let matrix2 = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 4, columns: 5), elements: [
             2.0, 0.0, 0.0, 0.0, 1.0,
             0.0, 2.0, 0.0, 0.0, 2.0,
             0.0, 0.0, 2.0, 0.0, 3.0,
@@ -178,7 +178,7 @@ final class Matrix4Tests: XCTestCase {
         ])
         do {
             let result = try matrix1.multiply(by: matrix2)
-            let expected = VariableSizeMatrix<Double>(dimensions: IntPoint(rows: 4, columns: 5), elements: [
+            let expected = VariableSizeMatrix<Double>(dimensions: IntSize(rows: 4, columns: 5), elements: [
                 2.0, 4.0, 6.0, 8.0, 30.0,
                 4.0, 6.0, 8.0, 2.0, 24.0,
                 6.0, 8.0, 2.0, 4.0, 22.0,

@@ -17,14 +17,14 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     ///The dimensions of the matrix. The first component is the number of rows
     ///and the second component is the number of columns. Both components must
     ///be greater than 0.
-    public let dimensions:IntPoint
+    public let dimensions:IntSize
     ///The values of the matrix. The number of elements must equal
     ///the number of rows times the number of columns.
     public private(set) var elements:[MatrixType]
 
     ///Initializes the matrix with the given dimensions and all elements equal
     ///to `MatrixType.zero`.
-    public init(dimensions:IntPoint) {
+    public init(dimensions:IntSize) {
         let n = dimensions.rows * dimensions.columns
         self.dimensions = dimensions
         self.elements = [MatrixType](repeating: MatrixType.zero, count: n)
@@ -34,7 +34,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     ///If `elements` does not contain enough elements, the remaining
     ///values are filled with `MatrixType.zero`. If `elements` contains
     ///too many elements, the extra elements are ignored.
-    public init(dimensions:IntPoint, elements:[MatrixType]) {
+    public init(dimensions:IntSize, elements:[MatrixType]) {
         let n = dimensions.rows * dimensions.columns
         self.dimensions = dimensions
         self.elements = elements.of(length: n, padding: MatrixType.zero)
@@ -61,7 +61,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
         M : MatrixBase,
         ElementType == M.ElementType {
             guard self.dimensions == matrix.dimensions else {
-                throw ValueException<IntPoint>.expected(value: self.dimensions, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions)
+                throw ValueException<IntSize>.expected(value: self.dimensions, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions)
             }
             return VariableSizeMatrix(dimensions: self.dimensions, elements: zip(self.elements, matrix.elements).map(+))
     }
@@ -75,7 +75,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
         M: MatrixBase,
         ElementType == M.ElementType {
             guard self.dimensions == matrix.dimensions else {
-                throw ValueException<IntPoint>.expected(value: self.dimensions, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions)
+                throw ValueException<IntSize>.expected(value: self.dimensions, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions)
             }
             return VariableSizeMatrix(dimensions: self.dimensions, elements: zip(self.elements, matrix.elements).map(-))
     }
@@ -91,7 +91,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
             guard self.dimensions.columns == matrix.dimensions.rows else {
                 throw ValueException<Int>.expected(value: self.dimensions.columns, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions.rows)
             }
-            let dimensions = IntPoint(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
+            let dimensions = IntSize(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
             var elements:[M.ElementType] = []
             for (row, column) in pairs(0..<dimensions.rows, 0..<dimensions.columns) {
                 var value = M.ElementType.zero
@@ -107,7 +107,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     ///rows to columns and vice versa.
     /// - returns: A matrix whose rows are the columns of *self* and vice versa.
     public func transpose() -> VariableSizeMatrix<MatrixType> {
-        let dimensions = IntPoint(rows: self.dimensions.columns, columns: self.dimensions.rows)
+        let dimensions = IntSize(rows: self.dimensions.columns, columns: self.dimensions.rows)
         let elements = pairs(0..<self.dimensions.columns, 0..<self.dimensions.rows)
             .map() { row, column in self[column, row] }
         return VariableSizeMatrix(dimensions: dimensions, elements: elements)

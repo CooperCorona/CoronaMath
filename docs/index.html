@@ -116,6 +116,9 @@
                 <a href="Structs/PointBase.html">PointBase</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/SizeBase.html">SizeBase</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/VariableSizeMatrix.html">VariableSizeMatrix</a>
               </li>
               <li class="nav-group-task">
@@ -142,12 +145,75 @@
             
             <h1 id='coronamath' class='heading'>CoronaMath</h1>
 
-<p>A description of this package.</p>
+<p>CoronaMath is a cross-platform vector and matrix library for Swift. All types are parameterized, so any type that defines a set of mathematical operations can be used as components of a vector or elements of a matrix. Where applicable, protocols declare default implementations of their methods. This way, types can opt-in to a wide spectrum of behavior while only declaring minimal required properties.</p>
+
+<p>Comprehensive documentation can be found <a href="https://coopercorona.github.io/CoronaMath/">here</a>.</p>
+<h1 id='vectors' class='heading'>Vectors</h1>
+
+<p>All vectors are represented as an array of components of a given type. All vectors are declared with the suffix <code>Base</code> to represent that you will usually be dealing with an abstracted version instead of the type directly.</p>
+
+<hr>
+<h2 id='protocols' class='heading'>Protocols</h2>
+<h3 id='vectorbase' class='heading'>VectorBase</h3>
+
+<p>Represents a vector. Declares size, elements, and element access.</p>
+<h3 id='signedvectorbase' class='heading'>SignedVectorBase</h3>
+
+<p>Represents a vector whose components have a sign. Includes the mathematical negation operator <code>-</code>.</p>
+<h3 id='floatingpointvectorbase' class='heading'>FloatingPointVectorBase</h3>
+
+<p>Represents a vector whose components are floating point. Includes <code>length</code>, <code>dot</code>, and <code>unit</code> methods.</p>
+
+<hr>
+<h2 id='structs' class='heading'>Structs</h2>
+<h3 id='pointbase' class='heading'>PointBase</h3>
+
+<p>A 2-dimensional vector. Exposes <code>x</code> and <code>y</code> properties for convenience, along with <code>rows</code> and <code>columns</code> for matrix dimensions semantics. <code>Point</code> is equivalent to <code><a href="Structs/PointBase.html">PointBase&lt;Double&gt;</a></code>. <code>IntPoint</code> is equivalent to <code><a href="Structs/PointBase.html">PointBase&lt;Int&gt;</a></code>.</p>
+<h3 id='vector3base' class='heading'>Vector3Base</h3>
+
+<p>A 3-dimensional vector. Exposes <code>x</code>, <code>y</code>, and <code>z</code> properties for convenience. Exposes <code>r</code>, <code>g</code>, <code>b</code>, and <code>red</code>, <code>green</code>, <code>blue</code> properties to semantically represent RGB colors. <code>Vector3Base+Color</code> declares some common color names as static properties.</p>
+<h3 id='vector4base' class='heading'>Vector4Base</h3>
+
+<p>A 4-dimensional vector. Exposes <code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code> properties for convenience. Exposes <code>r</code>, <code>g</code>, <code>b</code>, <code>a</code> and <code>red</code>, <code>green</code>, <code>blue</code>, <code>alpha</code> properties to semantically represent RGBA colors (including an alpha component). <code>Vector4Base+Color</code> declares some common color names as static properties.</p>
+
+<hr>
+<h1 id='matrices' class='heading'>Matrices</h1>
+
+<p>All matrices are represented as an array of elements of a given type. All vectors are declared with the suffix <code>Base</code> to represent that you will usually be dealing with an abstracted version instead of the type directly.</p>
+
+<p>Although logically, a matrix declares many mathematical operations, in practice, most of those operations aren&rsquo;t needed for many types. Therefore, the operations have been moved from <code><a href="Protocols/MatrixBase.html">MatrixBase</a></code> (the protocol representing a matrix) to <code><a href="Protocols/MatrixOperationsBase.html">MatrixOperationsBase</a></code>. <code><a href="Protocols/ConstantSizeMatrix.html">ConstantSizeMatrix</a></code> and <code><a href="Protocols/SquareMatrix.html">SquareMatrix</a></code> provide default implementations of some of these operations.</p>
+
+<hr>
+<h2 id='protocols' class='heading'>Protocols</h2>
+<h3 id='matrixbase' class='heading'>MatrixBase</h3>
+
+<p>Represents a matrix. Declares dimensions, elements, element access, and matrix multiplication.</p>
+<h3 id='matrixoperationsbase' class='heading'>MatrixOperationsBase</h3>
+
+<p>Represents a matrix with the full spectrum of mathematical operations.</p>
+<h3 id='constantsizematrix' class='heading'>ConstantSizeMatrix</h3>
+
+<p>Represents a matrix whose dimensions are known at compile time.</p>
+<h3 id='squarematrix' class='heading'>SquareMatrix</h3>
+
+<p>Represents a matrix whose dimensions are known at compile time and whose number of rows equal its number of columns.</p>
+
+<hr>
+<h2 id='structs' class='heading'>Structs</h2>
+<h3 id='matrix3base' class='heading'>Matrix3Base</h3>
+
+<p>A 3x3 matrix.</p>
+<h3 id='matrix4base' class='heading'>Matrix4Base</h3>
+
+<p>A 4x4 matrix.</p>
+<h3 id='variablesizematrix' class='heading'>VariableSizeMatrix</h3>
+
+<p>A matrix whose dimensions are determined at runtime. Once a <code><a href="Structs/VariableSizeMatrix.html">VariableSizeMatrix</a></code> is created, its dimensions cannot be changed, but different instances can have different dimensions.</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-01-07)</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-01-08)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

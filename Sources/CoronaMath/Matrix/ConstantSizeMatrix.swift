@@ -14,7 +14,7 @@ public protocol ConstantSizeMatrix: MatrixBase {
 
     ///The dimensions of all instances of this type. The instance
     ///property *dimensions* must return this value.
-    static var dimensions:IntPoint { get }
+    static var dimensions:IntSize { get }
 
     ///Initializes this instance with the specified elements. If *elements* does not
     ///contain enough values, the remaining elements should be initialized to `Self.zero`.
@@ -34,6 +34,6 @@ public protocol ConstantSizeMatrix: MatrixBase {
 
 extension ConstantSizeMatrix {
     public static var numberOfElements:Int { return Self.dimensions.rows * Self.dimensions.columns }
-    public var dimensions: IntPoint { return Self.dimensions }
+    public var dimensions: IntSize { return Self.dimensions }
 }
 

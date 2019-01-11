@@ -64,6 +64,20 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Exports.swift",
+      "line": 20,
+      "symbol": "Rect",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Exports.swift",
+      "line": 21,
+      "symbol": "IntRect",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Matrix/ConstantSizeMatrix.swift",
       "line": 37,
       "symbol": "ConstantSizeMatrix.dimensions",
@@ -303,112 +317,112 @@
     },
     {
       "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
-      "line": 103,
+      "line": 107,
       "symbol": "ConstantSizeVector.numberOfComponents",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
-      "line": 120,
-      "symbol": "+(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
-      "line": 124,
-      "symbol": "-(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
       "line": 128,
-      "symbol": "*(_:_:)",
+      "symbol": "+(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
       "line": 132,
-      "symbol": "+=(_:_:)",
+      "symbol": "-(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
       "line": 136,
-      "symbol": "-=(_:_:)",
+      "symbol": "*(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
       "line": 140,
-      "symbol": "*=(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
-      "line": 144,
-      "symbol": "+(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
-      "line": 148,
-      "symbol": "+(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
-      "line": 152,
-      "symbol": "-(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
-      "line": 156,
-      "symbol": "-(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
-      "line": 160,
-      "symbol": "*(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
-      "line": 164,
-      "symbol": "*(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
-      "line": 168,
       "symbol": "+=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
-      "line": 172,
+      "line": 144,
       "symbol": "-=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
       "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
+      "line": 148,
+      "symbol": "*=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
+      "line": 152,
+      "symbol": "+(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
+      "line": 156,
+      "symbol": "+(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
+      "line": 160,
+      "symbol": "-(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
+      "line": 164,
+      "symbol": "-(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
+      "line": 168,
+      "symbol": "*(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
+      "line": 172,
+      "symbol": "*(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
       "line": 176,
+      "symbol": "+=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
+      "line": 180,
+      "symbol": "-=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Vector/ConstantSizeVector.swift",
+      "line": 184,
       "symbol": "*=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"

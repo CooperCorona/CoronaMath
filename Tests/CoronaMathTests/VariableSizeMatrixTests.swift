@@ -7,6 +7,7 @@
 
 import XCTest
 import CoronaErrors
+import CoronaErrorsTestHooks
 @testable import CoronaMath
 
 final class VariableSizeMatrixTests: XCTestCase {

@@ -38,13 +38,27 @@
     {
       "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Exports.swift",
       "line": 14,
-      "symbol": "Matrix3",
+      "symbol": "Size",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
       "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Exports.swift",
       "line": 15,
+      "symbol": "IntSize",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Exports.swift",
+      "line": 17,
+      "symbol": "Matrix3",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/cooperknaak/Desktop/Xcode Projects/CoronaMath/Sources/CoronaMath/Exports.swift",
+      "line": 18,
       "symbol": "Matrix4",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"

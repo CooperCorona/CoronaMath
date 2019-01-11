@@ -8,6 +8,7 @@
 import Foundation
 
 ///A 4-dimensional vector representing a rectangle. A rectangle contains an origin (point) and dimensions (size).
+///The dimensions of `size` must be non-negative.
 public struct RectBase<VectorType> where VectorType: Addable {
 
     // MARK: - Static Properties
@@ -57,6 +58,15 @@ public struct RectBase<VectorType> where VectorType: Addable {
         }
     }
 
+    ///The minimum value of x for this rect.
+    public var minX:VectorType { return self.origin.x }
+    ///The minimum value of y for this rect.
+    public var minY:VectorType { return self.origin.y }
+    ///The maximum value of x for this rect.
+    public var maxX:VectorType { return self.origin.x + self.size.width }
+    ///The maximum value of y for this rect.
+    public var maxY:VectorType { return self.origin.y + self.size.height }
+
     ///Initialiaze the zero rect.
     public init() {}
 
@@ -98,3 +108,28 @@ extension RectBase: ConstantSizeVector where VectorType: Numeric {}
 extension RectBase: SignedVectorBase where VectorType: SignedNumeric {}
 extension RectBase: FloatingPointVector where VectorType: FloatingPoint {}
 extension RectBase: ConstantSizeFloatingPointVector where VectorType: FloatingPoint {}
+
+extension RectBase where VectorType: Comparable {
+
+    ///Determines if this rect contains the given point.
+    /// - parameter point: The given point.
+    /// - returns: `true` if this rect contains `point`, `false` otherwise.
+    public func contains(point:PointBase<VectorType>) -> Bool {
+        return self.minX <= point.x && point.x <= self.maxX
+            && self.minY <= point.y && point.y <= self.maxY
+    }
+
+}
+
+extension RectBase where VectorType: Multiplicable {
+
+    ///Returns a point inside the rectangle by interpolating `point`,
+    ///starting at `origin` and ending at `origin + size`.
+    /// - parameter point: The point representing a percent to interpolate by. The components of
+    ///`point` must be between `VectorType.zero` and `VectorType.one`.
+    /// - returns: A point inside `self` by adding a given percent of `size` to `origin`.
+    public func interpolate(point:PointBase<VectorType>) -> PointBase<VectorType> {
+        return PointBase(x: self.x + point.x * self.width, y: self.y + point.y * self.height)
+    }
+
+}

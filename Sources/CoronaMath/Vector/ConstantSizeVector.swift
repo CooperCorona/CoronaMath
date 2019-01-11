@@ -18,6 +18,10 @@ public protocol ConstantSizeVector: VectorBase, Addable {
 
     // MARK: - Optional Implementations
 
+    ///Initializes all components of the vector with the same value.
+    /// - parameter value: The value to repeat for all components of the vector.
+    init(repeating value:ComponentType)
+
     ///Computes the dot product of this vector with *vector*.
     /// - parameter vector: The vector with which to calculate the dot product.
     /// - returns: The dot product of this instance and *vector*.
@@ -107,6 +111,10 @@ extension ConstantSizeVector {
         for i in 0..<min(Self.numberOfComponents, components.count) {
             self[i] = components[i]
         }
+    }
+
+    public init(repeating value:ComponentType) {
+        self.init(components: [ComponentType](repeating: value, count: Self.numberOfComponents))
     }
 
     public func dot(vector:Self) -> Self.ComponentType {

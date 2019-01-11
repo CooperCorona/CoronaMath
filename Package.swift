@@ -24,6 +24,6 @@ let package = Package(
             dependencies: ["CoronaErrors"]),
         .testTarget(
             name: "CoronaMathTests",
-            dependencies: ["CoronaMath", "CoronaErrors"]),
+            dependencies: ["CoronaMath", "CoronaErrors", "CoronaErrorsTestHooks"]),
     ]
 )

@@ -10,6 +10,8 @@ import XCTest
 
 final class PointTests: XCTestCase {
 
+    let epsilon = 0.000001
+
     func testMakePairs() {
         let array = [1, 2, 3]
         let sequence = array.makePairs().map() { $0 }
@@ -94,5 +96,15 @@ final class PointTests: XCTestCase {
         point[0] = 3.0
         XCTAssertEqual(point[0], 3.0)
     }
-    
+
+    func testAngle() {
+        let point = Point(x: 1.0, y: 1.0)
+        XCTAssertEqual(point.angle(), Double.pi / 4.0, accuracy: epsilon)
+    }
+
+    func testAngleTo180() {
+        let point1 = Point(x: 1.0, y: 1.0)
+        let point2 = Point(x: -1.0, y: 1.0)
+        XCTAssertEqual(point1.angle(to: point2), Double.pi, accuracy: epsilon)
+    }
 }

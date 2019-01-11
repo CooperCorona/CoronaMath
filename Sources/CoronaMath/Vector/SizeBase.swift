@@ -37,6 +37,24 @@ public struct SizeBase<VectorType> where VectorType: Addable {
         self.components = [width, height]
     }
 
+    ///Initializes a `SizeBase` with the given value for `width`. The `height` component is set to `VectorType.zero`.
+    /// - parameter width: The first component of the vector.
+    public init(width:VectorType) {
+        self.components = [width, VectorType.zero]
+    }
+
+    ///Initializes a `SizeBase` with the given value for `height`. The `width` component is set to `VectorType.zero`.
+    /// - parameter height: The second component of the vector.
+    public init(height:VectorType) {
+        self.components = [VectorType.zero, height]
+    }
+
+    ///Initializes a `SizeBase` with the given value for `width` and `height`.
+    /// - parameter square: The value of both components of the vector.
+    public init(square:VectorType) {
+        self.components = [square, square]
+    }
+
     ///Provides access to the underlying components of this instance.
     /// - parameter index: The index of the component to access.
     /// - returns: The component at the given index.
@@ -62,3 +80,16 @@ extension SizeBase: ConstantSizeVector where VectorType: Numeric {}
 extension SizeBase: SignedVectorBase where VectorType: SignedNumeric {}
 extension SizeBase: FloatingPointVector where VectorType: FloatingPoint {}
 extension SizeBase: ConstantSizeFloatingPointVector where VectorType: FloatingPoint {}
+
+extension SizeBase where VectorType: Comparable {
+
+    ///Determines if a rect with origin (zero, zero) and size `self` contains the given point.
+    /// - parameter point: The given point.
+    /// - returns: `true` if the rect with size `self` and origin (zero, zero) contains
+    ///`point`, `false` otherwise.
+    public func contains(point:PointBase<VectorType>) -> Bool {
+        return VectorType.zero <= point.x && point.x <= self.width
+            && VectorType.zero <= point.y && point.y <= self.height
+    }
+
+}

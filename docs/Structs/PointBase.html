@@ -14,7 +14,7 @@
     <a title="PointBase Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (79% documented)</p>
+        <p><a href="../index.html"> Docs</a> (81% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -38,6 +38,9 @@
           <li class="nav-group-name">
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Double.html">Double</a>
               </li>
@@ -117,6 +120,9 @@
                 <a href="../Structs/PointBase.html">PointBase</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/RectBase.html">RectBase</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/SizeBase.html">SizeBase</a>
               </li>
               <li class="nav-group-task">
@@ -156,60 +162,6 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:10CoronaMath9PointBaseV1xACySdGvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/x" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10CoronaMath9PointBaseV1xACySdGvpZ">x</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The unit vector in the x direction.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">x</span><span class="p">:</span> <span class="kt">PointBase</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:10CoronaMath9PointBaseV1yACySdGvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/y" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10CoronaMath9PointBaseV1yACySdGvpZ">y</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The unit vector in the y direction.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">PointBase</span><span class="o">&lt;</span><span class="kt">Double</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -406,6 +358,144 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:10CoronaMath9PointBaseV1xACyxGx_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(x:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath9PointBaseV1xACyxGx_tcfc">init(x:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a <code>PointBase</code> with the given value for <code><a href="../Structs/PointBase.html#/s:10CoronaMath9PointBaseV1xxvp">x</a></code>. The <code><a href="../Structs/PointBase.html#/s:10CoronaMath9PointBaseV1yxvp">y</a></code> component is set to <code>VectorType.zero</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">VectorType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>x</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The first component of the vector.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath9PointBaseV1yACyxGx_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(y:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath9PointBaseV1yACyxGx_tcfc">init(y:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a <code>PointBase</code> with the given value for <code><a href="../Structs/PointBase.html#/s:10CoronaMath9PointBaseV1yxvp">y</a></code>. The <code><a href="../Structs/PointBase.html#/s:10CoronaMath9PointBaseV1xxvp">x</a></code> component is set to <code>VectorType.zero</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">y</span><span class="p">:</span> <span class="kt">VectorType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>y</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The second component of the vector.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath9PointBaseV2xyACyxGx_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(xy:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath9PointBaseV2xyACyxGx_tcfc">init(xy:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a <code>PointBase</code> with the given value for <code><a href="../Structs/PointBase.html#/s:10CoronaMath9PointBaseV1xxvp">x</a></code> and <code><a href="../Structs/PointBase.html#/s:10CoronaMath9PointBaseV1yxvp">y</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">xy</span><span class="p">:</span> <span class="kt">VectorType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>xy</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value of both components of the vector.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:10CoronaMath9PointBaseVyxSicip"></a>
                     <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:10CoronaMath9PointBaseVyxSicip">subscript(_:)</a>
@@ -453,12 +543,188 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath9PointBaseV4flipACyxGyF"></a>
+                    <a name="//apple_ref/swift/Method/flip()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath9PointBaseV4flipACyxGyF">flip()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a <code>PointBase</code> with flipped components, so <code><a href="../Structs/PointBase.html#/s:10CoronaMath9PointBaseV1xxvp">x</a></code> becomes <code><a href="../Structs/PointBase.html#/s:10CoronaMath9PointBaseV1yxvp">y</a></code> and vice versa.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">flip</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">PointBase</span><span class="o">&lt;</span><span class="kt">VectorType</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>PointBase</code> instance whose <code><a href="../Structs/PointBase.html#/s:10CoronaMath9PointBaseV1xxvp">x</a></code> is this instance&rsquo;s <code><a href="../Structs/PointBase.html#/s:10CoronaMath9PointBaseV1yxvp">y</a></code> and vice versa.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath9PointBaseVA2A13MultiplicableRzSjRzrlE5unitXACyxGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/unitX" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath9PointBaseVA2A13MultiplicableRzSjRzrlE5unitXACyxGvpZ">unitX</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The unit vector in the x direction.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">unitX</span><span class="p">:</span> <span class="kt">PointBase</span><span class="o">&lt;</span><span class="kt">VectorType</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath9PointBaseVA2A13MultiplicableRzSjRzrlE5unitYACyxGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/unitY" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath9PointBaseVA2A13MultiplicableRzSjRzrlE5unitYACyxGvpZ">unitY</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The unit vector in the y direction.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">unitY</span><span class="p">:</span> <span class="kt">PointBase</span><span class="o">&lt;</span><span class="kt">VectorType</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath9PointBaseVAASdRszrlE5angleSdyF"></a>
+                    <a name="//apple_ref/swift/Method/angle()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath9PointBaseVAASdRszrlE5angleSdyF">angle()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the angle of this vector relative to the x-axis.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">angle</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">VectorType</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The angle this vector makes with the x-axis when
+positioned at the origin.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10CoronaMath9PointBaseVAASdRszrlE5angle2toSdACySdG_tF"></a>
+                    <a name="//apple_ref/swift/Method/angle(to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10CoronaMath9PointBaseVAASdRszrlE5angle2toSdACySdG_tF">angle(to:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the angle of the vector starting at <code>self</code> and ending at <code>vector</code>, assuming
+both vectors are positioned at the origin.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">angle</span><span class="p">(</span><span class="n">to</span> <span class="nv">vector</span><span class="p">:</span> <span class="kt">PointBase</span><span class="o">&lt;</span><span class="kt">VectorType</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">VectorType</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>vector</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The vector to calculate the angle to.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The angle between this vector and <code>vector</code> in the range [-pi, pi].</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-01-08)</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-01-10)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

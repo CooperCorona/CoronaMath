@@ -96,10 +96,8 @@ extension PointBase where VectorType == Double {
         return atan2(self.y, self.x)
     }
 
-    ///Calculates the angle between this vector and `vector`.
-    ///
-    ///Conceptually, rotating this vector by the return value of this method
-    ///results in a vector parallel to `vector`.
+    ///Calculates the angle of the vector starting at `self` and ending at `vector`, assuming
+    ///both vectors are positioned at the origin.
     /// - parameter vector: The vector to calculate the angle to.
     /// - returns: The angle between this vector and `vector` in the range [-pi, pi].
     public func angle(to vector:PointBase<VectorType>) -> VectorType {

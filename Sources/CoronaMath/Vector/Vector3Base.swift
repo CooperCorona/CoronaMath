@@ -11,7 +11,8 @@ import Foundation
 public struct Vector3Base<VectorType> where VectorType: Addable {
 
     // MARK: - Static Properties
-    
+
+    #if swift(>=4.2)
     ///The number of components in a `Vector3Base` instance.
     public static var numberOfComponents:Int { return 3 }
 
@@ -19,6 +20,13 @@ public struct Vector3Base<VectorType> where VectorType: Addable {
 
     ///The values of this vector.
     public private(set) var components = [VectorType](repeating: VectorType.zero, count: Vector3Base<VectorType>.numberOfComponents)
+    #else
+    ///The number of components in a `Vector3Base` instance.
+    public static var staticNumberOfComponents:Int { return 3 }
+
+    ///The values of this vector.
+    public private(set) var components = [VectorType](repeating: VectorType.zero, count: Vector3Base<VectorType>.staticNumberOfComponents)
+    #endif
 
     ///The x coordinate of the vector (the first component).
     public var x:VectorType {

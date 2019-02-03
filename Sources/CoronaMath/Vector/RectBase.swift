@@ -13,7 +13,6 @@ public struct RectBase<VectorType> where VectorType: Addable {
 
     // MARK: - Static Properties
 
-    #if swift(>=4.2)
     ///The number of components in a `RectBase` instance.
     public static var numberOfComponents:Int { return 4 }
 
@@ -21,13 +20,6 @@ public struct RectBase<VectorType> where VectorType: Addable {
 
     ///The values of the vector.
     public private(set) var components: [VectorType] = [VectorType](repeating: VectorType.zero, count: RectBase.numberOfComponents)
-    #else
-    ///The number of components in a `RectBase` instance.
-    public static var staticNumberOfComponents:Int { return 4 }
-
-    ///The values of the vector.
-    public private(set) var components: [VectorType] = [VectorType](repeating: VectorType.zero, count: RectBase.staticNumberOfComponents)
-    #endif
 
     ///The x coordinate of the origin of the rect (the first component).
     public var x:VectorType {
@@ -110,7 +102,7 @@ extension RectBase where VectorType: Numeric & Multiplicable {
 }
 
 extension RectBase: Addable where VectorType: Numeric & Addable {}
-extension RectBase: Equatable where VectorType: Numeric {}
+extension RectBase: Equatable where VectorType: Equatable {}
 extension RectBase: VectorBase where VectorType: Numeric {}
 extension RectBase: ConstantSizeVector where VectorType: Numeric {}
 extension RectBase: SignedVectorBase where VectorType: SignedNumeric {}

@@ -10,19 +10,12 @@ import Foundation
 ///A 2-dimensional vector.
 public struct PointBase<VectorType> where VectorType: Addable {
 
-    #if swift(>=4.2)
     ///The number of components in a `PointBase` instance.
     public static var numberOfComponents: Int { return 2 }
 
     ///The values of this vector.
     public private(set) var components = [VectorType](repeating: VectorType.zero, count: PointBase.numberOfComponents)
-    #else
-    ///The number of components in a `PointBase` instance.
-    public static var staticNumberOfComponents: Int { return 2 }
-
-    public private(set) var components = [VectorType](repeating: VectorType.zero, count: PointBase.staticNumberOfComponents)
-    #endif
-
+    
     ///The x coordinate of the `PointBase` (the first component of the vector).
     public var x:VectorType {
         get { return self.components[0] }
@@ -87,7 +80,7 @@ extension PointBase where VectorType: Numeric & Multiplicable {
 }
 
 extension PointBase: Addable where VectorType: Numeric & Addable {}
-extension PointBase: Equatable where VectorType: Numeric {}
+extension PointBase: Equatable where VectorType: Equatable {}
 extension PointBase: VectorBase where VectorType: Numeric {}
 extension PointBase: ConstantSizeVector where VectorType: Numeric {}
 extension PointBase: SignedVectorBase where VectorType: SignedNumeric {}

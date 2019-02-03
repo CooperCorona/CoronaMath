@@ -14,11 +14,8 @@ public protocol ConstantSizeVector: VectorBase, Addable {
 
     ///The number of components in a vector. Must be greater than 0.
     ///The instance property numberOfComponents must return this value.
-    #if swift(>=4.2)
     static var numberOfComponents:Int { get }
-    #else
-    static var staticNumberOfComponents:Int { get }
-    #endif
+
     // MARK: - Optional Implementations
 
     ///Initializes all components of the vector with the same value.
@@ -105,7 +102,6 @@ public protocol ConstantSizeVector: VectorBase, Addable {
 
 extension ConstantSizeVector {
 
-    #if swift(>=4.2)
     public static var zero:Self { return Self(components: [ComponentType](repeating: Self.ComponentType.zero, count: Self.numberOfComponents)) }
 
     public var numberOfComponents:Int { return Self.numberOfComponents }
@@ -120,23 +116,6 @@ extension ConstantSizeVector {
     public init(repeating value:ComponentType) {
         self.init(components: [ComponentType](repeating: value, count: Self.numberOfComponents))
     }
-    #else
-    public static var zero:Self { return Self(components: [ComponentType](repeating: Self.ComponentType.zero, count: Self.staticNumberOfComponents)) }
-
-    public var numberOfComponents:Int { return Self.staticNumberOfComponents }
-
-    public init(components:[ComponentType]) {
-        self.init()
-        for i in 0..<min(Self.staticNumberOfComponents, components.count) {
-            self[i] = components[i]
-        }
-    }
-
-    public init(repeating value:ComponentType) {
-        self.init(components: [ComponentType](repeating: value, count: Self.staticNumberOfComponents))
-    }
-    #endif
-
 
     public func dot(vector:Self) -> Self.ComponentType {
         return zip(self.components, vector.components).map() { $0 * $1 } .sum()

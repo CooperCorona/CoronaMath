@@ -10,19 +10,11 @@ import Foundation
 ///A 2-dimensional vector representing a size.
 public struct SizeBase<VectorType> where VectorType: Addable {
 
-    #if swift(>=4.2)
     ///The number of components in a `SizeBase` instance.
     public static var numberOfComponents: Int { return 2 }
 
     ///The values of this vector.
     public private(set) var components = [VectorType](repeating: VectorType.zero, count: SizeBase.numberOfComponents)
-    #else
-    ///The number of components in a `SizeBase` instance.
-    public static var staticNumberOfComponents: Int { return 2 }
-
-    ///The values of this vector.
-    public private(set) var components = [VectorType](repeating: VectorType.zero, count: SizeBase.staticNumberOfComponents)
-    #endif
 
     ///The width of the `SizeBase` (the first component of the vector).
     public var width:VectorType {
@@ -82,7 +74,7 @@ extension SizeBase where VectorType: Numeric & Multiplicable {
 }
 
 extension SizeBase: Addable where VectorType: Numeric & Addable {}
-extension SizeBase: Equatable where VectorType: Numeric {}
+extension SizeBase: Equatable where VectorType: Equatable {}
 extension SizeBase: VectorBase where VectorType: Numeric {}
 extension SizeBase: ConstantSizeVector where VectorType: Numeric {}
 extension SizeBase: SignedVectorBase where VectorType: SignedNumeric {}

@@ -18,19 +18,25 @@ public struct Matrix4Base<MatrixType>:
     ///The type of the matrix's elements.
     public typealias ElementType = MatrixType
 
-    ///The number of rows and columns of the matrix.
-    ///*Self.dimensions* and *self.dimensions* must equal
-    ///*size* for both components.
+    /// The number of rows and columns of the matrix.
+    /// *Self.dimensions* and *self.dimensions* must equal
+    /// *size* for both components.
     public static var size: Int { return 4 }
 
     ///The identity 4x4 matrix.
     public static var identity: Matrix4Base<MatrixType> {
-        return Matrix4Base<MatrixType>(elements: [
+        //There seems to be a compiler bug that causes the build to hang
+        //if an array literal comtains more than 12 elements. Constructing
+        //the array in 2 parts fixes this.
+        var elements = [
             MatrixType.one, MatrixType.zero, MatrixType.zero, MatrixType.zero,
             MatrixType.zero, MatrixType.one, MatrixType.zero, MatrixType.zero,
+        ]
+        elements += [
             MatrixType.zero, MatrixType.zero, MatrixType.one, MatrixType.zero,
             MatrixType.zero, MatrixType.zero, MatrixType.zero, MatrixType.one
-        ])
+        ]
+        return Matrix4Base<MatrixType>(elements: elements)
     }
 
     // MARK: - Instance Properties

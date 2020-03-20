@@ -12,6 +12,7 @@ public struct Vector4Base<VectorType> where VectorType: Addable {
 
     // MARK: - Static Properties
 
+    #if swift(>=4.2)
     ///The number of components in a `Vector4Base` instance.
     public static var numberOfComponents:Int { return 4 }
 
@@ -19,6 +20,13 @@ public struct Vector4Base<VectorType> where VectorType: Addable {
 
     ///The values of the vector.
     public private(set) var components: [VectorType] = [VectorType](repeating: VectorType.zero, count: Vector4Base.numberOfComponents)
+    #else
+    ///The number of components in a `Vector4Base` instance.
+    public static var staticNumberOfComponents:Int { return 4 }
+
+    ///The values of the vector.
+    public private(set) var components: [VectorType] = [VectorType](repeating: VectorType.zero, count: Vector4Base.staticNumberOfComponents)
+    #endif
     
     ///The x coordinate of the vector (the first component).
     public var x:VectorType {
@@ -76,7 +84,7 @@ extension Vector4Base where VectorType: Numeric & Multiplicable {
 }
 
 extension Vector4Base: Addable where VectorType: Numeric & Addable {}
-extension Vector4Base: Equatable where VectorType: Equatable {}
+extension Vector4Base: Equatable where VectorType: Numeric {}
 extension Vector4Base: VectorBase where VectorType: Numeric {}
 extension Vector4Base: ConstantSizeVector where VectorType: Numeric {}
 extension Vector4Base: SignedVectorBase where VectorType: SignedNumeric {}

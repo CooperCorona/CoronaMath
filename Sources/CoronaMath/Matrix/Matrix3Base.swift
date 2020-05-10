@@ -57,3 +57,21 @@ public struct Matrix3Base<MatrixType>:
     }
 
 }
+
+///Wraps `fastMultiply` so `Matrix3Base<Float>` can be multiplied using `*` but it
+///does not match to the generic, slow version.
+public func *(lhs:Matrix3Base<Float>, rhs:Matrix3Base<Float>) -> Matrix3Base<Float> {
+    return fastMultiply(lhs: lhs, rhs: rhs)
+}
+
+public func *(lhs:Matrix3Base<Double>, rhs:Matrix3Base<Double>) -> Matrix3Base<Double> {
+    return fastMultiply(lhs: lhs, rhs: rhs)
+}
+
+public func *=(lhs:inout Matrix3Base<Float>, rhs:Matrix3Base<Float>) {
+    lhs = fastMultiply(lhs: lhs, rhs: rhs)
+}
+
+public func *=(lhs:inout Matrix3Base<Double>, rhs:Matrix3Base<Double>) {
+    lhs = fastMultiply(lhs: lhs, rhs: rhs)
+}

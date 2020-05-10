@@ -2,12 +2,21 @@
   "object": {
     "pins": [
       {
+        "package": "COpenBlas",
+        "repositoryURL": "https://github.com/CooperCorona/COpenBlas",
+        "state": {
+          "branch": null,
+          "revision": "0357753ff1c05093f9ccedfc744dac2c374d37ad",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "CoronaErrors",
         "repositoryURL": "https://github.com/CooperCorona/CoronaErrors.git",
         "state": {
-          "branch": "Swift5",
-          "revision": "6f47f484f99523cfbd8ee4e7657a11f558c3253e",
-          "version": null
+          "branch": null,
+          "revision": "6408325d794c499a470d3009b9e67aaec0bd5831",
+          "version": "2.0.3"
         }
       }
     ]

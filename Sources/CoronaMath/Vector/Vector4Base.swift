@@ -90,3 +90,13 @@ extension Vector4Base: ConstantSizeVector where VectorType: Numeric {}
 extension Vector4Base: SignedVectorBase where VectorType: SignedNumeric {}
 extension Vector4Base: FloatingPointVector where VectorType: FloatingPoint {}
 extension Vector4Base: ConstantSizeFloatingPointVector where VectorType: FloatingPoint {}
+
+public func *(lhs:Matrix4Base<Float>, rhs:Vector4Base<Float>) -> Vector4Base<Float> {
+    // fastMultiply throws only if the matrix and vector dimensions are mismatched.
+    // We know they are correct, so it is safe to force try.
+    return try! fastMultiply(matrix: lhs, vector: rhs)
+}
+
+public func *(lhs:Matrix4Base<Double>, rhs:Vector4Base<Double>) -> Vector4Base<Double> {
+    return try! fastMultiply(matrix: lhs, vector: rhs)
+}

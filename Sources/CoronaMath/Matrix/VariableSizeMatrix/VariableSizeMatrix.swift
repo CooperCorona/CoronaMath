@@ -88,9 +88,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     public func multiply<M>(by matrix: M) throws -> VariableSizeMatrix<MatrixType> where
         M: MatrixBase,
         ElementType == M.ElementType {
-            guard self.dimensions.columns == matrix.dimensions.rows else {
-                throw ValueException<Int>.expected(value: self.dimensions.columns, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions.rows)
-            }
+            try require(dimensions: self.dimensions, canMultiplyBy: matrix.dimensions)
             let dimensions = IntSize(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
             var elements:[M.ElementType] = []
             for (row, column) in pairs(0..<dimensions.rows, 0..<dimensions.columns) {

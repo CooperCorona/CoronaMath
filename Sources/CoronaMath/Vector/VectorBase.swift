@@ -19,6 +19,10 @@ public protocol VectorBase: Equatable {
     ///The number of components in the vector.
     var numberOfComponents:Int { get }
 
+    ///The dimensions of the vector, as if it were a matrix.
+    ///Always equal to `{numberOfComponents, 1}`.
+    var dimensions:IntSize { get }
+
     ///The components of this vector.
     var components:[ComponentType] { get }
     
@@ -45,6 +49,10 @@ public protocol VectorBase: Equatable {
 }
 
 // MARK: - Default Implementations
+
+extension VectorBase {
+    public var dimensions:IntSize { return IntSize(rows: self.numberOfComponents, columns: 1) }
+}
 
 public func ==<V: VectorBase>(lhs:V, rhs:V) -> Bool {
     return lhs.components == rhs.components

@@ -14,10 +14,14 @@ public protocol ConstantSizeVector: VectorBase, Addable {
 
     ///The number of components in a vector. Must be greater than 0.
     ///The instance property numberOfComponents must return this value.
+    ///Before Swift 4.2, using the same name for a static property and an
+    ///instance property returned a compile error.
     #if swift(>=4.2)
     static var numberOfComponents:Int { get }
+    static var dimensions:IntSize { get }
     #else
     static var staticNumberOfComponents:Int { get }
+    static var staticDimensions:IntSize { get }
     #endif
     // MARK: - Optional Implementations
 
@@ -110,6 +114,10 @@ extension ConstantSizeVector {
 
     public var numberOfComponents:Int { return Self.numberOfComponents }
 
+    public static var dimensions:IntSize { return IntSize(rows: Self.numberOfComponents, columns: 1) }
+
+    public var dimensions:IntSize { return Self.dimensions }
+
     public init(components:[ComponentType]) {
         self.init()
         for i in 0..<min(Self.numberOfComponents, components.count) {
@@ -124,6 +132,10 @@ extension ConstantSizeVector {
     public static var zero:Self { return Self(components: [ComponentType](repeating: Self.ComponentType.zero, count: Self.staticNumberOfComponents)) }
 
     public var numberOfComponents:Int { return Self.staticNumberOfComponents }
+
+    public static var staticDimensions:IntSize { return IntSize(rows: Self.staticNumberOfComponents, columns: 1) }
+
+    public var dimensions:IntPoint { return Self.staticDimensions }
 
     public init(components:[ComponentType]) {
         self.init()

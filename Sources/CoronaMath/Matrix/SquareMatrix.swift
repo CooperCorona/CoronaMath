@@ -77,66 +77,6 @@ public func *<M>(lhs:M, rhs:M) -> M where M: SquareMatrix {
     return M(elements: elements)
 }
 
-
-extension SquareMatrix where ElementType == Double {
-
-    public func inverse() -> Self {
-        var inMatrix = self.elements
-        var n = __CLPK_integer(Self.size)
-        var pivots = [__CLPK_integer](repeating: 0, count: Self.size)
-        var workspace = [Double](repeating: 0.0, count: Self.size)
-        var error : __CLPK_integer = 0
-
-        withUnsafeMutablePointer(to: &n) {
-            dgetrf_($0, $0, &inMatrix, $0, &pivots, &error)
-            dgetri_($0, &inMatrix, $0, &pivots, &workspace, $0, &error)
-        }
-        return Self(elements: inMatrix)
-    }
-
-}
-
-extension SquareMatrix where ElementType == Float {
-
-    public func inverse() -> Self {
-        var inMatrix = self.elements
-        var n = __CLPK_integer(Self.size)
-        var pivots = [__CLPK_integer](repeating: 0, count: Self.size)
-        var workspace = [Float](repeating: 0.0, count: Self.size)
-        var error : __CLPK_integer = 0
-
-        withUnsafeMutablePointer(to: &n) {
-            sgetrf_($0, $0, &inMatrix, $0, &pivots, &error)
-            sgetri_($0, &inMatrix, $0, &pivots, &workspace, $0, &error)
-        }
-        return Self(elements: inMatrix)
-    }
-
-}
-
 public func *=<M>(lhs:inout M, rhs:M) where M: SquareMatrix {
     lhs = lhs * rhs
-}
-
-///Calculates the matrix product of two matrices.
-///Must be functions because making them operator overloads for `SquareMatrix` doesn't
-///work. The generic multiplication method is called because Swift does not prefer the
-///method with more specific generic constraints.
-/// - parameter lhs: The matrix on the left of the multiplication.
-/// - parameter rhs: The matrix on the right of the multiplication.
-/// - returns: The product of *lhs* and *rhs*.
-internal func fastMultiply<M>(lhs:M, rhs:M) -> M where M: SquareMatrix, M.ElementType == Float {
-    var vals = [Float](repeating: 0.0, count: M.size * M.size)
-    cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, Int32(M.size), Int32(M.size), Int32(M.size), Float(1.0), lhs.elements, Int32(M.size), rhs.elements, Int32(M.size), Float(0.0), &vals, Int32(M.size))
-    return M(elements: vals)
-}
-
-///Calculates the matrix product of two matrices.
-/// - parameter lhs: The matrix on the left of the multiplication.
-/// - parameter rhs: The matrix on the right of the multiplication.
-/// - returns: The product of *lhs* and *rhs*.
-internal func fastMultiply<M>(lhs:M, rhs:M) -> M where M: SquareMatrix, M.ElementType == Double {
-    var vals = [Double](repeating: 0.0, count: M.size * M.size)
-    cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, Int32(M.size), Int32(M.size), Int32(M.size), Double(1.0), lhs.elements, Int32(M.size), rhs.elements, Int32(M.size), Double(0.0), &vals, Int32(M.size))
-    return M(elements: vals)
 }

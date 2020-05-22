@@ -139,6 +139,17 @@ final class Vector3Tests: XCTestCase {
         let result = Vector3(components: [-3.0, 6.0, -3.0])
         XCTAssertEqual(v1.cross(vector: v2), result)
     }
+
+    func testMultiplyMatrix3() {
+        let v = Vector3(components: [1.0, 2.0, 3.0])
+        let m = Matrix3(elements: [
+            4.0, 5.0, 6.0,
+            7.0, 8.0, 9.0,
+            10.0, 11.0, 12.0
+        ])
+        let result = Vector3(components: [32.0, 50.0, 68.0])
+        XCTAssertEqual(m * v, result)
+    }
     
 }
 

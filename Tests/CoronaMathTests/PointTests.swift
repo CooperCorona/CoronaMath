@@ -107,4 +107,34 @@ final class PointTests: XCTestCase {
         let point2 = Point(x: -1.0, y: 1.0)
         XCTAssertEqual(point1.angle(to: point2), Double.pi, accuracy: epsilon)
     }
+
+    func testWithAngleUnit0() {
+        let point = Point.with(angle: 0.0)
+        let expected = Point(x: 1.0, y: 0.0)
+        // Trig functions are more likely to introduce floating point errors, so they need
+        // to use the accuracy parameter.
+        XCTAssertEqual(point.x, expected.x, accuracy: self.epsilon)
+        XCTAssertEqual(point.y, expected.y, accuracy: self.epsilon)
+    }
+
+    func testWithAngle180Unit() {
+        let point = Point.with(angle: Double.pi)
+        let expected = Point(x: -1.0, y: 0.0)
+        XCTAssertEqual(point.x, expected.x, accuracy: self.epsilon)
+        XCTAssertEqual(point.y, expected.y, accuracy: self.epsilon)
+    }
+
+    func testWithAnglePositive90() {
+        let point = Point.with(angle: Double.pi / 2.0, length: 4.0)
+        let expected = Point(x: 0.0, y: 4.0)
+        XCTAssertEqual(point.x, expected.x, accuracy: self.epsilon)
+        XCTAssertEqual(point.y, expected.y, accuracy: self.epsilon)
+    }
+
+    func testWithAngleNegative270() {
+        let point = Point.with(angle: 3.0 * Double.pi / 2.0, length: -3.0)
+        let expected = Point(x: 0.0, y: 3.0)
+        XCTAssertEqual(point.x, expected.x, accuracy: self.epsilon)
+        XCTAssertEqual(point.y, expected.y, accuracy: self.epsilon)
+    }
 }

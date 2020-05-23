@@ -96,6 +96,41 @@ extension PointBase: ConstantSizeFloatingPointVector where VectorType: FloatingP
 
 extension PointBase where VectorType == Double {
 
+    ///Calculates a point representing a vector starting at the origin with an angle of `angle` and a length of `length`.
+    /// - parameter angle: The angle of the end of this vector from the origin.
+    /// - parameter length: The length of the vector. Optional. Defaults to 1 for a point on the unit circle.
+    /// - returns: A point representing a vector starting at the origin with angle `angle` and length `length`.
+    public static func with(angle:VectorType, length:VectorType = 1.0) -> Self {
+        let x = cos(angle) * length
+        let y = sin(angle) * length
+        return Self(x: x, y: y)
+    }
+
+    ///Calculates the angle of this vector relative to the x-axis.
+    /// - returns: The angle this vector makes with the x-axis when
+    ///positioned at the origin.
+    public func angle() -> VectorType {
+        return atan2(self.y, self.x)
+    }
+
+    ///Calculates the angle of the vector starting at `self` and ending at `vector`, assuming
+    ///both vectors are positioned at the origin.
+    /// - parameter vector: The vector to calculate the angle to.
+    /// - returns: The angle between this vector and `vector` in the range [-pi, pi].
+    public func angle(to vector:PointBase<VectorType>) -> VectorType {
+        return atan2(vector.y - self.y, vector.x - self.x)
+    }
+
+}
+
+extension PointBase where VectorType == Float {
+
+    public static func with(angle:VectorType, length:VectorType = 1.0) -> Self {
+        let x = cos(angle) * length
+        let y = sin(angle) * length
+        return Self(x: x, y: y)
+    }
+
     ///Calculates the angle of this vector relative to the x-axis.
     /// - returns: The angle this vector makes with the x-axis when
     ///positioned at the origin.

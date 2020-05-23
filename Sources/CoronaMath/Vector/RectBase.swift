@@ -129,6 +129,35 @@ extension RectBase where VectorType: Comparable {
 
 }
 
+extension RectBase where VectorType: Comparable & SignedNumeric {
+
+    ///Constructs a `RectBase` instance containing all the elements in `points`.
+    /// - parameter points: An array of points to the returned rect should surround. Must be non-empty.
+    /// - returns: A `RectBase` instance defining the bounding box containing all the elements in `points`.
+    public static func containing(points:[PointBase<VectorType>]) -> Self {
+        var minX = points[0].x
+        var maxX = points[0].x
+        var minY = points[0].y
+        var maxY = points[0].y
+        for point in points.dropFirst() {
+            if point.x < minX {
+                minX = point.x
+            }
+            if point.x > maxX {
+                maxX = point.x
+            }
+            if point.y < minY {
+                minY = point.y
+            }
+            if point.y > maxY {
+                maxY = point.y
+            }
+        }
+        return RectBase(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+    }
+
+}
+
 extension RectBase where VectorType: Multiplicable {
 
     ///Returns a point inside the rectangle by interpolating `point`,

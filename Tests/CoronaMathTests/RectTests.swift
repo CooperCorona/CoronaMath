@@ -96,4 +96,66 @@ final class RectTests: XCTestCase {
         XCTAssertEqual(rect[0], 4.0)
     }
 
+    func testContainingPointsOnePoint() {
+        let rect = Rect.containing(points: [Point(x: 1.0, y: 1.0)])
+        let expected = Rect(x: 1.0, y: 1.0, width: 0.0, height: 0.0)
+        XCTAssertEqual(rect, expected)
+    }
+
+    func testContainingPointsTwoPointsEqual() {
+        let rect = Rect.containing(points: [
+            Point(x: 1.0, y: 1.0),
+            Point(x: 1.0, y: 1.0)
+        ])
+        let expected = Rect(x: 1.0, y: 1.0, width: 0.0, height: 0.0)
+        XCTAssertEqual(rect, expected)
+    }
+
+    func testContainingPointsTwoPointsOrdered() {
+        let rect = Rect.containing(points: [
+            Point(x: 1.0, y: 1.0),
+            Point(x: 4.0, y: 4.0)
+        ])
+        let expected = Rect(x: 1.0, y: 1.0, width: 3.0, height: 3.0)
+        XCTAssertEqual(rect, expected)
+    }
+
+    func testContainingPointsTwoPointsOrderedXY() {
+        let rect = Rect.containing(points: [
+            Point(x: 1.0, y: 1.0),
+            Point(x: 4.0, y: 4.0)
+        ])
+        let expected = Rect(x: 1.0, y: 1.0, width: 3.0, height: 3.0)
+        XCTAssertEqual(rect, expected)
+    }
+
+    func testContainingPointsTwoPointsUnorderedXOrderedY() {
+        let rect = Rect.containing(points: [
+            Point(x: 4.0, y: 1.0),
+            Point(x: 1.0, y: 4.0)
+        ])
+        let expected = Rect(x: 1.0, y: 1.0, width: 3.0, height: 3.0)
+        XCTAssertEqual(rect, expected)
+    }
+
+    func testContainingPointsTwoPointsOrderedXUnorderedY() {
+        let rect = Rect.containing(points: [
+            Point(x: 1.0, y: 4.0),
+            Point(x: 4.0, y: 1.0)
+        ])
+        let expected = Rect(x: 1.0, y: 1.0, width: 3.0, height: 3.0)
+        XCTAssertEqual(rect, expected)
+    }
+
+    func testContainingPointsManyPoints() {
+        let rect = Rect.containing(points: [
+            Point(x: 1.0, y: 4.0),
+            Point(x: 2.0, y: 3.0),
+            Point(x: 0.0, y: 4.0),
+            Point(x: 5.0, y: 1.0),
+            Point(x: 2.0, y: 5.0)
+        ])
+        let expected = Rect(x: 0.0, y: 1.0, width: 5.0, height: 4.0)
+        XCTAssertEqual(rect, expected)
+    }
 }

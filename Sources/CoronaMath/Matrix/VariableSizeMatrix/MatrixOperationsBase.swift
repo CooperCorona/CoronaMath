@@ -16,9 +16,9 @@ public protocol MatrixOperationsBase: MatrixBase {
     ///The type returned by adding or subtracting two matrices.
     associatedtype MatrixAdditionType: MatrixBase where MatrixAdditionType.ElementType == Self.ElementType
     ///The type returned by multiplying two matrices.
-    associatedtype MatrixMultiplicationType: MatrixBase
+    associatedtype MatrixMultiplicationType: MatrixBase where MatrixMultiplicationType.ElementType == Self.ElementType
     ///The type returned by transposing this matrix.
-    associatedtype MatrixTransposeType: MatrixBase where MatrixMultiplicationType.ElementType == Self.ElementType
+    associatedtype MatrixTransposeType: MatrixBase where MatrixTransposeType.ElementType == Self.ElementType
 
     ///Adds `self` and `matrix` component-wise.
     /// - parameter matrix: The matrix to add to this matrix.

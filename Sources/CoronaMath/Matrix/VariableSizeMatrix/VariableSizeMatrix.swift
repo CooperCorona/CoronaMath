@@ -112,7 +112,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     }
 }
 
-extension VariableSizeMatrix: FloatingPointMatrix where MatrixType: FloatingPoint {}
+extension VariableSizeMatrix: ContinuousMatrix where MatrixType: ContinuousNumber {}
 
 public func +<MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: MatrixType) -> VariableSizeMatrix<MatrixType> {
     return VariableSizeMatrix(dimensions: lhs.dimensions, elements: lhs.elements.map() { $0 + rhs })
@@ -138,11 +138,11 @@ public func *<MatrixType>(lhs: MatrixType, rhs: VariableSizeMatrix<MatrixType>) 
     return VariableSizeMatrix(dimensions: rhs.dimensions, elements: rhs.elements.map() { lhs * $0 })
 }
 
-public func /<MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: MatrixType) -> VariableSizeMatrix<MatrixType> where MatrixType: FloatingPoint {
+public func /<MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: MatrixType) -> VariableSizeMatrix<MatrixType> where MatrixType: ContinuousNumber {
     return VariableSizeMatrix(dimensions: lhs.dimensions, elements: lhs.elements.map() { $0 / rhs })
 }
 
-public func /<MatrixType>(lhs: MatrixType, rhs: VariableSizeMatrix<MatrixType>) -> VariableSizeMatrix<MatrixType> where MatrixType: FloatingPoint {
+public func /<MatrixType>(lhs: MatrixType, rhs: VariableSizeMatrix<MatrixType>) -> VariableSizeMatrix<MatrixType> where MatrixType: ContinuousNumber {
     return VariableSizeMatrix(dimensions: rhs.dimensions, elements: rhs.elements.map() { lhs / $0 })
 }
 

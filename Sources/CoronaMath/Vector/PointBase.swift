@@ -8,7 +8,9 @@
 import Foundation
 
 ///A 2-dimensional vector.
-public struct PointBase<VectorType> where VectorType: Addable {
+public struct PointBase<VectorType>: ConstantSizeVector where VectorType: DiscreteNumber {
+
+    public typealias ComponentType = VectorType
 
     #if swift(>=4.2)
     ///The number of components in a `PointBase` instance.
@@ -22,6 +24,11 @@ public struct PointBase<VectorType> where VectorType: Addable {
 
     public private(set) var components = [VectorType](repeating: VectorType.zero, count: PointBase.staticNumberOfComponents)
     #endif
+
+    ///The unit vector in the x direction.
+    public static var unitX:PointBase<VectorType> { return PointBase<VectorType>(components: [VectorType.one, VectorType.zero]) }
+    ///The unit vector in the y direction.
+    public static var unitY:PointBase<VectorType> { return PointBase<VectorType>(components: [VectorType.zero, VectorType.one]) }
 
     ///The x coordinate of the `PointBase` (the first component of the vector).
     public var x:VectorType {
@@ -78,31 +85,18 @@ public struct PointBase<VectorType> where VectorType: Addable {
     
 }
 
-extension PointBase where VectorType: Numeric & Multiplicable {
+extension PointBase: ContinuousVector where VectorType: ContinuousNumber {}
+extension PointBase: ConstantSizeContinuousVector where VectorType: ContinuousNumber {}
 
-    ///The unit vector in the x direction.
-    public static var unitX:PointBase<VectorType> { return PointBase<VectorType>(components: [VectorType.one, VectorType.zero]) }
-    ///The unit vector in the y direction.
-    public static var unitY:PointBase<VectorType> { return PointBase<VectorType>(components: [VectorType.zero, VectorType.one]) }
-}
-
-extension PointBase: Addable where VectorType: Numeric & Addable {}
-extension PointBase: Equatable where VectorType: Numeric {}
-extension PointBase: VectorBase where VectorType: Numeric {}
-extension PointBase: ConstantSizeVector where VectorType: Numeric {}
-extension PointBase: SignedVectorBase where VectorType: SignedNumeric {}
-extension PointBase: FloatingPointVector where VectorType: FloatingPoint {}
-extension PointBase: ConstantSizeFloatingPointVector where VectorType: FloatingPoint {}
-
-extension PointBase where VectorType == Double {
+extension PointBase where VectorType: ContinuousNumber {
 
     ///Calculates a point representing a vector starting at the origin with an angle of `angle` and a length of `length`.
     /// - parameter angle: The angle of the end of this vector from the origin.
     /// - parameter length: The length of the vector. Optional. Defaults to 1 for a point on the unit circle.
     /// - returns: A point representing a vector starting at the origin with angle `angle` and length `length`.
-    public static func with(angle:VectorType, length:VectorType = 1.0) -> Self {
-        let x = cos(angle) * length
-        let y = sin(angle) * length
+    public static func with(angle:VectorType, length:VectorType = VectorType.one) -> Self {
+        let x = VectorType.cos(angle) * length
+        let y = VectorType.sin(angle) * length
         return Self(x: x, y: y)
     }
 
@@ -110,7 +104,7 @@ extension PointBase where VectorType == Double {
     /// - returns: The angle this vector makes with the x-axis when
     ///positioned at the origin.
     public func angle() -> VectorType {
-        return atan2(self.y, self.x)
+        return VectorType.atan2(self.y, self.x)
     }
 
     ///Calculates the angle of the vector starting at `self` and ending at `vector`, assuming
@@ -118,7 +112,7 @@ extension PointBase where VectorType == Double {
     /// - parameter vector: The vector to calculate the angle to.
     /// - returns: The angle between this vector and `vector` in the range [-pi, pi].
     public func angle(to vector:PointBase<VectorType>) -> VectorType {
-        return atan2(vector.y - self.y, vector.x - self.x)
+        return VectorType.atan2(vector.y - self.y, vector.x - self.x)
     }
 
 }

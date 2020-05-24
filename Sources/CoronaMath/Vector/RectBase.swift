@@ -9,7 +9,7 @@ import Foundation
 
 ///A 4-dimensional vector representing a rectangle. A rectangle contains an origin (point) and dimensions (size).
 ///The dimensions of `size` must be non-negative.
-public struct RectBase<VectorType> where VectorType: Addable {
+public struct RectBase<VectorType>: ConstantSizeVector where VectorType: DiscreteNumber {
 
     // MARK: - Static Properties
 
@@ -28,6 +28,9 @@ public struct RectBase<VectorType> where VectorType: Addable {
     ///The values of the vector.
     public private(set) var components: [VectorType] = [VectorType](repeating: VectorType.zero, count: RectBase.staticNumberOfComponents)
     #endif
+
+    ///The unit rectangle in the `VectorType` space. Has origin zero and size one.
+    public static var unitRect:RectBase<VectorType> { return RectBase(x: VectorType.zero, y: VectorType.zero, width: VectorType.one, height: VectorType.one) }
 
     ///The x coordinate of the origin of the rect (the first component).
     public var x:VectorType {
@@ -102,20 +105,17 @@ public struct RectBase<VectorType> where VectorType: Addable {
         set { self.components[index] = newValue }
     }
 
+    ///Returns a point inside the rectangle by interpolating `point`,
+    ///starting at `origin` and ending at `origin + size`.
+    /// - parameter point: The point representing a percent to interpolate by. The components of
+    ///`point` must be between `VectorType.zero` and `VectorType.one`.
+    /// - returns: A point inside `self` by adding a given percent of `size` to `origin`.
+    public func interpolate(point:PointBase<VectorType>) -> PointBase<VectorType> {
+        return PointBase(x: self.x + point.x * self.width, y: self.y + point.y * self.height)
+    }
 }
 
-extension RectBase where VectorType: Numeric & Multiplicable {
-    ///The unit rectangle in the `VectorType` space. Has origin zero and size one.
-    public static var unitRect:RectBase<VectorType> { return RectBase(x: VectorType.zero, y: VectorType.zero, width: VectorType.one, height: VectorType.one) }
-}
-
-extension RectBase: Addable where VectorType: Numeric & Addable {}
-extension RectBase: Equatable where VectorType: Numeric {}
-extension RectBase: VectorBase where VectorType: Numeric {}
-extension RectBase: ConstantSizeVector where VectorType: Numeric {}
-extension RectBase: SignedVectorBase where VectorType: SignedNumeric {}
-extension RectBase: FloatingPointVector where VectorType: FloatingPoint {}
-extension RectBase: ConstantSizeFloatingPointVector where VectorType: FloatingPoint {}
+extension RectBase: ContinuousVector, ConstantSizeContinuousVector where VectorType: ContinuousNumber {}
 
 extension RectBase where VectorType: Comparable {
 
@@ -129,7 +129,7 @@ extension RectBase where VectorType: Comparable {
 
 }
 
-extension RectBase where VectorType: Comparable & SignedNumeric {
+extension RectBase where VectorType: Comparable & ContinuousNumber {
 
     ///Constructs a `RectBase` instance containing all the elements in `points`.
     /// - parameter points: An array of points to the returned rect should surround. Must be non-empty.
@@ -154,19 +154,6 @@ extension RectBase where VectorType: Comparable & SignedNumeric {
             }
         }
         return RectBase(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
-    }
-
-}
-
-extension RectBase where VectorType: Multiplicable {
-
-    ///Returns a point inside the rectangle by interpolating `point`,
-    ///starting at `origin` and ending at `origin + size`.
-    /// - parameter point: The point representing a percent to interpolate by. The components of
-    ///`point` must be between `VectorType.zero` and `VectorType.one`.
-    /// - returns: A point inside `self` by adding a given percent of `size` to `origin`.
-    public func interpolate(point:PointBase<VectorType>) -> PointBase<VectorType> {
-        return PointBase(x: self.x + point.x * self.width, y: self.y + point.y * self.height)
     }
 
 }

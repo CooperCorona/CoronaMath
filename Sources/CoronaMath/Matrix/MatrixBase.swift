@@ -8,7 +8,7 @@
 import Foundation
 
 ///The protocols to which a type must conform to be an element in a matrix.
-public typealias MatrixElementType = Numeric & Addable & Multiplicable
+public typealias MatrixElementType = DiscreteNumber
 
 ///An 2-dimensional NxM list of elements of some type.
 ///

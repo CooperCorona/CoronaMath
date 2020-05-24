@@ -7,8 +7,8 @@
 
 import Foundation
 
-///A vector whose components are floating point numbers.
-public protocol FloatingPointVector: SignedVectorBase where Self.ComponentType: FloatingPoint  {
+///A vector whose components are continuous numbers.
+public protocol ContinuousVector: VectorBase where Self.ComponentType: ContinuousNumber  {
 
     // MARK: - Optional Implementations
 
@@ -19,6 +19,9 @@ public protocol FloatingPointVector: SignedVectorBase where Self.ComponentType: 
     ///Calculates a vector parallel to `self` with length 1.0.
     /// - returns: a vector parallel to `self` with length 1.0.
     func unit() -> Self
+
+    ///Negates the vector, returning a vector with the negative of all components.
+    static prefix func -(lhs:Self) -> Self
     
     ///Divides two vectors component-wise.
     static func /(lhs:Self, rhs:Self) -> Self
@@ -34,10 +37,10 @@ public protocol FloatingPointVector: SignedVectorBase where Self.ComponentType: 
 
 // MARK: - Default Implementations
 
-extension FloatingPointVector {
+extension ContinuousVector {
     
-    public func length() -> Self.ComponentType {
-        return sqrt(self.components.map() { $0 * $0 } .sum())
+    public func length() -> ComponentType {
+        return ComponentType.sqrt(self.components.map() { $0 * $0 } .sum())
     }
     
     public func unit() -> Self {
@@ -46,23 +49,26 @@ extension FloatingPointVector {
     }
     
 }
+public prefix func -<V: ContinuousVector>(lhs:V) -> V {
+    return V(components: lhs.components.map() { -$0 })
+}
 
-public func /<V: FloatingPointVector>(lhs:V, rhs:V) -> V {
+public func /<V: ContinuousVector>(lhs:V, rhs:V) -> V {
     return V(components: zip(lhs.components, rhs.components).map() { $0 / $1 })
 }
 
-public func /=<V: FloatingPointVector>(lhs:inout V, rhs:V) {
+public func /=<V: ContinuousVector>(lhs:inout V, rhs:V) {
     lhs = lhs / rhs
 }
 
-public func /<V: FloatingPointVector>(lhs:V, rhs:V.ComponentType) -> V {
+public func /<V: ContinuousVector>(lhs:V, rhs:V.ComponentType) -> V {
     return V(components: lhs.components.map() { $0 / rhs })
 }
 
-public func /<V: FloatingPointVector>(lhs:V.ComponentType, rhs:V) -> V {
+public func /<V: ContinuousVector>(lhs:V.ComponentType, rhs:V) -> V {
     return V(components: rhs.components.map() { lhs / $0 })
 }
 
-public func /=<V: FloatingPointVector>(lhs:inout V, rhs:V.ComponentType) {
+public func /=<V: ContinuousVector>(lhs:inout V, rhs:V.ComponentType) {
     lhs = lhs / rhs
 }

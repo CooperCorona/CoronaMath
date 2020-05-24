@@ -8,7 +8,9 @@
 import Foundation
 
 ///A 2-dimensional vector representing a size.
-public struct SizeBase<VectorType> where VectorType: Addable {
+public struct SizeBase<VectorType>: ConstantSizeVector where VectorType: DiscreteNumber {
+
+    public typealias ComponentType = VectorType
 
     #if swift(>=4.2)
     ///The number of components in a `SizeBase` instance.
@@ -73,7 +75,7 @@ public struct SizeBase<VectorType> where VectorType: Addable {
 
 }
 
-extension SizeBase where VectorType: Numeric & Multiplicable {
+extension SizeBase where VectorType: DiscreteNumber {
 
     ///The unit vector in the width direction.
     public static var unitWidth:SizeBase<VectorType> { return SizeBase<VectorType>(components: [VectorType.one, VectorType.zero]) }
@@ -81,13 +83,8 @@ extension SizeBase where VectorType: Numeric & Multiplicable {
     public static var unitHeight:SizeBase<VectorType> { return SizeBase<VectorType>(components: [VectorType.zero, VectorType.one]) }
 }
 
-extension SizeBase: Addable where VectorType: Numeric & Addable {}
-extension SizeBase: Equatable where VectorType: Numeric {}
-extension SizeBase: VectorBase where VectorType: Numeric {}
-extension SizeBase: ConstantSizeVector where VectorType: Numeric {}
-extension SizeBase: SignedVectorBase where VectorType: SignedNumeric {}
-extension SizeBase: FloatingPointVector where VectorType: FloatingPoint {}
-extension SizeBase: ConstantSizeFloatingPointVector where VectorType: FloatingPoint {}
+extension SizeBase: ContinuousVector where VectorType: ContinuousNumber {}
+extension SizeBase: ConstantSizeContinuousVector where VectorType: ContinuousNumber {}
 
 extension SizeBase where VectorType: Comparable {
 

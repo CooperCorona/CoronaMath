@@ -14,7 +14,7 @@ public protocol VectorBase: Equatable {
     // MARK: - Required Methods
 
     ///The type of the vector's components.
-    associatedtype ComponentType: Numeric, Addable
+    associatedtype ComponentType: DiscreteNumber
 
     ///The number of components in the vector.
     var numberOfComponents:Int { get }

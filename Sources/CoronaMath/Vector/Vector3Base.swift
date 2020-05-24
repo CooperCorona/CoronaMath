@@ -8,7 +8,9 @@
 import Foundation
 
 ///A 3-dimensional vector.
-public struct Vector3Base<VectorType> where VectorType: Addable {
+public struct Vector3Base<VectorType>: ConstantSizeVector where VectorType: DiscreteNumber {
+
+    public typealias ComponentType = VectorType
 
     // MARK: - Static Properties
 
@@ -27,6 +29,13 @@ public struct Vector3Base<VectorType> where VectorType: Addable {
     ///The values of this vector.
     public private(set) var components = [VectorType](repeating: VectorType.zero, count: Vector3Base<VectorType>.staticNumberOfComponents)
     #endif
+
+    ///The unit vector in the x direction.
+    public static var unitX:Vector3Base<VectorType> { return Vector3Base<VectorType>(components: [VectorType.one, VectorType.zero, VectorType.zero]) }
+    ///The unit vector in the y direction.
+    public static var unitY:Vector3Base<VectorType> { return Vector3Base<VectorType>(components: [VectorType.zero, VectorType.one, VectorType.zero]) }
+    ///The unit vector in the z direction.
+    public static var unitZ:Vector3Base<VectorType> { return Vector3Base<VectorType>(components: [VectorType.zero, VectorType.zero, VectorType.one]) }
 
     ///The x coordinate of the vector (the first component).
     public var x:VectorType {
@@ -62,22 +71,7 @@ public struct Vector3Base<VectorType> where VectorType: Addable {
         get { return self.components[index] }
         set { self.components[index] = newValue }
     }
-    
-}
 
-extension Vector3Base where VectorType: Numeric & Multiplicable {
-
-    ///The unit vector in the x direction.
-    public static var unitX:Vector3Base<VectorType> { return Vector3Base<VectorType>(components: [VectorType.one, VectorType.zero, VectorType.zero]) }
-    ///The unit vector in the y direction.
-    public static var unitY:Vector3Base<VectorType> { return Vector3Base<VectorType>(components: [VectorType.zero, VectorType.one, VectorType.zero]) }
-    ///The unit vector in the z direction.
-    public static var unitZ:Vector3Base<VectorType> { return Vector3Base<VectorType>(components: [VectorType.zero, VectorType.zero, VectorType.one]) }
-}
-
-extension Vector3Base: Addable where VectorType: Numeric {}
-extension Vector3Base: Equatable where VectorType: Numeric {}
-extension Vector3Base: VectorBase where VectorType: Numeric {
     ///Calculates the cross product of this vector and another vector.
     /// - parameter vector: The vector with which to perform the cross product.
     /// - returns: The cross product. This is a vector perpendicular to *self* and
@@ -89,10 +83,8 @@ extension Vector3Base: VectorBase where VectorType: Numeric {
         return Vector3Base(components: [x, y, z])
     }
 }
-extension Vector3Base: ConstantSizeVector where VectorType: Numeric {}
-extension Vector3Base: SignedVectorBase where VectorType: SignedNumeric {}
-extension Vector3Base: FloatingPointVector where VectorType: FloatingPoint {}
-extension Vector3Base: ConstantSizeFloatingPointVector where VectorType: FloatingPoint {}
+
+extension Vector3Base: ContinuousVector, ConstantSizeContinuousVector where VectorType: ContinuousNumber {}
 
 public func *(lhs:Matrix3Base<Float>, rhs:Vector3Base<Float>) -> Vector3Base<Float> {
     // fastMultiply throws only if the matrix and vector dimensions are mismatched.

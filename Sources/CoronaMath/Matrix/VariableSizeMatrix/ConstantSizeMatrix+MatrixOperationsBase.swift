@@ -54,10 +54,10 @@ public func *<M>(lhs:M.ElementType, rhs:M) -> M where M: ConstantSizeMatrix, M: 
     return M(elements: rhs.elements.map() { $0 * lhs })
 }
 
-public func /<M>(lhs:M, rhs:M.ElementType) -> M where M: ConstantSizeMatrix, M: FloatingPointMatrix {
+public func /<M>(lhs:M, rhs:M.ElementType) -> M where M: ConstantSizeMatrix & ContinuousMatrix {
     return M(elements: lhs.elements.map() { $0 / rhs })
 }
 
-public func /<M>(lhs:M.ElementType, rhs:M) -> M where M: ConstantSizeMatrix, M: FloatingPointMatrix {
+public func /<M>(lhs:M.ElementType, rhs:M) -> M where M: ConstantSizeMatrix & ContinuousMatrix {
     return M(elements: rhs.elements.map() { lhs / $0 })
 }

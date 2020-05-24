@@ -9,7 +9,7 @@ public typealias Point = PointBase<Double>
 public typealias IntPoint = PointBase<Int>
 public typealias Vector3 = Vector3Base<Double>
 public typealias Vector4 = Vector4Base<Double>
-public typealias Vector = ConstantSizeFloatingPointVector
+public typealias Vector = ConstantSizeContinuousVector
 
 public typealias Size = SizeBase<Double>
 public typealias IntSize = SizeBase<Int>

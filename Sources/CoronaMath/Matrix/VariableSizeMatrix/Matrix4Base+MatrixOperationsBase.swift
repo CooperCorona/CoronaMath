@@ -29,4 +29,4 @@ extension Matrix4Base: MatrixOperationsBase {
     }
 
 }
-extension Matrix4Base: FloatingPointMatrix where MatrixType: FloatingPoint {}
+extension Matrix4Base: ContinuousMatrix where MatrixType: ContinuousNumber {}

@@ -7,8 +7,8 @@
 
 import Foundation
 
-///A matrix whose elements are FloatingPoint.
-public protocol FloatingPointMatrix: MatrixOperationsBase where ElementType: FloatingPoint {
+///A matrix whose elements are `ContinuousNumber`, enabling more operations.
+public protocol ContinuousMatrix: MatrixOperationsBase where ElementType: ContinuousNumber {
 
     // MARK: - Required Implementations
 
@@ -36,6 +36,6 @@ public protocol FloatingPointMatrix: MatrixOperationsBase where ElementType: Flo
 
 // MARK: - Default Implementations
 
-public func /=<M>(lhs:inout M, rhs:M.ElementType) where M: FloatingPointMatrix {
+public func /=<M>(lhs:inout M, rhs:M.ElementType) where M: ContinuousMatrix {
     lhs = lhs / rhs
 }

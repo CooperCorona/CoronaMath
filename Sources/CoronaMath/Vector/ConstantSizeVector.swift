@@ -8,7 +8,7 @@
 import Foundation
 
 ///A Vector whose number of components is determined at compile time.
-public protocol ConstantSizeVector: VectorBase, Addable {
+public protocol ConstantSizeVector: VectorBase {
 
     // MARK: - Required Implementations
 
@@ -23,6 +23,7 @@ public protocol ConstantSizeVector: VectorBase, Addable {
     static var staticNumberOfComponents:Int { get }
     static var staticDimensions:IntSize { get }
     #endif
+
     // MARK: - Optional Implementations
 
     ///Initializes all components of the vector with the same value.

@@ -58,6 +58,57 @@ public struct Matrix3Base<MatrixType>:
 
 }
 
+extension Matrix3Base: ContinuousMatrix where MatrixType: ContinuousNumber {
+
+    ///Constructs a matrix with the given translation, scale, and rotation. The final matrix components are directly
+    ///calculated without constructing individual matrices and multiplying them.
+    /// - parameter translation: The x and y translation of the matrix.
+    /// - parameter scale: The horizontal and vertical scale of the matrix.
+    /// - parameter rotation: The rotation, in radians counterclockwise, of the matrix.
+    public init(translation:PointBase<MatrixType>, scale:PointBase<MatrixType>, rotation:MatrixType) {
+        var elements = [
+            MatrixType.one, MatrixType.zero, MatrixType.zero,
+            MatrixType.zero, MatrixType.one, MatrixType.zero,
+            MatrixType.zero, MatrixType.zero, MatrixType.one
+        ]
+        let cosine = MatrixType.cos(rotation)
+        let sine = MatrixType.sin(rotation)
+        elements[0 * 3 + 0] = scale.x * cosine
+        elements[1 * 3 + 0] = -scale.x * sine
+        elements[2 * 3 + 0] = translation.x
+        elements[0 * 3 + 1] = scale.x * sine
+        elements[1 * 3 + 1] = scale.y * cosine
+        elements[2 * 3 + 1] = translation.y
+        self.init(elements: elements)
+    }
+
+    ///Constructs a matrix with the given translation, scale, rotation, anchor, and size. `anchor` is the point of rotation and scaling.
+    ///The final matrix components are directly calculated without constructing individual matrices and multiplying them.
+    /// - parameter translation: The x and y translation of the matrix.
+    /// - parameter scale: The horizontal and vertical scale of the matrix.
+    /// - parameter rotation: The rotation, in radians counterclockwise, of the matrix.
+    /// - parameter anchor: The point of scale, rotation, and size-offset.
+    /// - parameter size: The size of the coordinate space defined by this matrix. The matrix is translated to
+    /// treat `anchor` as the center of the coordinate space before applying scale and rotation. Then `translation` is applied.
+    public init(translation:PointBase<MatrixType>, scale:PointBase<MatrixType>, rotation:MatrixType, anchor:PointBase<MatrixType>, size:SizeBase<MatrixType>) {
+        var elements = [
+            MatrixType.one, MatrixType.zero, MatrixType.zero,
+            MatrixType.zero, MatrixType.one, MatrixType.zero,
+            MatrixType.zero, MatrixType.zero, MatrixType.one
+        ]
+        let cosine = MatrixType.cos(rotation)
+        let sine = MatrixType.sin(rotation)
+        elements[0 * 3 + 0] = scale.x * cosine
+        elements[1 * 3 + 0] = -scale.x * sine
+        elements[2 * 3 + 0] = translation.x
+        elements[0 * 3 + 1] = scale.x * sine
+        elements[1 * 3 + 1] = scale.y * cosine
+        elements[2 * 3 + 1] = translation.y
+        self.init(elements: elements)
+    }
+
+}
+
 ///Wraps `fastMultiply` so `Matrix3Base<Float>` can be multiplied using `*` but it
 ///does not match to the generic, slow version.
 public func *(lhs:Matrix3Base<Float>, rhs:Matrix3Base<Float>) -> Matrix3Base<Float> {

@@ -8,7 +8,9 @@
 import Foundation
 
 ///A 4-dimensional vector.
-public struct Vector4Base<VectorType> where VectorType: Addable {
+public struct Vector4Base<VectorType>: ConstantSizeVector where VectorType: DiscreteNumber {
+
+    public typealias ComponentType = VectorType
 
     // MARK: - Static Properties
 
@@ -27,6 +29,15 @@ public struct Vector4Base<VectorType> where VectorType: Addable {
     ///The values of the vector.
     public private(set) var components: [VectorType] = [VectorType](repeating: VectorType.zero, count: Vector4Base.staticNumberOfComponents)
     #endif
+
+    ///The unit vector in the x direction.
+    public static var unitX:Vector4Base<VectorType> { return Vector4Base<VectorType>(components: [VectorType.one, VectorType.zero, VectorType.zero, VectorType.zero]) }
+    ///The unit vector in the y direction.
+    public static var unitY:Vector4Base<VectorType> { return Vector4Base<VectorType>(components: [VectorType.zero, VectorType.one, VectorType.zero, VectorType.zero]) }
+    ///The unit vector in the z direction.
+    public static var unitZ:Vector4Base<VectorType> { return Vector4Base<VectorType>(components: [VectorType.zero, VectorType.zero, VectorType.one, VectorType.zero]) }
+    ///The unit vector in the w direction.
+    public static var unitW:Vector4Base<VectorType> { return Vector4Base<VectorType>(components: [VectorType.zero, VectorType.zero, VectorType.zero, VectorType.one]) }
     
     ///The x coordinate of the vector (the first component).
     public var x:VectorType {
@@ -71,25 +82,7 @@ public struct Vector4Base<VectorType> where VectorType: Addable {
     
 }
 
-extension Vector4Base where VectorType: Numeric & Multiplicable {
-
-    ///The unit vector in the x direction.
-    public static var unitX:Vector4Base<VectorType> { return Vector4Base<VectorType>(components: [VectorType.one, VectorType.zero, VectorType.zero, VectorType.zero]) }
-    ///The unit vector in the y direction.
-    public static var unitY:Vector4Base<VectorType> { return Vector4Base<VectorType>(components: [VectorType.zero, VectorType.one, VectorType.zero, VectorType.zero]) }
-    ///The unit vector in the z direction.
-    public static var unitZ:Vector4Base<VectorType> { return Vector4Base<VectorType>(components: [VectorType.zero, VectorType.zero, VectorType.one, VectorType.zero]) }
-    ///The unit vector in the w direction.
-    public static var unitW:Vector4Base<VectorType> { return Vector4Base<VectorType>(components: [VectorType.zero, VectorType.zero, VectorType.zero, VectorType.one]) }
-}
-
-extension Vector4Base: Addable where VectorType: Numeric & Addable {}
-extension Vector4Base: Equatable where VectorType: Numeric {}
-extension Vector4Base: VectorBase where VectorType: Numeric {}
-extension Vector4Base: ConstantSizeVector where VectorType: Numeric {}
-extension Vector4Base: SignedVectorBase where VectorType: SignedNumeric {}
-extension Vector4Base: FloatingPointVector where VectorType: FloatingPoint {}
-extension Vector4Base: ConstantSizeFloatingPointVector where VectorType: FloatingPoint {}
+extension Vector4Base: ContinuousVector, ConstantSizeContinuousVector where VectorType: ContinuousNumber {}
 
 public func *(lhs:Matrix4Base<Float>, rhs:Vector4Base<Float>) -> Vector4Base<Float> {
     // fastMultiply throws only if the matrix and vector dimensions are mismatched.

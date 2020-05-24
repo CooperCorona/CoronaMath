@@ -80,7 +80,7 @@ public struct PairIterator<T, U>: Sequence, IteratorProtocol where T: Sequence, 
     }
 }
 
-extension Sequence where Element: Addable {
+extension Sequence where Element: DiscreteNumber {
     
     ///Computes the sum of this sequence.
     public func sum() -> Element {

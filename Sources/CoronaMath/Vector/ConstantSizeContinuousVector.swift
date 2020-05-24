@@ -8,8 +8,8 @@
 import Foundation
 
 ///A vector whose number of components is defined at compile time and whose
-///components are of type FloatingPoint.
-public protocol ConstantSizeFloatingPointVector: FloatingPointVector, ConstantSizeVector {
+///components are of type `ContinuousNumber`.
+public protocol ConstantSizeContinuousVector: ContinuousVector, ConstantSizeVector {
 
     // MARK: - Optional Implementations
 
@@ -21,7 +21,7 @@ public protocol ConstantSizeFloatingPointVector: FloatingPointVector, ConstantSi
 
 // MARK: - Default Implementations
 
-extension ConstantSizeFloatingPointVector {
+extension ConstantSizeContinuousVector {
 
     public func distanceFrom(vector:Self) -> Self.ComponentType {
         return (self - vector).length()

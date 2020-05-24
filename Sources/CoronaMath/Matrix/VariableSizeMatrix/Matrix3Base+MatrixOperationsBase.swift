@@ -29,4 +29,3 @@ extension Matrix3Base: MatrixOperationsBase {
     }
 
 }
-extension Matrix3Base: FloatingPointMatrix where MatrixType: FloatingPoint {}

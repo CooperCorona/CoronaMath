@@ -98,3 +98,17 @@ extension SizeBase where VectorType: Comparable {
     }
 
 }
+
+extension SizeBase where VectorType == Float {
+
+    ///The center of the rectangle with origin `{0, 0}` and size `self`.
+    public var center:PointBase<Float> { return PointBase(x: self.width / 2.0, y: self.height / 2.0) }
+
+}
+
+extension SizeBase where VectorType == Double {
+
+    ///The center of the rectangle with origin `{0, 0}` and size `self`.
+    public var center:PointBase<Double> { return PointBase(x: self.width / 2.0, y: self.height / 2.0) }
+
+}

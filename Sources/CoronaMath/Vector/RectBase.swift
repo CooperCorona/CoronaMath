@@ -157,3 +157,31 @@ extension RectBase where VectorType: Comparable & ContinuousNumber {
     }
 
 }
+
+extension RectBase where VectorType == Float {
+
+    ///The center of the rect.
+    public var center:PointBase<VectorType> { return self.origin + self.size.center }
+
+    ///Initializes a `RectBase` by calculating the origin from `center` and `size`.
+    /// - parameter center: The center of the rectangle.
+    /// - parameter size: The size of the rectangle.
+    public init(center:PointBase<VectorType>, size:SizeBase<VectorType>) {
+        self.init(origin: center - size.center, size: size)
+    }
+
+}
+
+extension RectBase where VectorType == Double {
+
+    ///The center of the rect.
+    public var center:PointBase<VectorType> { return self.origin + self.size.center }
+
+    ///Initializes a `RectBase` by calculating the origin from `center` and `size`.
+    /// - parameter center: The center of the rectangle.
+    /// - parameter size: The size of the rectangle.
+    public init(center:PointBase<Double>, size:SizeBase<Double>) {
+        self.init(origin: center - size.center, size: size)
+    }
+
+}

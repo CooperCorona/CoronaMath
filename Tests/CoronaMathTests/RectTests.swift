@@ -158,4 +158,76 @@ final class RectTests: XCTestCase {
         let expected = Rect(x: 0.0, y: 1.0, width: 5.0, height: 4.0)
         XCTAssertEqual(rect, expected)
     }
+
+    func testCenterPositiveOriginPositiveSize() {
+        let rect = Rect(x: 10.0, y: 20.0, width: 30.0, height: 40.0)
+        let expected = Point(x: 25.0, y: 40.0)
+        XCTAssertEqual(rect.center, expected)
+    }
+
+    func testCenterNegativeOriginPositiveSize() {
+        let rect = Rect(x: -10.0, y: -20.0, width: 30.0, height: 40.0)
+        let expected = Point(x: 5.0, y: 0.0)
+        XCTAssertEqual(rect.center, expected)
+    }
+
+    func testCenterZeroOriginPositiveSize() {
+        let rect = Rect(x: 0.0, y: 0.0, width: 30.0, height: 40.0)
+        let expected = Point(x: 15.0, y: 20.0)
+        XCTAssertEqual(rect.center, expected)
+    }
+
+    func testCenterPositiveOriginZeroSize() {
+        let rect = Rect(x: 10.0, y: 20.0, width: 0.0, height: 0.0)
+        let expected = Point(x: 10.0, y: 20.0)
+        XCTAssertEqual(rect.center, expected)
+    }
+
+    func testCenterNegativeOriginZeroSize() {
+        let rect = Rect(x: -10.0, y: -20.0, width: 0.0, height: 0.0)
+        let expected = Point(x: -10.0, y: -20.0)
+        XCTAssertEqual(rect.center, expected)
+    }
+
+    func testCenterZeroOriginZeroSize() {
+        let rect = Rect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
+        let expected = Point(x: 0.0, y: 0.0)
+        XCTAssertEqual(rect.center, expected)
+    }
+
+    func testInitCenterPositiveOriginPositiveSize() {
+        let rect = Rect(center: Point(x: 25.0, y: 40.0), size: Size(width: 30.0, height: 40.0))
+        let expected = Rect(x: 10.0, y: 20.0, width: 30.0, height: 40.0)
+        XCTAssertEqual(rect, expected)
+    }
+
+    func testInitCenterNegativeOriginPositiveSize() {
+        let rect = Rect(center: Point(x: 5.0, y: 0.0), size: Size(width: 30.0, height: 40.0))
+        let expected = Rect(x: -10.0, y: -20.0, width: 30.0, height: 40.0)
+        XCTAssertEqual(rect, expected)
+    }
+
+    func testInitCenterZeroOriginPositiveSize() {
+        let rect = Rect(center: Point(x: 15.0, y: 20.0), size: Size(width: 30.0, height: 40.0))
+        let expected = Rect(x: 0.0, y: 0.0, width: 30.0, height: 40.0)
+        XCTAssertEqual(rect, expected)
+    }
+
+    func testInitCenterPositiveOriginZeroSize() {
+        let rect = Rect(center: Point(x: 10.0, y: 20.0), size: Size(width: 0.0, height: 0.0))
+        let expected = Rect(x: 10.0, y: 20.0, width: 0.0, height: 0.0)
+        XCTAssertEqual(rect, expected)
+    }
+
+    func testInitCenterNegativeOriginZeroSize() {
+        let rect = Rect(center: Point(x: -10.0, y: -20.0), size: Size(width: 0.0, height: 0.0))
+        let expected = Rect(x: -10.0, y: -20.0, width: 0.0, height: 0.0)
+        XCTAssertEqual(rect, expected)
+    }
+
+    func testInitCenterZeroOriginZeroSize() {
+        let rect = Rect(center: Point(x: 0.0, y: 0.0), size: Size(width: 0.0, height: 0.0))
+        let expected = Rect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
+        XCTAssertEqual(rect, expected)
+    }
 }

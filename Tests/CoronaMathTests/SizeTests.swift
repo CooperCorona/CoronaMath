@@ -48,4 +48,16 @@ final class SizeTests: XCTestCase {
         XCTAssertEqual(size[0], 3.0)
     }
 
+    func testCenterNonZero() {
+        let size = Size(width: 10.0, height: 20.0)
+        let expected = Point(x: 5.0, y: 10.0)
+        XCTAssertEqual(size.center, expected)
+    }
+
+    func testCenterZero() {
+        let size = Size(width: 0.0, height: 0.0)
+        let expected = Point(x: 0.0, y: 0.0)
+        XCTAssertEqual(size.center, expected)
+    }
+
 }

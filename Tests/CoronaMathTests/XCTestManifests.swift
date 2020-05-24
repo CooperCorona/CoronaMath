@@ -55,6 +55,12 @@ extension PointTests {
         ("testSetY", testSetY),
         ("testSubscriptGet", testSubscriptGet),
         ("testSubscriptSet", testSubscriptSet),
+        ("testAngle", testAngle),
+        ("testAngleTo180", testAngleTo180),
+        ("testWithAngle180Unit", testWithAngle180Unit),
+        ("testWithAngleNegative270", testWithAngleNegative270),
+        ("testWithAnglePositive90", testWithAnglePositive90),
+        ("testWithAngleUnit0", testWithAngleUnit0)
     ]
 }
 
@@ -75,6 +81,25 @@ extension RectTests {
         ("testSetY", testSetY),
         ("testSubscriptGet", testSubscriptGet),
         ("testSubscriptSet", testSubscriptSet),
+        ("testCenterNegativeOriginPositiveSize", testCenterNegativeOriginPositiveSize),
+        ("testCenterNegativeOriginZeroSize", testCenterNegativeOriginZeroSize),
+        ("testCenterPositiveOriginPositiveSize", testCenterPositiveOriginPositiveSize),
+        ("testCenterPositiveOriginZeroSize", testCenterPositiveOriginZeroSize),
+        ("testCenterZeroOriginPositiveSize", testCenterZeroOriginPositiveSize),
+        ("testCenterZeroOriginZeroSize", testCenterZeroOriginZeroSize),
+        ("testContainingPointsManyPoints", testContainingPointsManyPoints),
+        ("testContainingPointsOnePoint", testContainingPointsOnePoint),
+        ("testContainingPointsTwoPointsEqual", testContainingPointsTwoPointsEqual),
+        ("testContainingPointsTwoPointsOrdered", testContainingPointsTwoPointsOrdered),
+        ("testContainingPointsTwoPointsOrderedXUnorderedY", testContainingPointsTwoPointsOrderedXUnorderedY),
+        ("testContainingPointsTwoPointsOrderedXY", testContainingPointsTwoPointsOrderedXY),
+        ("testContainingPointsTwoPointsUnorderedXOrderedY", testContainingPointsTwoPointsUnorderedXOrderedY),
+        ("testInitCenterNegativeOriginPositiveSize", testInitCenterNegativeOriginPositiveSize),
+        ("testInitCenterNegativeOriginZeroSize", testInitCenterNegativeOriginZeroSize),
+        ("testInitCenterPositiveOriginPositiveSize", testInitCenterPositiveOriginPositiveSize),
+        ("testInitCenterPositiveOriginZeroSize", testInitCenterPositiveOriginZeroSize),
+        ("testInitCenterZeroOriginPositiveSize", testInitCenterZeroOriginPositiveSize),
+        ("testInitCenterZeroOriginZeroSize", testInitCenterZeroOriginZeroSize)
     ]
 }
 
@@ -87,6 +112,8 @@ extension SizeTests {
         ("testSetWidth", testSetWidth),
         ("testSubscriptGet", testSubscriptGet),
         ("testSubscriptSet", testSubscriptSet),
+        ("testCenterNonZero", testCenterNonZero),
+        ("testCenterZero", testCenterZero)
     ]
 }
 
@@ -149,6 +176,7 @@ extension Vector3Tests {
         ("testSetZ", testSetZ),
         ("testSubscriptGet", testSubscriptGet),
         ("testSubscriptSet", testSubscriptSet),
+        ("testMultiplyMatrix3", testMultiplyMatrix3),
     ]
 }
 

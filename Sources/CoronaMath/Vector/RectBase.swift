@@ -78,6 +78,16 @@ public struct RectBase<VectorType>: ConstantSizeVector where VectorType: Discret
     ///The maximum value of y for this rect.
     public var maxY:VectorType { return self.origin.y + self.size.height }
 
+    ///The corners of the rect, in the order bottom-left, top-left, bottom-right, top-right.
+    public var points:[PointBase<VectorType>] {
+        return [
+            PointBase(x: self.minX, y: self.minY),
+            PointBase(x: self.minX, y: self.maxY),
+            PointBase(x: self.maxX, y: self.minY),
+            PointBase(x: self.maxX, y: self.maxY)
+        ]
+    }
+
     ///Initialiaze the zero rect.
     public init() {}
 

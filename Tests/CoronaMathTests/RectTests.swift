@@ -230,4 +230,26 @@ final class RectTests: XCTestCase {
         let expected = Rect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
         XCTAssertEqual(rect, expected)
     }
+
+    func testPointsZeroSize() {
+        let rect = Rect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
+        let expected = [
+            Point(x: 0.0, y: 0.0),
+            Point(x: 0.0, y: 0.0),
+            Point(x: 0.0, y: 0.0),
+            Point(x: 0.0, y: 0.0)
+        ]
+        XCTAssertEqual(rect.points, expected)
+    }
+
+    func testPointsPositiveSize() {
+        let rect = Rect(x: 1.0, y: 2.0, width: 5.0, height: 7.0)
+        let expected = [
+            Point(x: 1.0, y: 2.0),
+            Point(x: 1.0, y: 9.0),
+            Point(x: 6.0, y: 2.0),
+            Point(x: 6.0, y: 9.0)
+        ]
+        XCTAssertEqual(rect.points, expected)
+    }
 }

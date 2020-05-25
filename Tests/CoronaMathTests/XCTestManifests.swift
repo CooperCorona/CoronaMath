@@ -104,7 +104,9 @@ extension RectTests {
         ("testInitCenterPositiveOriginPositiveSize", testInitCenterPositiveOriginPositiveSize),
         ("testInitCenterPositiveOriginZeroSize", testInitCenterPositiveOriginZeroSize),
         ("testInitCenterZeroOriginPositiveSize", testInitCenterZeroOriginPositiveSize),
-        ("testInitCenterZeroOriginZeroSize", testInitCenterZeroOriginZeroSize)
+        ("testInitCenterZeroOriginZeroSize", testInitCenterZeroOriginZeroSize),
+        ("testPointsZeroSize", testPointsZeroSize),
+        ("testPointsPositiveSize", testPointsPositiveSize)
     ]
 }
 

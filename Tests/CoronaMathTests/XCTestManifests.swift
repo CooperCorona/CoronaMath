@@ -45,22 +45,27 @@ extension Matrix4Tests {
 
 extension PointTests {
     static let __allTests = [
-        ("testGetX", testGetX),
-        ("testGetY", testGetY),
-        ("testInit", testInit),
         ("testMakePairs", testMakePairs),
         ("testMakePairsEmpty", testMakePairsEmpty),
         ("testMakePairsSingle", testMakePairsSingle),
+        ("testInit", testInit),
+        ("testGetX", testGetX),
         ("testSetX", testSetX),
+        ("testGetY", testGetY),
         ("testSetY", testSetY),
         ("testSubscriptGet", testSubscriptGet),
         ("testSubscriptSet", testSubscriptSet),
         ("testAngle", testAngle),
         ("testAngleTo180", testAngleTo180),
-        ("testWithAngle180Unit", testWithAngle180Unit),
-        ("testWithAngleNegative270", testWithAngleNegative270),
-        ("testWithAnglePositive90", testWithAnglePositive90),
-        ("testWithAngleUnit0", testWithAngleUnit0)
+        ("testInitWithAngleUnit0", testInitWithAngleUnit0),
+        ("testInitWithAngle180Unit", testInitWithAngle180Unit),
+        ("testInitWithAnglePositive90", testInitWithAnglePositive90),
+        ("testInitWithAngleNegative270", testInitWithAngleNegative270),
+        ("testMultiplyMatrix3Identity", testMultiplyMatrix3Identity),
+        ("testMultiplyMatrix3Translation", testMultiplyMatrix3Translation),
+        ("testMultiplyMatrix3Scale", testMultiplyMatrix3Scale),
+        ("testMultiplyMatrix3Rotation", testMultiplyMatrix3Rotation),
+        ("testMultiplyMatrix3ModelMatrix", testMultiplyMatrix3ModelMatrix),
     ]
 }
 

@@ -108,8 +108,8 @@ final class PointTests: XCTestCase {
         XCTAssertEqual(point1.angle(to: point2), Double.pi, accuracy: epsilon)
     }
 
-    func testWithAngleUnit0() {
-        let point = Point.with(angle: 0.0)
+    func testInitWithAngleUnit0() {
+        let point = Point(angle: 0.0)
         let expected = Point(x: 1.0, y: 0.0)
         // Trig functions are more likely to introduce floating point errors, so they need
         // to use the accuracy parameter.
@@ -117,24 +117,63 @@ final class PointTests: XCTestCase {
         XCTAssertEqual(point.y, expected.y, accuracy: self.epsilon)
     }
 
-    func testWithAngle180Unit() {
-        let point = Point.with(angle: Double.pi)
+    func testInitWithAngle180Unit() {
+        let point = Point(angle: Double.pi)
         let expected = Point(x: -1.0, y: 0.0)
         XCTAssertEqual(point.x, expected.x, accuracy: self.epsilon)
         XCTAssertEqual(point.y, expected.y, accuracy: self.epsilon)
     }
 
-    func testWithAnglePositive90() {
-        let point = Point.with(angle: Double.pi / 2.0, length: 4.0)
+    func testInitWithAnglePositive90() {
+        let point = Point(angle: Double.pi / 2.0, length: 4.0)
         let expected = Point(x: 0.0, y: 4.0)
         XCTAssertEqual(point.x, expected.x, accuracy: self.epsilon)
         XCTAssertEqual(point.y, expected.y, accuracy: self.epsilon)
     }
 
-    func testWithAngleNegative270() {
-        let point = Point.with(angle: 3.0 * Double.pi / 2.0, length: -3.0)
+    func testInitWithAngleNegative270() {
+        let point = Point(angle: 3.0 * Double.pi / 2.0, length: -3.0)
         let expected = Point(x: 0.0, y: 3.0)
         XCTAssertEqual(point.x, expected.x, accuracy: self.epsilon)
         XCTAssertEqual(point.y, expected.y, accuracy: self.epsilon)
+    }
+
+    func testMultiplyMatrix3Identity() {
+        let point = Point(x: 10.0, y: 20.0)
+        let matrix = Matrix3.identity
+        let expected = point
+        XCTAssertEqual(matrix * point, expected)
+    }
+
+    func testMultiplyMatrix3Translation() {
+        let point = Point(x: 10.0, y: 20.0)
+        let matrix = Matrix3(translation: Point(x: -30.0, y: -50.0), scale: Point(x: 1.0, y: 1.0), rotation: 0.0)
+        let expected = Point(x: -20.0, y: -30.0)
+        XCTAssertEqual(matrix * point, expected)
+    }
+
+    func testMultiplyMatrix3Scale() {
+        let point = Point(x: -10.0, y: 20.0)
+        let matrix = Matrix3(translation: Point(x: 0.0, y: 0.0), scale: Point(x: 2.0, y: 3.0), rotation: 0.0)
+        let expected = Point(x: -20.0, y: 60.0)
+        XCTAssertEqual(matrix * point, expected)
+    }
+
+    func testMultiplyMatrix3Rotation() {
+        let point = Point(x: -10.0, y: 20.0)
+        let matrix = Matrix3(translation: Point.zero, scale: Point(x: 1.0, y: 1.0), rotation: Double.pi / 2.0)
+        let expected = Point(x: -20.0, y: -10.0)
+        let actual = matrix * point
+        XCTAssertEqual(actual.x, expected.x, accuracy: self.epsilon)
+        XCTAssertEqual(actual.y, expected.y, accuracy: self.epsilon)
+    }
+
+    func testMultiplyMatrix3ModelMatrix() {
+        let point = Point(x: 10.0, y: 20.0)
+        let matrix = Matrix3(translation: Point(x: 2.0, y: -4.0), scale: Point(x: 2.0, y: 3.0), rotation: Double.pi / 2.0, anchor: Point(xy: 0.5), size: Size(width: 10.0, height: 20.0))
+        let actual = matrix * point
+        let expected = Point(x: -18.0, y: 11.0)
+        XCTAssertEqual(actual.x, expected.x, accuracy: self.epsilon)
+        XCTAssertEqual(actual.y, expected.y, accuracy: self.epsilon)
     }
 }

@@ -112,3 +112,25 @@ extension SizeBase where VectorType == Double {
     public var center:PointBase<Double> { return PointBase(x: self.width / 2.0, y: self.height / 2.0) }
 
 }
+
+fileprivate enum SizeBaseCodingKeys: CodingKey {
+    case width
+    case height
+}
+
+extension SizeBase: Decodable where VectorType: Decodable {
+    public init(from decoder:Decoder) throws {
+        let container = try decoder.container(keyedBy: SizeBaseCodingKeys.self)
+        let width = try container.decode(VectorType.self, forKey: .width)
+        let height = try container.decode(VectorType.self, forKey: .height)
+        self.init(width: width, height: height)
+    }
+}
+
+extension SizeBase: Encodable where VectorType: Encodable {
+    public func encode(to encoder:Encoder) throws {
+        var container = encoder.container(keyedBy: SizeBaseCodingKeys.self)
+        try container.encode(self.width, forKey: .width)
+        try container.encode(self.height, forKey: .height)
+    }
+}

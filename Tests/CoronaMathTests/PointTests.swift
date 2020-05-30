@@ -176,4 +176,15 @@ final class PointTests: XCTestCase {
         XCTAssertEqual(actual.x, expected.x, accuracy: self.epsilon)
         XCTAssertEqual(actual.y, expected.y, accuracy: self.epsilon)
     }
+
+    func testCodable() {
+        do {
+            let point = Point(x: 3.0, y: 17.0)
+            let data = try JSONEncoder().encode(point)
+            let actual = try JSONDecoder().decode(Point.self, from: data)
+            XCTAssertEqual(actual, point)
+        } catch {
+            XCTFail("Could not encode: \(error)")
+        }
+    }
 }

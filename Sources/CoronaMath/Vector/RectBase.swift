@@ -195,3 +195,6 @@ extension RectBase where VectorType == Double {
     }
 
 }
+
+extension RectBase: Decodable where VectorType: Decodable {}
+extension RectBase: Encodable where VectorType: Encodable {}

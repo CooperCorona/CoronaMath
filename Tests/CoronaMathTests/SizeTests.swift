@@ -60,4 +60,14 @@ final class SizeTests: XCTestCase {
         XCTAssertEqual(size.center, expected)
     }
 
+    func testCodable() {
+        do {
+            let size = Size(width: 3.0, height: 17.0)
+            let data = try JSONEncoder().encode(size)
+            let actual = try JSONDecoder().decode(Size.self, from: data)
+            XCTAssertEqual(actual, size)
+        } catch {
+            XCTFail("Could not encode: \(error)")
+        }
+    }
 }

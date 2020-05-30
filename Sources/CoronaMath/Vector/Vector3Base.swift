@@ -95,3 +95,6 @@ public func *(lhs:Matrix3Base<Float>, rhs:Vector3Base<Float>) -> Vector3Base<Flo
 public func *(lhs:Matrix3Base<Double>, rhs:Vector3Base<Double>) -> Vector3Base<Double> {
     return try! fastMultiply(matrix: lhs, vector: rhs)
 }
+
+extension Vector3Base: Decodable where VectorType: Decodable {}
+extension Vector3Base: Encodable where VectorType: Encodable {}

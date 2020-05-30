@@ -82,3 +82,6 @@ public func *=(lhs:inout Matrix4Base<Float>, rhs:Matrix4Base<Float>) {
 public func *=(lhs:inout Matrix4Base<Double>, rhs:Matrix4Base<Double>) {
     lhs = fastMultiplyMatrices(lhs: lhs, rhs: rhs)
 }
+
+extension Matrix4Base: Decodable where MatrixType: Decodable {}
+extension Matrix4Base: Encodable where MatrixType: Encodable {}

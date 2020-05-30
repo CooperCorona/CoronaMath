@@ -151,3 +151,6 @@ public func ==<M, MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: M) -> Bo
     VariableSizeMatrix<MatrixType>.ElementType == M.ElementType {
     return lhs.dimensions == rhs.dimensions && lhs.elements == rhs.elements
 }
+
+extension VariableSizeMatrix: Decodable where MatrixType: Decodable {}
+extension VariableSizeMatrix: Encodable where MatrixType: Encodable {}

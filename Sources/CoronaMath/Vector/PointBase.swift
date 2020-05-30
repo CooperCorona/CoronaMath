@@ -126,3 +126,26 @@ public func *(lhs:Matrix3Base<Double>, rhs:PointBase<Double>) -> PointBase<Doubl
     let vector = lhs * Vector3Base(x: rhs.x, y: rhs.y, z: 1.0)
     return PointBase(x: vector.x, y: vector.y)
 }
+
+fileprivate enum PointBaseCodingKeys: CodingKey {
+    case x
+    case y
+}
+
+extension PointBase: Decodable where VectorType: Decodable {
+    public init(from decoder:Decoder) throws {
+        let container = try decoder.container(keyedBy: PointBaseCodingKeys.self)
+        let x = try container.decode(VectorType.self, forKey: .x)
+        let y = try container.decode(VectorType.self, forKey: .y)
+        self.init(x: x, y: y)
+    }
+}
+
+extension PointBase: Encodable where VectorType: Encodable {
+    public func encode(to encoder:Encoder) throws {
+        var container = encoder.container(keyedBy: PointBaseCodingKeys.self)
+        try container.encode(self.x, forKey: .x)
+        try container.encode(self.y, forKey: .y)
+    }
+}
+

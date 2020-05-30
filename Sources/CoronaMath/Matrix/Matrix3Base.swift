@@ -141,3 +141,6 @@ public func *=(lhs:inout Matrix3Base<Float>, rhs:Matrix3Base<Float>) {
 public func *=(lhs:inout Matrix3Base<Double>, rhs:Matrix3Base<Double>) {
     lhs = fastMultiplyMatrices(lhs: lhs, rhs: rhs)
 }
+
+extension Matrix3Base: Decodable where MatrixType: Decodable {}
+extension Matrix3Base: Encodable where MatrixType: Encodable {}

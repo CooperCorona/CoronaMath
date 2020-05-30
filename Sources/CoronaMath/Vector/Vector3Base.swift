@@ -96,5 +96,27 @@ public func *(lhs:Matrix3Base<Double>, rhs:Vector3Base<Double>) -> Vector3Base<D
     return try! fastMultiply(matrix: lhs, vector: rhs)
 }
 
-extension Vector3Base: Decodable where VectorType: Decodable {}
-extension Vector3Base: Encodable where VectorType: Encodable {}
+fileprivate enum Vector3BaseCodingKeys: CodingKey {
+    case x
+    case y
+    case z
+}
+
+extension Vector3Base: Decodable where VectorType: Decodable {
+    public init(from decoder:Decoder) throws {
+        let container = try decoder.container(keyedBy: Vector3BaseCodingKeys.self)
+        let x = try container.decode(VectorType.self, forKey: .x)
+        let y = try container.decode(VectorType.self, forKey: .y)
+        let z = try container.decode(VectorType.self, forKey: .z)
+        self.init(x: x, y: y, z: z)
+    }
+}
+
+extension Vector3Base: Encodable where VectorType: Encodable {
+    public func encode(to encoder:Encoder) throws {
+        var container = encoder.container(keyedBy: Vector3BaseCodingKeys.self)
+        try container.encode(self.x, forKey: .x)
+        try container.encode(self.y, forKey: .y)
+        try container.encode(self.z, forKey: .z)
+    }
+}

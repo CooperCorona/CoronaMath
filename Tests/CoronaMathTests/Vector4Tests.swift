@@ -157,5 +157,16 @@ final class Vector4Tests: XCTestCase {
         vector[0] = 4.0
         XCTAssertEqual(vector[0], 4.0)
     }
+
+    func testCodable() {
+        do {
+            let point = Vector4(x: 3.0, y: 17.0, z: 11.0, w: 29.0)
+            let data = try JSONEncoder().encode(point)
+            let actual = try JSONDecoder().decode(Vector4.self, from: data)
+            XCTAssertEqual(actual, point)
+        } catch {
+            XCTFail("Could not encode: \(error)")
+        }
+    }
     
 }

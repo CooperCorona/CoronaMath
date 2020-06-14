@@ -66,21 +66,7 @@ extension Matrix3Base: ContinuousMatrix where MatrixType: ContinuousNumber {
     /// - parameter scale: The horizontal and vertical scale of the matrix.
     /// - parameter rotation: The rotation, in radians counterclockwise, of the matrix.
     public init(translation:PointBase<MatrixType>, scale:PointBase<MatrixType>, rotation:MatrixType) {
-        self.init(translation: translation, scale: scale, rotation: rotation, anchor: PointBase<MatrixType>.zero, size: SizeBase<MatrixType>.zero)/*
-        var elements = [
-            MatrixType.one, MatrixType.zero, MatrixType.zero,
-            MatrixType.zero, MatrixType.one, MatrixType.zero,
-            MatrixType.zero, MatrixType.zero, MatrixType.one
-        ]
-        let cosine = MatrixType.cos(rotation)
-        let sine = MatrixType.sin(rotation)
-        elements[0 * 3 + 0] = scale.x * cosine
-        elements[0 * 3 + 1] = -scale.x * sine
-        elements[0 * 3 + 2] = translation.x
-        elements[1 * 3 + 0] = scale.x * sine
-        elements[1 * 3 + 1] = scale.y * cosine
-        elements[1 * 3 + 2] = translation.y
-        self.init(elements: elements)*/
+        self.init(translation: translation, scale: scale, rotation: rotation, anchor: PointBase<MatrixType>.zero, size: SizeBase<MatrixType>.zero)
     }
 
     ///Constructs a matrix with the given translation, scale, rotation, anchor, and size. `anchor` is the point of rotation and scaling.
@@ -105,14 +91,6 @@ extension Matrix3Base: ContinuousMatrix where MatrixType: ContinuousNumber {
         let anchorOffsetXY = b * scale.x * sine
         let anchorOffsetYY = a * scale.y * sine
         let anchorOffsetYX = b * scale.y * cosine
-        print("a:              \(a)")
-        print("b:              \(b)")
-        print("cosine:         \(cosine)")
-        print("sine:           \(sine)")
-        print("anchorOffsetXX: \(anchorOffsetXX)")
-        print("anchorOffsetXY: \(anchorOffsetXY)")
-        print("anchorOffsetYY: \(anchorOffsetYY)")
-        print("anchorOffsetYX: \(anchorOffsetYX)")
         elements[0 * 3 + 0] = scale.x * cosine
         elements[0 * 3 + 1] = -scale.x * sine
         elements[0 * 3 + 2] = anchorOffsetXX - anchorOffsetXY + translation.x

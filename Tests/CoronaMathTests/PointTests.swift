@@ -187,4 +187,38 @@ final class PointTests: XCTestCase {
             XCTFail("Could not encode: \(error)")
         }
     }
+
+    func testSize() {
+        let point = Point(x: 3.0, y: 17.0)
+        let expected = Size(width: 3.0, height: 17.0)
+        XCTAssertEqual(point.size(), expected)
+    }
+
+    func testPlusSize() {
+        let point = Point(x: 3.0, y: 17.0)
+        let size = Size(width: 2.0, height: 5.0)
+        let expected = Point(x: 5.0, y: 22.0)
+        XCTAssertEqual(point + size, expected)
+    }
+
+    func testMinusSize() {
+        let point = Point(x: 3.0, y: 17.0)
+        let size = Size(width: 2.0, height: 5.0)
+        let expected = Point(x: 1.0, y: 12.0)
+        XCTAssertEqual(point - size, expected)
+    }
+
+    func testMultiplySize() {
+        let point = Point(x: 3.0, y: 17.0)
+        let size = Size(width: 2.0, height: 5.0)
+        let expected = Point(x: 6.0, y: 85.0)
+        XCTAssertEqual(point * size, expected)
+    }
+
+    func testDivideSize() {
+        let point = Point(x: 3.0, y: 17.0)
+        let size = Size(width: 2.0, height: 5.0)
+        let expected = Point(x: 1.5, y: 3.4)
+        XCTAssertEqual(point / size, expected)
+    }
 }

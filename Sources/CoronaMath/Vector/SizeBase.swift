@@ -73,6 +73,11 @@ public struct SizeBase<VectorType>: ConstantSizeVector where VectorType: Discret
         set { self.components[index] = newValue }
     }
 
+    ///Returns a `PointBase` instance with the same components as this instance.
+    public func point() -> PointBase<VectorType> {
+        return PointBase(x: self.width, y: self.height)
+    }
+
 }
 
 extension SizeBase where VectorType: DiscreteNumber {
@@ -133,4 +138,20 @@ extension SizeBase: Encodable where VectorType: Encodable {
         try container.encode(self.width, forKey: .width)
         try container.encode(self.height, forKey: .height)
     }
+}
+
+public func +<VectorType>(lhs:SizeBase<VectorType>, rhs:PointBase<VectorType>) -> SizeBase<VectorType> {
+    return SizeBase(width: lhs.width + rhs.x, height: lhs.height + rhs.y)
+}
+
+public func -<VectorType>(lhs:SizeBase<VectorType>, rhs:PointBase<VectorType>) -> SizeBase<VectorType> {
+    return SizeBase(width: lhs.width - rhs.x, height: lhs.height - rhs.y)
+}
+
+public func *<VectorType>(lhs:SizeBase<VectorType>, rhs:PointBase<VectorType>) -> SizeBase<VectorType> {
+    return SizeBase(width: lhs.width * rhs.x, height: lhs.height * rhs.y)
+}
+
+public func /<VectorType: ContinuousNumber>(lhs:SizeBase<VectorType>, rhs:PointBase<VectorType>) -> SizeBase<VectorType> {
+    return SizeBase(width: lhs.width / rhs.x, height: lhs.height / rhs.y)
 }

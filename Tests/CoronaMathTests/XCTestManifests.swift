@@ -66,6 +66,12 @@ extension PointTests {
         ("testMultiplyMatrix3Scale", testMultiplyMatrix3Scale),
         ("testMultiplyMatrix3Rotation", testMultiplyMatrix3Rotation),
         ("testMultiplyMatrix3ModelMatrix", testMultiplyMatrix3ModelMatrix),
+        ("testCodable", testCodable),
+        ("testSize", testSize),
+        ("testPlusSize", testPlusSize),
+        ("testMinusSize", testMinusSize),
+        ("testMultiplySize", testMultiplySize),
+        ("testDivideSize", testDivideSize),
     ]
 }
 
@@ -112,15 +118,21 @@ extension RectTests {
 
 extension SizeTests {
     static let __allTests = [
-        ("testGetHeight", testGetHeight),
-        ("testGetWidth", testGetWidth),
         ("testInit", testInit),
-        ("testSetHeight", testSetHeight),
+        ("testGetWidth", testGetWidth),
         ("testSetWidth", testSetWidth),
+        ("testGetHeight", testGetHeight),
+        ("testSetHeight", testSetHeight),
         ("testSubscriptGet", testSubscriptGet),
         ("testSubscriptSet", testSubscriptSet),
         ("testCenterNonZero", testCenterNonZero),
-        ("testCenterZero", testCenterZero)
+        ("testCenterZero", testCenterZero),
+        ("testCodable", testCodable),
+        ("testPoint", testPoint),
+        ("testPlusPoint", testPlusPoint),
+        ("testMinusPoint", testMinusPoint),
+        ("testMultiplyPoint", testMultiplyPoint),
+        ("testDividePoint", testDividePoint),
     ]
 }
 

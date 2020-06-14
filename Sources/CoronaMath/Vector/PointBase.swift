@@ -82,6 +82,11 @@ public struct PointBase<VectorType>: ConstantSizeVector where VectorType: Discre
     public func flip() -> PointBase<VectorType> {
         return PointBase(x: self.y, y: self.x)
     }
+
+    ///Returns a `SizeBase` instance with the same components as this instance.
+    public func size() -> SizeBase<VectorType> {
+        return SizeBase(width: self.x, height: self.y)
+    }
     
 }
 
@@ -149,3 +154,18 @@ extension PointBase: Encodable where VectorType: Encodable {
     }
 }
 
+public func +<VectorType>(lhs:PointBase<VectorType>, rhs:SizeBase<VectorType>) -> PointBase<VectorType> {
+    return PointBase(x: lhs.x + rhs.width, y: lhs.y + rhs.height)
+}
+
+public func -<VectorType>(lhs:PointBase<VectorType>, rhs:SizeBase<VectorType>) -> PointBase<VectorType> {
+    return PointBase(x: lhs.x - rhs.width, y: lhs.y - rhs.height)
+}
+
+public func *<VectorType>(lhs:PointBase<VectorType>, rhs:SizeBase<VectorType>) -> PointBase<VectorType> {
+    return PointBase(x: lhs.x * rhs.width, y: lhs.y * rhs.height)
+}
+
+public func /<VectorType: ContinuousNumber>(lhs:PointBase<VectorType>, rhs:SizeBase<VectorType>) -> PointBase<VectorType> {
+    return PointBase(x: lhs.x / rhs.width, y: lhs.y / rhs.height)
+}

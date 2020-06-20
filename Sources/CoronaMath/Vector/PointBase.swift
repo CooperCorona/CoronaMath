@@ -92,6 +92,11 @@ public struct PointBase<VectorType>: ConstantSizeVector where VectorType: Discre
 
 extension PointBase: ContinuousVector where VectorType: ContinuousNumber {}
 extension PointBase: ConstantSizeContinuousVector where VectorType: ContinuousNumber {}
+extension PointBase: Hashable where VectorType: Hashable {
+    public func hash(into hasher:inout Hasher) {
+        hasher.combine(self.components)
+    }
+}
 
 extension PointBase where VectorType: ContinuousNumber {
 

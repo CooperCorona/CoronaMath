@@ -83,6 +83,11 @@ public struct Vector4Base<VectorType>: ConstantSizeVector where VectorType: Disc
 }
 
 extension Vector4Base: ContinuousVector, ConstantSizeContinuousVector where VectorType: ContinuousNumber {}
+extension Vector4Base: Hashable where VectorType: Hashable {
+    public func hash(into hasher:inout Hasher) {
+        hasher.combine(self.components)
+    }
+}
 
 public func *(lhs:Matrix4Base<Float>, rhs:Vector4Base<Float>) -> Vector4Base<Float> {
     // fastMultiply throws only if the matrix and vector dimensions are mismatched.

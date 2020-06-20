@@ -90,6 +90,11 @@ extension SizeBase where VectorType: DiscreteNumber {
 
 extension SizeBase: ContinuousVector where VectorType: ContinuousNumber {}
 extension SizeBase: ConstantSizeContinuousVector where VectorType: ContinuousNumber {}
+extension SizeBase: Hashable where VectorType: Hashable {
+    public func hash(into hasher:inout Hasher) {
+        hasher.combine(self.components)
+    }
+}
 
 extension SizeBase where VectorType: Comparable {
 

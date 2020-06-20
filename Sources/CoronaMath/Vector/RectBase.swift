@@ -126,6 +126,11 @@ public struct RectBase<VectorType>: ConstantSizeVector where VectorType: Discret
 }
 
 extension RectBase: ContinuousVector, ConstantSizeContinuousVector where VectorType: ContinuousNumber {}
+extension RectBase: Hashable where VectorType: Hashable {
+    public func hash(into hasher:inout Hasher) {
+        hasher.combine(self.components)
+    }
+}
 
 extension RectBase where VectorType: Comparable {
 

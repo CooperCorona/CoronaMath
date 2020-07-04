@@ -5,7 +5,11 @@ import Foundation
 #if os(iOS) || os(macOS)
 import Accelerate
 #else
+#if canImport(COpenBlas)
 import COpenBlas
+#else
+import COpenBlas86_64
+#endif
 private typealias __CLPK_integer = Int32
 #endif
 

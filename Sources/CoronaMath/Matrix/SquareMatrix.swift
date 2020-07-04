@@ -6,12 +6,6 @@
 //
 
 import Foundation
-#if os(iOS) || os(macOS)
-import Accelerate
-#else
-import COpenBlas
-private typealias __CLPK_integer = Int32
-#endif
 
 ///A matrix whose dimensions are determined at compile time and whose
 ///rows equal its columns.

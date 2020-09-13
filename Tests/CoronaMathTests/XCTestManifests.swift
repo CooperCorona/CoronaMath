@@ -1,5 +1,13 @@
 import XCTest
 
+extension IntPointTests {
+    static let __allTests = [
+        ("testAdjacentNeighbors", testAdjacentNeighbors),
+        ("testDiagonalNeighbors", testDiagonalNeighbors),
+        ("testAllNeighbors", testAllNeighbors),
+    ]
+}
+
 extension Matrix3Tests {
     static let __allTests = [
         ("testAddScalarAssign", testAddScalarAssign),
@@ -270,6 +278,7 @@ extension VectorTests {
 #if !os(macOS)
 public func __allTests() -> [XCTestCaseEntry] {
     return [
+        testCase(IntPointTests.__allTests),
         testCase(Matrix3Tests.__allTests),
         testCase(Matrix4Tests.__allTests),
         testCase(PointTests.__allTests),

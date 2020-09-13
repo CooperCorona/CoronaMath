@@ -2,6 +2,13 @@ import XCTest
 
 extension IntPointTests {
     static let __allTests = [
+        ("testInitRowColumn", testInitRowColumn),
+        ("testGetRow", testGetRow),
+        ("testSetRow", testSetRow),
+        ("testGetColumn", testGetColumn),
+        ("testSetColumn", testSetColumn),
+        ("testPointPairsXY", testPointPairsXY),
+        ("testPointPairsRowsColumns", testPointPairsRowsColumns),
         ("testAdjacentNeighbors", testAdjacentNeighbors),
         ("testDiagonalNeighbors", testDiagonalNeighbors),
         ("testAllNeighbors", testAllNeighbors),

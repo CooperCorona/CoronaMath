@@ -17,6 +17,9 @@ public protocol SquareMatrix: ConstantSizeMatrix {
     ///*Self.dimensions* and *self.dimensions* must equal
     ///*size* for both components. Must be greater than 0.
     static var size:Int { get }
+    ///The number of rows and columns of the matrix. Derived
+    ///from `size`.
+    static var dimensions:IntSize { get }
 
     // MARK: - Optional Implementations
 

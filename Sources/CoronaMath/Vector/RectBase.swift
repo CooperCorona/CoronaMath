@@ -142,6 +142,13 @@ extension RectBase where VectorType: Comparable {
             && self.minY <= point.y && point.y <= self.maxY
     }
 
+    ///Determines if this rect intersects the given rect.
+    /// - parameter rect: The given rect.
+    /// - returns: `true` if this rect intersects with `rect`, `false`, otherwise.
+    public func intersects(rect:RectBase<VectorType>) -> Bool {
+        return !(self.minX > rect.maxX || self.maxX < rect.minX || self.minY > rect.maxY || self.maxY < rect.minY)
+    }
+
 }
 
 extension RectBase where VectorType: Comparable & ContinuousNumber {

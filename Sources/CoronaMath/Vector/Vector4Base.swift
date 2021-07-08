@@ -7,8 +7,12 @@
 
 import Foundation
 
+/// Statically initialize this because it is commonly accessed. Constructing new instances
+/// decreases performance by up to 40%.
+fileprivate let Vector4BaseDimensions = IntSize(rows: 4, columns: 1)
+
 ///A 4-dimensional vector.
-public struct Vector4Base<VectorType>: ConstantSizeVector where VectorType: DiscreteNumber {
+public struct Vector4Base<VectorType>: ConstantSizeVector, FastInitializableVector where VectorType: DiscreteNumber {
 
     public typealias ComponentType = VectorType
 
@@ -18,6 +22,8 @@ public struct Vector4Base<VectorType>: ConstantSizeVector where VectorType: Disc
     ///The number of components in a `Vector4Base` instance.
     public static var numberOfComponents:Int { return 4 }
 
+    public static var dimensions:IntSize { return Vector4BaseDimensions }
+
     // MARK: - Instance Properties
 
     ///The values of the vector.
@@ -25,6 +31,8 @@ public struct Vector4Base<VectorType>: ConstantSizeVector where VectorType: Disc
     #else
     ///The number of components in a `Vector4Base` instance.
     public static var staticNumberOfComponents:Int { return 4 }
+
+    public static var staticDimensions:IntSize { return Vector4BaseDimensions }
 
     ///The values of the vector.
     public private(set) var components: [VectorType] = [VectorType](repeating: VectorType.zero, count: Vector4Base.staticNumberOfComponents)
@@ -70,6 +78,12 @@ public struct Vector4Base<VectorType>: ConstantSizeVector where VectorType: Disc
     /// - parameter w: The fourth component of the vector.
     public init(x:VectorType, y:VectorType, z:VectorType, w:VectorType) {
         self.components = [x, y, z, w]
+    }
+
+    ///Initializes this instance with the specified elements. It is the caller's responsibility
+    ///to ensure `exactComponents` has the correct number of elements.
+    internal init(exactComponents:[ComponentType]) {
+        self.components = exactComponents
     }
 
     ///Provides access to the underlying components of this instance.

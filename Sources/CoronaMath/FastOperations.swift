@@ -25,6 +25,20 @@ extension Double: FloatOrDouble {
     internal static let cblas_gemm = cblas_dgemm
 }
 
+/// A vector that can be initialized quickly.
+internal protocol FastInitializableVector: ConstantSizeVector {
+    /// Initializes the vector directly with `exactComponents`. The caller is responsible for
+    /// ensuring `exactComponents` has the correct count.
+    init(exactComponents:[ComponentType])
+}
+
+/// A matrix that can be initialized quickly.
+internal protocol FastInitializableMatrix: SquareMatrix {
+    /// Initializes the matrix directly with `exactElements`. The caller is responsible for
+    /// ensuring `exactComponents` has the correct count.
+    init(exactElements:[ElementType])
+}
+
 // MARK: - Square Matrix
 
 extension SquareMatrix where ElementType == Double {
@@ -70,27 +84,19 @@ extension SquareMatrix where ElementType == Float {
 /// - parameter lhs: The matrix on the left of the multiplication.
 /// - parameter rhs: The matrix on the right of the multiplication.
 /// - returns: The product of *lhs* and *rhs*.
-internal func fastMultiplyMatrices<M>(lhs:M, rhs:M) -> M where M: SquareMatrix, M.ElementType: FloatOrDouble {
+internal func fastMultiplyMatrices<M>(lhs:M, rhs:M) -> M where M: FastInitializableMatrix, M.ElementType: FloatOrDouble {
     var vals = [M.ElementType](repeating: M.ElementType.zero, count: M.size * M.size)
     M.ElementType.cblas_gemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, Int32(M.size), Int32(M.size), Int32(M.size), M.ElementType.one, lhs.elements, Int32(M.size), rhs.elements, Int32(M.size), M.ElementType.zero, &vals, Int32(M.size))
-    return M(elements: vals)
+    return M(exactElements: vals)
 }
 
-// MARK: - Matrix3Base
-
-/*internal func fastMultiply(matrix:Matrix3Base<Float>, vector:Vector3Base<Float>) -> Vector3Base<Float> {
-    var vals = [Float](repeating: 0.0, count: Vector3Base<Float>.numberOfComponents)
-    cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, Int32(Matrix3Base<Float>.dimensions.rows), 1, Int32(Matrix3Base<Float>.dimensions.columns), Float(1.0), matrix.elements, Int32(Matrix3Base<Float>.dimensions.rows), vector.components, Int32(Vector3Base<Float>.numberOfComponents), Float(0.0), &vals, Int32(Vector3Base<Float>.numberOfComponents))
-    return Vector3Base(components: vals)
-}*/
-
 internal func fastMultiply<M, V>(matrix:M, vector:V) throws -> V where
-    M: MatrixBase, V: VectorBase,
+    M: MatrixBase, V: FastInitializableVector,
     M.ElementType: FloatOrDouble, M.ElementType == V.ComponentType {
     try require(dimensions: matrix.dimensions, canMultiplyBy: vector.dimensions)
     var output = [M.ElementType](repeating: M.ElementType.zero, count: vector.numberOfComponents)
         M.ElementType.cblas_gemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, Int32(matrix.dimensions.rows), 1, Int32(matrix.dimensions.columns), M.ElementType.one, matrix.elements, Int32(matrix.dimensions.columns), vector.components, Int32(vector.dimensions.columns), M.ElementType.zero, &output, Int32(vector.dimensions.columns))
-    return V(components: output)
+    return V(exactComponents: output)
 }
 
 // MARK: - Matrix4Base

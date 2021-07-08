@@ -7,8 +7,12 @@
 
 import Foundation
 
+/// Statically initialize this because it is commonly accessed. Constructing new instances
+/// decreases performance by up to 40%.
+fileprivate let Vector3BaseDimensions = IntSize(rows: 3, columns: 1)
+
 ///A 3-dimensional vector.
-public struct Vector3Base<VectorType>: ConstantSizeVector where VectorType: DiscreteNumber {
+public struct Vector3Base<VectorType>: ConstantSizeVector, FastInitializableVector where VectorType: DiscreteNumber {
 
     public typealias ComponentType = VectorType
 
@@ -18,6 +22,8 @@ public struct Vector3Base<VectorType>: ConstantSizeVector where VectorType: Disc
     ///The number of components in a `Vector3Base` instance.
     public static var numberOfComponents:Int { return 3 }
 
+    public static var dimensions:IntSize { return Vector3BaseDimensions }
+
     // MARK: - Instance Properties
 
     ///The values of this vector.
@@ -25,6 +31,8 @@ public struct Vector3Base<VectorType>: ConstantSizeVector where VectorType: Disc
     #else
     ///The number of components in a `Vector3Base` instance.
     public static var staticNumberOfComponents:Int { return 3 }
+
+    public static var static dimensions:IntSize { return Vector3BaseDimensions }
 
     ///The values of this vector.
     public private(set) var components = [VectorType](repeating: VectorType.zero, count: Vector3Base<VectorType>.staticNumberOfComponents)
@@ -62,6 +70,12 @@ public struct Vector3Base<VectorType>: ConstantSizeVector where VectorType: Disc
     /// - parameter z: The third component of the vector.
     public init(x:VectorType, y:VectorType, z:VectorType) {
         self.components = [x, y, z]
+    }
+
+    ///Initializes a `Vector3Base` with the given components. The caller
+    ///is responsible for ensuring `exactComponents` has the correct number of values.
+    internal init(exactComponents:[VectorType]) {
+        self.components = exactComponents
     }
 
     ///Provides access to the underlying components of this instance.

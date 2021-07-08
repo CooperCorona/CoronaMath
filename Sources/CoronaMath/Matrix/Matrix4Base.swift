@@ -7,10 +7,14 @@
 
 import Foundation
 
+/// Statically initialize this because it is commonly accessed. Constructing new instances
+/// decreases performance by up to 40%.
+fileprivate let Matrix4BaseDimensions = IntSize(square: 4)
+
 ///A 4x4 matrix. Conforms to Equatable, MatrixBase, ConstantSizeMatrix, and SquareMatrix.
 ///Conforms to MatrixOperationsBase by the extensions in VariableSizeMatrix.
 public struct Matrix4Base<MatrixType>:
-    Equatable, MatrixBase, ConstantSizeMatrix, SquareMatrix
+    Equatable, MatrixBase, ConstantSizeMatrix, SquareMatrix, FastInitializableMatrix
     where MatrixType: MatrixElementType {
 
     // MARK: - Static Properties
@@ -22,6 +26,7 @@ public struct Matrix4Base<MatrixType>:
     /// *Self.dimensions* and *self.dimensions* must equal
     /// *size* for both components.
     public static var size: Int { return 4 }
+    public static var dimensions:IntSize { return Matrix4BaseDimensions }
 
     ///The identity 4x4 matrix.
     public static var identity: Matrix4Base<MatrixType> {
@@ -53,6 +58,12 @@ public struct Matrix4Base<MatrixType>:
     public init(elements:[MatrixType]) {
         let n = Matrix4Base<MatrixType>.numberOfElements
         self.elements = elements.of(length: n, padding: MatrixType.zero)
+    }
+
+    ///Initializes this instance with the specified elements. It is the caller's responsibility
+    ///to ensure `exactElements` has the correct number of elements.
+    internal init(exactElements:[MatrixType]) {
+        self.elements = exactElements
     }
 
     ///Provides access to the individual elements.

@@ -7,10 +7,14 @@
 
 import Foundation
 
+/// Statically initialize this because it is commonly accessed. Constructing new instances
+/// decreases performance by up to 40%.
+fileprivate let Matrix3BaseDimensions = IntSize(square: 3)
+
 ///A 3x3 matrix. Conforms to Equatable, MatrixBase, ConstantSizeMatrix, and SquareMatrix.
 ///Conforms to MatrixOperationsBase by the extensions in VariableSizeMatrix/.
 public struct Matrix3Base<MatrixType>:
-    Equatable, MatrixBase, ConstantSizeMatrix, SquareMatrix
+    Equatable, MatrixBase, ConstantSizeMatrix, SquareMatrix, FastInitializableMatrix
     where MatrixType: MatrixElementType {
 
     // MARK: - Static Properties
@@ -22,6 +26,7 @@ public struct Matrix3Base<MatrixType>:
     ///*Self.dimensions* and *self.dimensions* must equal
     ///*size* for both components.
     public static var size: Int { return 3 }
+    public static var dimensions:IntSize { return Matrix3BaseDimensions }
 
     ///The identity 3x3 matrix.
     public static var identity: Matrix3Base<MatrixType> {
@@ -46,6 +51,12 @@ public struct Matrix3Base<MatrixType>:
     public init(elements:[MatrixType]) {
         let n = Matrix3Base<MatrixType>.numberOfElements
         self.elements = elements.of(length: n, padding: MatrixType.zero)
+    }
+
+    ///Initializes this instance with the specified elements. It is the caller's responsibility to
+    ///ensure the number of elements is correct.
+    internal init(exactElements:[MatrixType]) {
+        self.elements = exactElements
     }
 
     ///Provides access to the individual elements.

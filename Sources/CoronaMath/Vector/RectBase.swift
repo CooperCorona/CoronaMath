@@ -194,6 +194,13 @@ extension RectBase where VectorType == Float {
 
 }
 
+fileprivate enum RectBaseCodingKeys: CodingKey {
+    case x
+    case y
+    case width
+    case height
+}
+
 extension RectBase where VectorType == Double {
 
     ///The center of the rect.
@@ -208,5 +215,23 @@ extension RectBase where VectorType == Double {
 
 }
 
-extension RectBase: Decodable where VectorType: Decodable {}
-extension RectBase: Encodable where VectorType: Encodable {}
+extension RectBase: Decodable where VectorType: Decodable {
+    public init(from decoder:Decoder) throws {
+        let container = try decoder.container(keyedBy: RectBaseCodingKeys.self)
+        let x = try container.decode(VectorType.self, forKey: .x)
+        let y = try container.decode(VectorType.self, forKey: .y)
+        let width = try container.decode(VectorType.self, forKey: .width)
+        let height = try container.decode(VectorType.self, forKey: .height)
+        self.init(x: x, y: y, width: width, height: height)
+    }
+
+}
+extension RectBase: Encodable where VectorType: Encodable {
+    public func encode(to encoder:Encoder) throws {
+        var container = encoder.container(keyedBy: RectBaseCodingKeys.self)
+        try container.encode(self.x, forKey: .x)
+        try container.encode(self.y, forKey: .y)
+        try container.encode(self.width, forKey: .width)
+        try container.encode(self.height, forKey: .height)
+    }
+}

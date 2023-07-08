@@ -145,6 +145,8 @@ extension SizeBase: Encodable where VectorType: Encodable {
     }
 }
 
+extension SizeBase: Sendable where VectorType: Sendable {}
+
 public func +<VectorType>(lhs:SizeBase<VectorType>, rhs:PointBase<VectorType>) -> SizeBase<VectorType> {
     return SizeBase(width: lhs.width + rhs.x, height: lhs.height + rhs.y)
 }

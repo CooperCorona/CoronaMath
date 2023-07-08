@@ -154,3 +154,4 @@ public func ==<M, MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: M) -> Bo
 
 extension VariableSizeMatrix: Decodable where MatrixType: Decodable {}
 extension VariableSizeMatrix: Encodable where MatrixType: Encodable {}
+extension VariableSizeMatrix: Sendable where MatrixType: Sendable {}

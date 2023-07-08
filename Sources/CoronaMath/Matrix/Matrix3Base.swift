@@ -133,3 +133,4 @@ public func *=(lhs:inout Matrix3Base<Double>, rhs:Matrix3Base<Double>) {
 
 extension Matrix3Base: Decodable where MatrixType: Decodable {}
 extension Matrix3Base: Encodable where MatrixType: Encodable {}
+extension Matrix3Base: Sendable where MatrixType: Sendable {}

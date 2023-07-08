@@ -104,6 +104,7 @@ extension Vector3Base: Hashable where VectorType: Hashable {
         hasher.combine(self.components)
     }
 }
+extension Vector3Base: Sendable where VectorType: Sendable {}
 
 public func *(lhs:Matrix3Base<Float>, rhs:Vector3Base<Float>) -> Vector3Base<Float> {
     // fastMultiply throws only if the matrix and vector dimensions are mismatched.

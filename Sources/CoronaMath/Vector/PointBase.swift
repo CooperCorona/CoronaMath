@@ -159,6 +159,8 @@ extension PointBase: Encodable where VectorType: Encodable {
     }
 }
 
+extension PointBase: Sendable where VectorType: Sendable {}
+
 public func +<VectorType>(lhs:PointBase<VectorType>, rhs:SizeBase<VectorType>) -> PointBase<VectorType> {
     return PointBase(x: lhs.x + rhs.width, y: lhs.y + rhs.height)
 }

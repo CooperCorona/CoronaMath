@@ -5,11 +5,12 @@
 //  Created by Cooper Knaak on 12/30/18.
 //
 
-import Foundation
 import CoronaErrors
+import Foundation
 
 ///A matrix whose dimensions are determined at runtime.
-public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixType: MatrixElementType {
+public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase
+where MatrixType: MatrixElementType {
 
     ///The type of the matrix's elements.
     public typealias ElementType = MatrixType
@@ -17,14 +18,14 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     ///The dimensions of the matrix. The first component is the number of rows
     ///and the second component is the number of columns. Both components must
     ///be greater than 0.
-    public let dimensions:IntSize
+    public let dimensions: IntSize
     ///The values of the matrix. The number of elements must equal
     ///the number of rows times the number of columns.
-    public private(set) var elements:[MatrixType]
+    public private(set) var elements: [MatrixType]
 
     ///Initializes the matrix with the given dimensions and all elements equal
     ///to `MatrixType.zero`.
-    public init(dimensions:IntSize) {
+    public init(dimensions: IntSize) {
         let n = dimensions.rows * dimensions.columns
         self.dimensions = dimensions
         self.elements = [MatrixType](repeating: MatrixType.zero, count: n)
@@ -34,7 +35,7 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     ///If `elements` does not contain enough elements, the remaining
     ///values are filled with `MatrixType.zero`. If `elements` contains
     ///too many elements, the extra elements are ignored.
-    public init(dimensions:IntSize, elements:[MatrixType]) {
+    public init(dimensions: IntSize, elements: [MatrixType]) {
         let n = dimensions.rows * dimensions.columns
         self.dimensions = dimensions
         self.elements = elements.of(length: n, padding: MatrixType.zero)
@@ -57,13 +58,18 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     /// - throws: `MatrixError.incorrectDimensions` if `self.dimensions` does not equal
     ///`matrix.dimensions`.
     /// - returns: The result of adding `self` and `matrix`.
-    public func add<M>(by matrix: M) throws -> VariableSizeMatrix<MatrixType> where
-        M : MatrixBase,
-        ElementType == M.ElementType {
-            guard self.dimensions == matrix.dimensions else {
-                throw ValueException<IntSize>.expected(value: self.dimensions, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions)
-            }
-            return VariableSizeMatrix(dimensions: self.dimensions, elements: zip(self.elements, matrix.elements).map(+))
+    public func add<M>(by matrix: M) throws -> VariableSizeMatrix<MatrixType>
+    where
+        M: MatrixBase,
+        ElementType == M.ElementType
+    {
+        guard self.dimensions == matrix.dimensions else {
+            throw ValueException<IntSize>.expected(
+                value: self.dimensions, error: MatrixError.incorrectDimensions,
+                actualValue: matrix.dimensions)
+        }
+        return VariableSizeMatrix(
+            dimensions: self.dimensions, elements: zip(self.elements, matrix.elements).map(+))
     }
 
     ///Subtracts `self` and `matrix` component-wise.
@@ -71,13 +77,18 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     /// - throws: `MatrixError.incorrectDimensions` if `self.dimensions` does not equal
     ///`matrix.dimensions`.
     /// - returns: The result of subracting `matrix` and `self`.
-    public func subtract<M>(by matrix: M) throws -> VariableSizeMatrix<MatrixType> where
+    public func subtract<M>(by matrix: M) throws -> VariableSizeMatrix<MatrixType>
+    where
         M: MatrixBase,
-        ElementType == M.ElementType {
-            guard self.dimensions == matrix.dimensions else {
-                throw ValueException<IntSize>.expected(value: self.dimensions, error: MatrixError.incorrectDimensions, actualValue: matrix.dimensions)
-            }
-            return VariableSizeMatrix(dimensions: self.dimensions, elements: zip(self.elements, matrix.elements).map(-))
+        ElementType == M.ElementType
+    {
+        guard self.dimensions == matrix.dimensions else {
+            throw ValueException<IntSize>.expected(
+                value: self.dimensions, error: MatrixError.incorrectDimensions,
+                actualValue: matrix.dimensions)
+        }
+        return VariableSizeMatrix(
+            dimensions: self.dimensions, elements: zip(self.elements, matrix.elements).map(-))
     }
 
     ///Performs matrix multiplication on `self` and `matrix` (not component-wise).
@@ -85,20 +96,22 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     /// - throws: `MatrixError.incorrectDimensions` if `self.dimensions.column` does
     ///not equal `matrix.dimensions.row`.
     /// - returns: The result of multiplying `self` and `matrix`.
-    public func multiply<M>(by matrix: M) throws -> VariableSizeMatrix<MatrixType> where
+    public func multiply<M>(by matrix: M) throws -> VariableSizeMatrix<MatrixType>
+    where
         M: MatrixBase,
-        ElementType == M.ElementType {
-            try require(dimensions: self.dimensions, canMultiplyBy: matrix.dimensions)
-            let dimensions = IntSize(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
-            var elements:[M.ElementType] = []
-            for (row, column) in pairs(0..<dimensions.rows, 0..<dimensions.columns) {
-                var value = M.ElementType.zero
-                for i in 0..<self.dimensions.columns {
-                    value = value + self[row, i] * matrix[i, column]
-                }
-                elements.append(value)
+        ElementType == M.ElementType
+    {
+        try require(dimensions: self.dimensions, canMultiplyBy: matrix.dimensions)
+        let dimensions = IntSize(rows: self.dimensions.rows, columns: matrix.dimensions.columns)
+        var elements: [M.ElementType] = []
+        for (row, column) in pairs(0..<dimensions.rows, 0..<dimensions.columns) {
+            var value = M.ElementType.zero
+            for i in 0..<self.dimensions.columns {
+                value = value + self[row, i] * matrix[i, column]
             }
-            return VariableSizeMatrix(dimensions: dimensions, elements: elements)
+            elements.append(value)
+        }
+        return VariableSizeMatrix(dimensions: dimensions, elements: elements)
     }
 
     ///Returns the transpose of this matrix. Transposing a matrix turns
@@ -107,48 +120,66 @@ public struct VariableSizeMatrix<MatrixType>: MatrixOperationsBase where MatrixT
     public func transpose() -> VariableSizeMatrix<MatrixType> {
         let dimensions = IntSize(rows: self.dimensions.columns, columns: self.dimensions.rows)
         let elements = pairs(0..<self.dimensions.columns, 0..<self.dimensions.rows)
-            .map() { row, column in self[column, row] }
+            .map { row, column in self[column, row] }
         return VariableSizeMatrix(dimensions: dimensions, elements: elements)
     }
 }
 
 extension VariableSizeMatrix: ContinuousMatrix where MatrixType: ContinuousNumber {}
 
-public func +<MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: MatrixType) -> VariableSizeMatrix<MatrixType> {
-    return VariableSizeMatrix(dimensions: lhs.dimensions, elements: lhs.elements.map() { $0 + rhs })
+public func + <MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: MatrixType)
+    -> VariableSizeMatrix<MatrixType>
+{
+    return VariableSizeMatrix(dimensions: lhs.dimensions, elements: lhs.elements.map { $0 + rhs })
 }
 
-public func +<MatrixType>(lhs: MatrixType, rhs: VariableSizeMatrix<MatrixType>) -> VariableSizeMatrix<MatrixType> {
-    return VariableSizeMatrix(dimensions: rhs.dimensions, elements: rhs.elements.map() { lhs + $0 })
+public func + <MatrixType>(lhs: MatrixType, rhs: VariableSizeMatrix<MatrixType>)
+    -> VariableSizeMatrix<MatrixType>
+{
+    return VariableSizeMatrix(dimensions: rhs.dimensions, elements: rhs.elements.map { lhs + $0 })
 }
 
-public func -<MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: MatrixType) -> VariableSizeMatrix<MatrixType> {
-    return VariableSizeMatrix(dimensions: lhs.dimensions, elements: lhs.elements.map() { $0 - rhs })
+public func - <MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: MatrixType)
+    -> VariableSizeMatrix<MatrixType>
+{
+    return VariableSizeMatrix(dimensions: lhs.dimensions, elements: lhs.elements.map { $0 - rhs })
 }
 
-public func -<MatrixType>(lhs: MatrixType, rhs: VariableSizeMatrix<MatrixType>) -> VariableSizeMatrix<MatrixType> {
-    return VariableSizeMatrix(dimensions: rhs.dimensions, elements: rhs.elements.map() { lhs - $0 })
+public func - <MatrixType>(lhs: MatrixType, rhs: VariableSizeMatrix<MatrixType>)
+    -> VariableSizeMatrix<MatrixType>
+{
+    return VariableSizeMatrix(dimensions: rhs.dimensions, elements: rhs.elements.map { lhs - $0 })
 }
 
-public func *<MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: MatrixType) -> VariableSizeMatrix<MatrixType> {
-    return VariableSizeMatrix(dimensions: lhs.dimensions, elements: lhs.elements.map() { $0 * rhs })
+public func * <MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: MatrixType)
+    -> VariableSizeMatrix<MatrixType>
+{
+    return VariableSizeMatrix(dimensions: lhs.dimensions, elements: lhs.elements.map { $0 * rhs })
 }
 
-public func *<MatrixType>(lhs: MatrixType, rhs: VariableSizeMatrix<MatrixType>) -> VariableSizeMatrix<MatrixType> {
-    return VariableSizeMatrix(dimensions: rhs.dimensions, elements: rhs.elements.map() { lhs * $0 })
+public func * <MatrixType>(lhs: MatrixType, rhs: VariableSizeMatrix<MatrixType>)
+    -> VariableSizeMatrix<MatrixType>
+{
+    return VariableSizeMatrix(dimensions: rhs.dimensions, elements: rhs.elements.map { lhs * $0 })
 }
 
-public func /<MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: MatrixType) -> VariableSizeMatrix<MatrixType> where MatrixType: ContinuousNumber {
-    return VariableSizeMatrix(dimensions: lhs.dimensions, elements: lhs.elements.map() { $0 / rhs })
+public func / <MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: MatrixType)
+    -> VariableSizeMatrix<MatrixType> where MatrixType: ContinuousNumber
+{
+    return VariableSizeMatrix(dimensions: lhs.dimensions, elements: lhs.elements.map { $0 / rhs })
 }
 
-public func /<MatrixType>(lhs: MatrixType, rhs: VariableSizeMatrix<MatrixType>) -> VariableSizeMatrix<MatrixType> where MatrixType: ContinuousNumber {
-    return VariableSizeMatrix(dimensions: rhs.dimensions, elements: rhs.elements.map() { lhs / $0 })
+public func / <MatrixType>(lhs: MatrixType, rhs: VariableSizeMatrix<MatrixType>)
+    -> VariableSizeMatrix<MatrixType> where MatrixType: ContinuousNumber
+{
+    return VariableSizeMatrix(dimensions: rhs.dimensions, elements: rhs.elements.map { lhs / $0 })
 }
 
-public func ==<M, MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: M) -> Bool where
+public func == <M, MatrixType>(lhs: VariableSizeMatrix<MatrixType>, rhs: M) -> Bool
+where
     M: MatrixBase,
-    VariableSizeMatrix<MatrixType>.ElementType == M.ElementType {
+    VariableSizeMatrix<MatrixType>.ElementType == M.ElementType
+{
     return lhs.dimensions == rhs.dimensions && lhs.elements == rhs.elements
 }
 

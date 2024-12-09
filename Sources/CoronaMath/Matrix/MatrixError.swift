@@ -5,8 +5,8 @@
 //  Created by Cooper Knaak on 12/27/18.
 //
 
-import Foundation
 import CoronaErrors
+import Foundation
 
 ///Errors than can occur during matrix operations.
 public enum MatrixError: Swift.Error {
@@ -14,8 +14,10 @@ public enum MatrixError: Swift.Error {
     case incorrectDimensions
 }
 
-public func require(dimensions dimensions1:IntSize, canMultiplyBy dimensions2:IntSize) throws {
+public func require(dimensions dimensions1: IntSize, canMultiplyBy dimensions2: IntSize) throws {
     guard dimensions1.columns == dimensions2.rows else {
-        throw ValueException<Int>.expected(value: dimensions1.columns, error: MatrixError .incorrectDimensions, actualValue: dimensions2.rows)
+        throw ValueException<Int>.expected(
+            value: dimensions1.columns, error: MatrixError.incorrectDimensions,
+            actualValue: dimensions2.rows)
     }
 }

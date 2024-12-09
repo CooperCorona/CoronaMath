@@ -30,21 +30,21 @@ public struct PairIterator<T, U>: Sequence, IteratorProtocol where T: Sequence, 
 
     ///The first sequence to iterate over. Elements of this sequence
     ///occur first in the generated tuples.
-    private let firstSequence:T
+    private let firstSequence: T
     ///The second sequence to iterate over. Elements of this sequence
     ///occur second in the generated tuples.
-    private let secondSequence:U
+    private let secondSequence: U
     ///An iterator over the `firstSequence`.
-    private var firstIterator:T.Iterator
+    private var firstIterator: T.Iterator
     ///An iterator over the `secondSequence`.
-    private var secondIterator:U.Iterator
+    private var secondIterator: U.Iterator
     ///The current first element of the generated tuple.
-    private var firstElement:T.Element? = nil
+    private var firstElement: T.Element? = nil
 
     ///Initializes a PairIterator instance.
     /// - paramter firstSequence: The first sequence to iterate over.
     /// - parameter secondSequence: The second sequence to iterate over.
-    public init(firstSequence:T, secondSequence:U) {
+    public init(firstSequence: T, secondSequence: U) {
         self.firstSequence = firstSequence
         self.secondSequence = secondSequence
         self.firstIterator = firstSequence.makeIterator()
@@ -74,14 +74,14 @@ public struct PairIterator<T, U>: Sequence, IteratorProtocol where T: Sequence, 
         self.secondIterator = self.secondSequence.makeIterator()
     }
 
-    ///Returns an iterator that can be 
+    ///Returns an iterator that can be
     public func makeIterator() -> PairIterator<T, U> {
         return self
     }
 }
 
 extension Sequence where Element: DiscreteNumber {
-    
+
     ///Computes the sum of this sequence.
     public func sum() -> Element {
         return self.reduce(Element.zero, +)
@@ -89,7 +89,7 @@ extension Sequence where Element: DiscreteNumber {
 }
 
 extension Sequence {
-    
+
     ///Returns an iterator that generates all pairs of elements in this sequence in order.
     ///See `PairIterator`.
     /// - returns: A PairIterator iterating over the pairs of the sequences.
@@ -103,6 +103,7 @@ extension Sequence {
 /// - parameter firstSequence: The first sequence to iterate over.
 /// - parameter secondSequence: The second sequence to iterate over.
 /// - returns: A PairIterator iterating over the pairs of the sequences.
-public func pairs<T, U>(_ firstSequence:T, _ secondSequence:U) -> PairIterator<T, U>.Iterator where T: Sequence, U: Sequence {
+public func pairs<T, U>(_ firstSequence: T, _ secondSequence: U) -> PairIterator<T, U>.Iterator
+where T: Sequence, U: Sequence {
     return PairIterator(firstSequence: firstSequence, secondSequence: secondSequence)
 }

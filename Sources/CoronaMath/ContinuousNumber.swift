@@ -1,34 +1,31 @@
-
 import Foundation
 
 public protocol ContinuousNumber: DiscreteNumber {
 
     ///Divides two instances. `rhs` cannot be `Self.zero`.
-    static func /(lhs:Self, rhs:Self) -> Self
+    static func / (lhs: Self, rhs: Self) -> Self
 
     ///Computes the square root of `x`. `x` must have a defined square root.
-    static func sqrt(_ x:Self) -> Self
+    static func sqrt(_ x: Self) -> Self
 
     ///Computes the sine of `x`.
-    static func sin(_ x:Self) -> Self
+    static func sin(_ x: Self) -> Self
 
     ///Computes the cosine of `x`.
-    static func cos(_ x:Self) -> Self
+    static func cos(_ x: Self) -> Self
 
     ///Computes the arctangent of the vector with components `{x, y}`.
-    static func atan2(_ y:Self, _ x:Self) -> Self
+    static func atan2(_ y: Self, _ x: Self) -> Self
 
     // MARK: - Optional
 
     ///Divides and assigns. `rhs` cannot be `Self.zero`.
-    static func /=(lhs:inout Self, rhs:Self)
+    static func /= (lhs: inout Self, rhs: Self)
 }
 
-
-public func /=<T: ContinuousNumber>(lhs:inout T, rhs:T) {
+public func /= <T: ContinuousNumber>(lhs: inout T, rhs: T) {
     lhs = lhs / rhs
 }
-
 
 extension Float: ContinuousNumber {
     public static func sqrt(_ x: Float) -> Float {

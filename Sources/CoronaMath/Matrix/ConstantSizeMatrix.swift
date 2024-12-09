@@ -14,26 +14,27 @@ public protocol ConstantSizeMatrix: MatrixBase {
 
     ///The dimensions of all instances of this type. The instance
     ///property *dimensions* must return this value.
-    static var dimensions:IntSize { get }
+    static var dimensions: IntSize { get }
 
     ///Initializes this instance with the specified elements. If *elements* does not
     ///contain enough values, the remaining elements should be initialized to `Self.zero`.
     ///If *elements* contains too many elements, the extra values should be ignored.
     /// - parameter: an array of *ElementType* elements representing the elements of the matrix.
     /// - returns: a matrix initialized with the values of *elements*.
-    init(elements:[ElementType])
+    init(elements: [ElementType])
 
     // MARK: - Optional Implementations
 
     ///The number of elements in the matrix. Must be equal to
     ///```Self.dimensions.row * Self.dimensions.column```.
-    static var numberOfElements:Int { get }
+    static var numberOfElements: Int { get }
 }
 
 // MARK: - Default Implementations
 
 extension ConstantSizeMatrix {
-    public static var numberOfElements:Int { return Self.dimensions.rows * Self.dimensions.columns }
+    public static var numberOfElements: Int {
+        return Self.dimensions.rows * Self.dimensions.columns
+    }
     public var dimensions: IntSize { return Self.dimensions }
 }
-

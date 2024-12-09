@@ -10,50 +10,50 @@ import Foundation
 ///Interface for a mathematical n-component vector, which is a
 ///a structure that contains n independent numeric components.
 public protocol VectorBase: Equatable {
-    
+
     // MARK: - Required Methods
 
     ///The type of the vector's components.
     associatedtype ComponentType: DiscreteNumber
 
     ///The number of components in the vector.
-    var numberOfComponents:Int { get }
+    var numberOfComponents: Int { get }
 
     ///The dimensions of the vector, as if it were a matrix.
     ///Always equal to `{numberOfComponents, 1}`.
-    var dimensions:IntSize { get }
+    var dimensions: IntSize { get }
 
     ///The components of this vector.
-    var components:[ComponentType] { get }
-    
+    var components: [ComponentType] { get }
+
     ///Provides access to the individual components.
     /// - parameter index: The index of the component to get or set.
     /// - returns: The value of the component at the given index.
-    subscript(index:Int) -> ComponentType { get set }
-    
+    subscript(index: Int) -> ComponentType { get set }
+
     // MARK: - Optional Implementations
-    
+
     ///Initializes this instance with all zeroes.
     init()
-    
+
     ///Initializes this instance with the specified components. If *components* does not
     ///contain enough elements, the remaining components should be initialized to 0.
     ///If *components* contains too many elements, the extra elements should be ignored.
     /// - parameter: an array of V.ComponentTypes representing the component of the vector.
     /// - returns: a vector initialized with the values of *components*.
-    init(components:[ComponentType])
+    init(components: [ComponentType])
 
     ///Compares two vectors component wise. Returns true if the vectors' components are the same, false otherwise.
-    static func ==(lhs:Self, rhs:Self) -> Bool
-    
+    static func == (lhs: Self, rhs: Self) -> Bool
+
 }
 
 // MARK: - Default Implementations
 
 extension VectorBase {
-    public var dimensions:IntSize { return IntSize(rows: self.numberOfComponents, columns: 1) }
+    public var dimensions: IntSize { return IntSize(rows: self.numberOfComponents, columns: 1) }
 }
 
-public func ==<V: VectorBase>(lhs:V, rhs:V) -> Bool {
+public func == <V: VectorBase>(lhs: V, rhs: V) -> Bool {
     return lhs.components == rhs.components
 }

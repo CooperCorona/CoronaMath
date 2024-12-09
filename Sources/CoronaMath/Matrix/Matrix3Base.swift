@@ -9,13 +9,13 @@ import Foundation
 
 /// Statically initialize this because it is commonly accessed. Constructing new instances
 /// decreases performance by up to 40%.
-fileprivate let Matrix3BaseDimensions = IntSize(square: 3)
+private let Matrix3BaseDimensions = IntSize(square: 3)
 
 ///A 3x3 matrix. Conforms to Equatable, MatrixBase, ConstantSizeMatrix, and SquareMatrix.
 ///Conforms to MatrixOperationsBase by the extensions in VariableSizeMatrix/.
 public struct Matrix3Base<MatrixType>:
     Equatable, MatrixBase, ConstantSizeMatrix, SquareMatrix, FastInitializableMatrix
-    where MatrixType: MatrixElementType {
+where MatrixType: MatrixElementType {
 
     // MARK: - Static Properties
 
@@ -26,14 +26,14 @@ public struct Matrix3Base<MatrixType>:
     ///*Self.dimensions* and *self.dimensions* must equal
     ///*size* for both components.
     public static var size: Int { return 3 }
-    public static var dimensions:IntSize { return Matrix3BaseDimensions }
+    public static var dimensions: IntSize { return Matrix3BaseDimensions }
 
     ///The identity 3x3 matrix.
     public static var identity: Matrix3Base<MatrixType> {
         return Matrix3Base<MatrixType>(elements: [
             MatrixType.one, MatrixType.zero, MatrixType.zero,
             MatrixType.zero, MatrixType.one, MatrixType.zero,
-            MatrixType.zero, MatrixType.zero, MatrixType.one
+            MatrixType.zero, MatrixType.zero, MatrixType.one,
         ])
     }
 
@@ -41,28 +41,28 @@ public struct Matrix3Base<MatrixType>:
 
     ///The values of the matrix. The number of elements must equal
     ///the number of rows times the number of columns.
-    public private(set) var elements:[MatrixType]
+    public private(set) var elements: [MatrixType]
 
     ///Initializes this instance with the specified elements. If *elements* does not
     ///contain enough values, the remaining elements are initialized to 0.
     ///If *elements* contains too many elements, the extra values are ignored.
     /// - parameter: an array of *ElementType* elements representing the elements of the matrix.
     /// - returns: a matrix initialized with the values of *elements*.
-    public init(elements:[MatrixType]) {
+    public init(elements: [MatrixType]) {
         let n = Matrix3Base<MatrixType>.numberOfElements
         self.elements = elements.of(length: n, padding: MatrixType.zero)
     }
 
     ///Initializes this instance with the specified elements. It is the caller's responsibility to
     ///ensure the number of elements is correct.
-    internal init(exactElements:[MatrixType]) {
+    internal init(exactElements: [MatrixType]) {
         self.elements = exactElements
     }
 
     ///Provides access to the individual elements.
     /// - parameter index: The index of the element to get or set.
     /// - returns: The value of the element at the given index.
-    public subscript(index:Int) -> MatrixType {
+    public subscript(index: Int) -> MatrixType {
         get { return self.elements[index] }
         set { self.elements[index] = newValue }
     }
@@ -76,8 +76,12 @@ extension Matrix3Base: ContinuousMatrix where MatrixType: ContinuousNumber {
     /// - parameter translation: The x and y translation of the matrix.
     /// - parameter scale: The horizontal and vertical scale of the matrix.
     /// - parameter rotation: The rotation, in radians counterclockwise, of the matrix.
-    public init(translation:PointBase<MatrixType>, scale:PointBase<MatrixType>, rotation:MatrixType) {
-        self.init(translation: translation, scale: scale, rotation: rotation, anchor: PointBase<MatrixType>.zero, size: SizeBase<MatrixType>.zero)
+    public init(
+        translation: PointBase<MatrixType>, scale: PointBase<MatrixType>, rotation: MatrixType
+    ) {
+        self.init(
+            translation: translation, scale: scale, rotation: rotation,
+            anchor: PointBase<MatrixType>.zero, size: SizeBase<MatrixType>.zero)
     }
 
     ///Constructs a matrix with the given translation, scale, rotation, anchor, and size. `anchor` is the point of rotation and scaling.
@@ -88,11 +92,14 @@ extension Matrix3Base: ContinuousMatrix where MatrixType: ContinuousNumber {
     /// - parameter anchor: The point of scale, rotation, and size-offset.
     /// - parameter size: The size of the coordinate space defined by this matrix. The matrix is translated to
     /// treat `anchor` as the center of the coordinate space before applying scale and rotation. Then `translation` is applied.
-    public init(translation:PointBase<MatrixType>, scale:PointBase<MatrixType>, rotation:MatrixType, anchor:PointBase<MatrixType>, size:SizeBase<MatrixType>) {
+    public init(
+        translation: PointBase<MatrixType>, scale: PointBase<MatrixType>, rotation: MatrixType,
+        anchor: PointBase<MatrixType>, size: SizeBase<MatrixType>
+    ) {
         var elements = [
             MatrixType.one, MatrixType.zero, MatrixType.zero,
             MatrixType.zero, MatrixType.one, MatrixType.zero,
-            MatrixType.zero, MatrixType.zero, MatrixType.one
+            MatrixType.zero, MatrixType.zero, MatrixType.one,
         ]
         let cosine = MatrixType.cos(rotation)
         let sine = MatrixType.sin(rotation)
@@ -115,19 +122,19 @@ extension Matrix3Base: ContinuousMatrix where MatrixType: ContinuousNumber {
 
 ///Wraps `fastMultiply` so `Matrix3Base<Float>` can be multiplied using `*` but it
 ///does not match to the generic, slow version.
-public func *(lhs:Matrix3Base<Float>, rhs:Matrix3Base<Float>) -> Matrix3Base<Float> {
+public func * (lhs: Matrix3Base<Float>, rhs: Matrix3Base<Float>) -> Matrix3Base<Float> {
     return fastMultiplyMatrices(lhs: lhs, rhs: rhs)
 }
 
-public func *(lhs:Matrix3Base<Double>, rhs:Matrix3Base<Double>) -> Matrix3Base<Double> {
+public func * (lhs: Matrix3Base<Double>, rhs: Matrix3Base<Double>) -> Matrix3Base<Double> {
     return fastMultiplyMatrices(lhs: lhs, rhs: rhs)
 }
 
-public func *=(lhs:inout Matrix3Base<Float>, rhs:Matrix3Base<Float>) {
+public func *= (lhs: inout Matrix3Base<Float>, rhs: Matrix3Base<Float>) {
     lhs = fastMultiplyMatrices(lhs: lhs, rhs: rhs)
 }
 
-public func *=(lhs:inout Matrix3Base<Double>, rhs:Matrix3Base<Double>) {
+public func *= (lhs: inout Matrix3Base<Double>, rhs: Matrix3Base<Double>) {
     lhs = fastMultiplyMatrices(lhs: lhs, rhs: rhs)
 }
 

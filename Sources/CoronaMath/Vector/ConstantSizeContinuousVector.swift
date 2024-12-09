@@ -16,14 +16,14 @@ public protocol ConstantSizeContinuousVector: ContinuousVector, ConstantSizeVect
     ///Computes the distance between 2 vcctors.
     /// - parameter vector: the vector to compute the distance from.
     /// - returns: The distance between this vector and *vector*.
-    func distanceFrom(vector:Self) -> ComponentType
+    func distanceFrom(vector: Self) -> ComponentType
 }
 
 // MARK: - Default Implementations
 
 extension ConstantSizeContinuousVector {
 
-    public func distanceFrom(vector:Self) -> Self.ComponentType {
+    public func distanceFrom(vector: Self) -> Self.ComponentType {
         return (self - vector).length()
     }
 

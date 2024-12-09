@@ -17,9 +17,10 @@ extension Array {
     /// - parameter padding: The element to repeat at the end of the array
     ///`self.count < length`.
     /// - returns: An array with exactly `length` elements.
-    public func of(length:Int, padding:Element) -> [Element] {
+    public func of(length: Int, padding: Element) -> [Element] {
         let n = Swift.max(length, 0)
-        return self[0..<Swift.min(n, self.count)] + [Element](repeating: padding, count: Swift.max(0, n - self.count))
+        return self[0..<Swift.min(n, self.count)]
+            + [Element](repeating: padding, count: Swift.max(0, n - self.count))
     }
 
 }

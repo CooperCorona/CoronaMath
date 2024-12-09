@@ -8,7 +8,7 @@
 import Foundation
 
 ///A 2-dimensional vector representing a size.
-public struct SizeBase<VectorType>: ConstantSizeVector where VectorType: DiscreteNumber {
+public struct SizeBase<VectorType>: ConstantSizeVector, CustomStringConvertible where VectorType: DiscreteNumber {
 
     public typealias ComponentType = VectorType
 
@@ -36,6 +36,8 @@ public struct SizeBase<VectorType>: ConstantSizeVector where VectorType: Discret
         get { return self.components[1] }
         set { self.components[1] = newValue }
     }
+    
+    public var description:String { return "(w=\(width), h=\(height))" }
 
     ///Initializes the zero size.
     public init() {}

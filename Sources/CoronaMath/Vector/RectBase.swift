@@ -9,7 +9,7 @@ import Foundation
 
 ///A 4-dimensional vector representing a rectangle. A rectangle contains an origin (point) and dimensions (size).
 ///The dimensions of `size` must be non-negative.
-public struct RectBase<VectorType>: ConstantSizeVector where VectorType: DiscreteNumber {
+public struct RectBase<VectorType>: ConstantSizeVector, CustomStringConvertible where VectorType: DiscreteNumber {
 
     // MARK: - Static Properties
 
@@ -87,7 +87,9 @@ public struct RectBase<VectorType>: ConstantSizeVector where VectorType: Discret
             PointBase(x: self.maxX, y: self.maxY)
         ]
     }
-
+    
+    public var description:String { return "(x=\(x), y=\(y), w=\(width), h=\(height))" }
+    
     ///Initialiaze the zero rect.
     public init() {}
 

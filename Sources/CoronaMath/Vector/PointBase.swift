@@ -8,7 +8,7 @@
 import Foundation
 
 ///A 2-dimensional vector.
-public struct PointBase<VectorType>: ConstantSizeVector where VectorType: DiscreteNumber {
+public struct PointBase<VectorType>: ConstantSizeVector, CustomStringConvertible where VectorType: DiscreteNumber {
 
     public typealias ComponentType = VectorType
 
@@ -40,6 +40,8 @@ public struct PointBase<VectorType>: ConstantSizeVector where VectorType: Discre
         get { return self.components[1] }
         set { self.components[1] = newValue }
     }
+    
+    public var description:String { return "(x=\(x), y=\(y))" }
 
     ///Initializes the zero point.
     public init() {}

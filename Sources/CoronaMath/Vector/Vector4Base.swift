@@ -12,7 +12,8 @@ import Foundation
 private let Vector4BaseDimensions = IntSize(rows: 4, columns: 1)
 
 ///A 4-dimensional vector.
-public struct Vector4Base<VectorType>: ConstantSizeVector, FastInitializableVector
+public struct Vector4Base<VectorType>: ConstantSizeVector, FastInitializableVector,
+    CustomStringConvertible
 where VectorType: DiscreteNumber {
 
     public typealias ComponentType = VectorType
@@ -86,6 +87,8 @@ where VectorType: DiscreteNumber {
         get { return self.components[3] }
         set { self.components[3] = newValue }
     }
+
+    public var description: String { return "(x=\(x), y=\(y), z=\(z), w=\(w)" }
 
     ///Initializse the zero vector.
     public init() {}

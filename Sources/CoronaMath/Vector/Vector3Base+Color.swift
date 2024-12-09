@@ -111,4 +111,6 @@ extension Vector3Base {
         get { return self[2] }
         set { self[2] = newValue }
     }
+
+    public var colorDescription: String { return "(r=\(x), g=\(y), b=\(z))" }
 }

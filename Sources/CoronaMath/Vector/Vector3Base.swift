@@ -12,7 +12,7 @@ import Foundation
 fileprivate let Vector3BaseDimensions = IntSize(rows: 3, columns: 1)
 
 ///A 3-dimensional vector.
-public struct Vector3Base<VectorType>: ConstantSizeVector, FastInitializableVector where VectorType: DiscreteNumber {
+public struct Vector3Base<VectorType>: ConstantSizeVector, FastInitializableVector, CustomStringConvertible where VectorType: DiscreteNumber {
 
     public typealias ComponentType = VectorType
 
@@ -32,7 +32,7 @@ public struct Vector3Base<VectorType>: ConstantSizeVector, FastInitializableVect
     ///The number of components in a `Vector3Base` instance.
     public static var staticNumberOfComponents:Int { return 3 }
 
-    public static var static dimensions:IntSize { return Vector3BaseDimensions }
+    public static var dimensions:IntSize { return Vector3BaseDimensions }
 
     ///The values of this vector.
     public private(set) var components = [VectorType](repeating: VectorType.zero, count: Vector3Base<VectorType>.staticNumberOfComponents)
@@ -60,6 +60,8 @@ public struct Vector3Base<VectorType>: ConstantSizeVector, FastInitializableVect
         get { return self.components[2] }
         set { self.components[2] = newValue }
     }
+    
+    public var description: String { return "(x=\(x), y=\(y), z=\(z))" }
 
     ///Initializes the zero vector.
     public init() {}

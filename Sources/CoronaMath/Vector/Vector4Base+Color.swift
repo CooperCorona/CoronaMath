@@ -125,4 +125,6 @@ extension Vector4Base {
         get { return self[3] }
         set { self[3] = newValue }
     }
+
+    public var colorDescription: String { return "(r=\(x), g=\(y), b=\(z), a=\(w))" }
 }

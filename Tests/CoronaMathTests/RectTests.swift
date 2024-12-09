@@ -252,4 +252,84 @@ final class RectTests: XCTestCase {
         ]
         XCTAssertEqual(rect.points, expected)
     }
+    
+    func testIntersectionTopRightCorner() {
+        let rect1 = Rect(x: 1.0, y: 2.0, width: 3.0, height: 4.0)
+        let rect2 = Rect(x: 2.0, y: 4.0, width: 6.0, height: 8.0)
+        let expected = Rect(x: 2.0, y: 4.0, width: 2.0, height: 2.0)
+        XCTAssertEqual(rect1.intersection(rect2), expected)
+        XCTAssertEqual(rect2.intersection(rect1), expected)
+    }
+    
+    func testIntersectionFullOverlap() {
+        let rect1 = Rect(x: 1.0, y: 2.0, width: 3.0, height: 4.0)
+        let rect2 = Rect(x: 2.0, y: 3.0, width: 1.0, height: 2.0)
+        let expected = rect2
+        XCTAssertEqual(rect1.intersection(rect2), expected)
+        XCTAssertEqual(rect2.intersection(rect1), expected)
+    }
+
+    func testIntersectionBottomRightCorner() {
+        let rect1 = Rect(x: 1.0, y: 2.0, width: 3.0, height: 4.0)
+        let rect2 = Rect(x: 2.0, y: 0.0, width: 6.0, height: 3.0)
+        let expected = Rect(x: 2.0, y: 2.0, width: 2.0, height: 1.0)
+        XCTAssertEqual(rect1.intersection(rect2), expected)
+        XCTAssertEqual(rect2.intersection(rect1), expected)
+    }
+    
+    func testIntersectionRightEdge() {
+        let rect1 = Rect(x: 1.0, y: 2.0, width: 3.0, height: 4.0)
+        let rect2 = Rect(x: 2.0, y: 2.0, width: 6.0, height: 4.0)
+        let expected = Rect(x: 2.0, y: 2.0, width: 2.0, height: 4.0)
+        XCTAssertEqual(rect1.intersection(rect2), expected)
+        XCTAssertEqual(rect2.intersection(rect1), expected)
+    }
+    
+    func testIntersectionTopEdge() {
+        let rect1 = Rect(x: 1.0, y: 2.0, width: 3.0, height: 4.0)
+        let rect2 = Rect(x: 1.0, y: 3.0, width: 3.0, height: 8.0)
+        let expected = Rect(x: 1.0, y: 3.0, width: 3.0, height: 3.0)
+        XCTAssertEqual(rect1.intersection(rect2), expected)
+        XCTAssertEqual(rect2.intersection(rect1), expected)
+    }
+    
+    func testUnionTopRightCorner() {
+        let rect1 = Rect(x: 1.0, y: 2.0, width: 3.0, height: 4.0)
+        let rect2 = Rect(x: 2.0, y: 4.0, width: 6.0, height: 8.0)
+        let expected = Rect(x: 1.0, y: 2.0, width: 7.0, height: 10.0)
+        XCTAssertEqual(rect1.union(rect2), expected)
+        XCTAssertEqual(rect2.union(rect1), expected)
+    }
+    
+    func testUnionFullOverlap() {
+        let rect1 = Rect(x: 1.0, y: 2.0, width: 3.0, height: 4.0)
+        let rect2 = Rect(x: 2.0, y: 3.0, width: 1.0, height: 2.0)
+        let expected = rect1
+        XCTAssertEqual(rect1.union(rect2), expected)
+        XCTAssertEqual(rect2.union(rect1), expected)
+    }
+
+    func testUnionBottomRightCorner() {
+        let rect1 = Rect(x: 1.0, y: 2.0, width: 3.0, height: 4.0)
+        let rect2 = Rect(x: 2.0, y: 0.0, width: 6.0, height: 3.0)
+        let expected = Rect(x: 1.0, y: 0.0, width: 7.0, height: 6.0)
+        XCTAssertEqual(rect1.union(rect2), expected)
+        XCTAssertEqual(rect2.union(rect1), expected)
+    }
+    
+    func testUnionRightEdge() {
+        let rect1 = Rect(x: 1.0, y: 2.0, width: 3.0, height: 4.0)
+        let rect2 = Rect(x: 2.0, y: 2.0, width: 6.0, height: 4.0)
+        let expected = Rect(x: 1.0, y: 2.0, width: 7.0, height: 4.0)
+        XCTAssertEqual(rect1.union(rect2), expected)
+        XCTAssertEqual(rect2.union(rect1), expected)
+    }
+    
+    func testUnionTopEdge() {
+        let rect1 = Rect(x: 1.0, y: 2.0, width: 3.0, height: 4.0)
+        let rect2 = Rect(x: 1.0, y: 3.0, width: 3.0, height: 8.0)
+        let expected = Rect(x: 1.0, y: 2.0, width: 3.0, height: 9.0)
+        XCTAssertEqual(rect1.union(rect2), expected)
+        XCTAssertEqual(rect2.union(rect1), expected)
+    }
 }

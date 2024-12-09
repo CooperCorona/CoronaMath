@@ -160,6 +160,37 @@ extension RectBase where VectorType: Comparable {
             || self.maxY < rect.minY)
     }
 
+    /// The intersection of `self` and `rect`. It is the caller's responsibility to ensure the rectangles
+    /// overlap before calling this method.
+    /// - returns: The maximum rectangle of points in both `self` and `rect`.
+    public func intersection(_ rect: Self) -> Self {
+        let minX = (self.minX > rect.minX) ? self.minX : rect.minX
+        let minY = (self.minY > rect.minY) ? self.minY : rect.minY
+        let maxX = (self.maxX < rect.maxX) ? self.maxX : rect.maxX
+        let maxY = (self.maxY < rect.maxY) ? self.maxY : rect.maxY
+        return RectBase(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+    }
+
+    /// Sets this value to the intersection of `self` and `rect`.
+    public mutating func intersected(_ rect: Self) {
+        self = intersection(rect)
+    }
+
+    /// The union of `self` and `rect`.
+    /// - returns: The minimum rectangle containing both `self` and `rect`.
+    public func union(_ rect: Self) -> Self {
+        let minX = (self.minX < rect.minX) ? self.minX : rect.minX
+        let minY = (self.minY < rect.minY) ? self.minY : rect.minY
+        let maxX = (self.maxX > rect.maxX) ? self.maxX : rect.maxX
+        let maxY = (self.maxY > rect.maxY) ? self.maxY : rect.maxY
+        return RectBase(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+    }
+
+    /// Sets this value to the union of `self` and `rect`.
+    public mutating func unioned(_ rect: Self) {
+        self = union(rect)
+    }
+
 }
 
 extension RectBase where VectorType: Comparable & ContinuousNumber {
